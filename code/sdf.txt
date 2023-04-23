@@ -1,0 +1,123 @@
+### STEAM DEAL FINDER
+#This is a programme to scrape the best special from steam.
+
+import requests
+from bs4 import BeautifulSoup
+import json
+import pandas as pd
+import time
+import os
+
+if not os.path.exists("data"):
+	# Create a new directory because it does not exist
+	os.makedirs("data")
+	print("A new directory 'data' was created!")
+
+url = str(input("URL: "))
+if (url == ""):
+	#https://store.steampowered.com/search/?sort_by=Price_ASC&maxprice=6&deck_compatibility=2&os=linux&supportedlang=english&hidef2p=1&ndl=1
+	url = 'https://store.steampowered.com/search/?sort_by=Price_ASC&maxprice=12&tags=4182%2C122&category1=998&category3=2&category2=28&deck_compatibility=2&os=linux&supportedlang=english&specials=1&hidef2p=1'
+
+print("Recomended sample size: 1 to 20")
+pages_load = int(input("Sample size: "))*51;
+discount_min = int(input("Minimum Discount: "))
+price_max=int(input("Maximum Price: "))
+
+#url = 'https://store.steampowered.com/search/?deck_compatibility=2&os=linux&supportedlang=english&specials=1&hidef2p=1&ndl=1'
+#url = 'https://store.steampowered.com/search/results/?query&start=0&count=50&dynamic_data=&sort_by=_ASC&snr=1_7_7_7000_7&filter=topsellers&tags=19&infinite=1'
+
+def totalresults(url):
+	r = requests.get(url)
+	data = dict(r.json())
+	totalresults = data['total_count']
+	return int(totalresults)
+
+def get_data(url):
+	r = requests.get(url)
+	data = dict(r.json())
+	return data['results_html']
+
+def parse(data):
+	gameslist = []
+	soup = BeautifulSoup(data, 'html.parser')
+	games = soup.find_all('a')
+	for game in games:
+		title = game.find('span', {'class': 'title'}).text
+		price = game.find('div', {'class': 'search_price'}).text.strip().split("$")
+		p_len = len(price);
+		discprice = 0; # final price
+		discount = 0; # string discount with sign
+		odiscount = 0;  # original discount
+		fprice =0; # final price
+		# could be switch
+		if(p_len == 3):
+			discprice = price[2]
+			price=price[1]
+			price=price[:-3]
+			odiscount=100-(float(discprice)/float(price)*100)
+			discount=" "+str(int(odiscount))+"%"
+			fprice=discprice;
+		elif(p_len == 2):
+			#print(p_len);
+			#print(price);
+			price=price[1];
+			fprice=price;
+			odiscount=0;
+			discount=" 0%"
+			#price=100 # make overprice if not at a discount
+		else:
+			odiscount=None;
+			discount=None;
+			fprice=None;
+			price=None # make over price if free or not at a discount
+
+		if ("," in title):
+			odiscount=None;
+			discount=None;
+			fprice=None;
+			price=None # make over price if free or not at a discount
+
+		mygame ={
+			'title': title,
+			'price': price,
+			'discprice': discprice,
+			'discount' : discount,
+			'fprice' : fprice
+		}
+		# if at a discount
+		if(fprice != None and round(float(mygame["fprice"]))<price_max and float(discprice)>=float(discount_min)):
+			gameslist.append(mygame)
+	return gameslist
+
+def output(results):
+	gamesdf = pd.concat([pd.DataFrame(g) for g in results])
+	gamesdf.to_csv('data/prices.csv', index=False)
+	print('Fin. Saved to CSV')
+	print(gamesdf.head())
+	return
+
+results = []
+for x in range(0, pages_load, 50):
+	data = get_data(f'https://store.steampowered.com/search/results/?query&start={x}&count=50&dynamic_data=&sort_by=_ASC&&maxprice=18&deck_compatibility=2&os=linux&supportedlang=english&hidef2p=1&infinite=1')
+	results.append(parse(data))
+	print('Results Scraped: ', x)
+	time.sleep(0.5)
+
+output(results)
+
+# Add new line
+print("")
+# Sort the file by percent discount (inversed from highest to lowest), take the last line (column name) and place it on top
+os.system("sort -k5 -n -t, data/prices.csv > data/by_discount.csv")
+# Add section title
+os.system("echo '# TOP 20 Price:' > data/top_discount")
+# Take the 11 first line of the file (including column name), Add line number and display as column into file top
+os.system("head data/by_discount.csv -n+21 | column -s, -t >> data/top_discount; echo >> data/top_discount")
+
+try:
+	os.system("cat data/top_discount")
+except:
+	print("Error with csvlook command, make sure you have 'csvkit' installed") 
+
+# Command to count lines:
+# nl -w2 -s'. '

@@ -1,0 +1,492 @@
+# Order
+title,price,discprice,discount,fprice
+
+# less then 2$
+Fish Story, 1.17, 0.35, 70%, 0.35
+zzzzz, 2.29, 0.43, 81%, 0.43
+KNIGHTS, 1.09, 0.54, 50%, 0.54
+Bacteria, 1.09, 0.56, 48%, 0.56
+Ball of Wonder, 5.69, 0.56, 90%, 0.56
+CAT Interstellar, 5.69, 0.56, 90%, 0.56
+Day of Defeat, 5.69, 0.56, 90%, 0.56
+Eron, 5.69, 0.56, 90%, 0.56
+Half-Life: Blue Shift, 5.69, 0.56, 90%, 0.56
+Half-Life: Opposing Force, 5.69, 0.56, 90%, 0.56
+monstercakes, 1.09, 0.56, 48%, 0.56
+Play With Me: Escape Room, 3.39, 0.57, 83%, 0.57
+Soccertron, 2.29, 0.57, 75%, 0.57
+Nice Way, 1.19, 0.59, 50%, 0.59
+Half-Life 2: Deathmatch, 6.49, 0.64, 90%, 0.64
+Ricochet, 6.49, 0.64, 90%, 0.64
+Mosaique Neko Waifus 2, 2.29, 0.68, 70%, 0.68
+Mosaique Neko Waifus 3, 2.29, 0.68, 70%, 0.68
+Lionessy Story, 5.69, 0.73, 87%, 0.73
+oO, 1.09, 0.76, 30%, 0.76
+ADventure Lib, 2.59, 0.77, 70%, 0.77
+Blueprint Tycoon, 3.29, 0.82, 75%, 0.82
+Gravity Badgers, 5.49, 0.82, 85%, 0.82
+Guns of Icarus Online, 5.49, 0.82, 85%, 0.82
+Rabbit Hole 3D: Steam Edition, 3.39, 0.84, 75%, 0.84
+Hit Zero: Chronos, 1.19, 0.95, 20%, 0.95
+TYRONE vs COPS, 1.19, 0.95, 20%, 0.95
+Hexcells, 3.29, 0.98, 70%, 0.98
+Hexcells Plus, 3.29, 0.98, 70%, 0.98
+SquareCells, 3.29, 0.98, 70%, 0.98
+Waveform, 1.00,0, 0%, 1.00
+Rose of Winter, 10.29, 1.02, 90%, 1.02
+Half-Life 2: Episode One, 10.49, 1.04, 90%, 1.04
+Blockstorm, 5.49, 1.09, 80%, 1.09
+Crush Your Enemies, 10.99, 1.09, 90%, 1.09
+Guards, 5.49, 1.09, 80%, 1.09
+Paranautical Activity: Deluxe Atonement Edition, 10.99, 1.09, 90%, 1.09
+POSTAL 2, 10.99, 1.09, 90%, 1.09
+Tiny and Big: Grandpa's Leftovers, 10.99, 1.09, 90%, 1.09
+Aperture Tag: The Paint Gun Testing Initiative, 5.69, 1.13, 80%, 1.13
+Bloody Trapland 2: Curiosity, 11.49, 1.14, 90%, 1.14
+Counter-Strike, 11.49, 1.14, 90%, 1.14
+Counter-Strike: Condition Zero, 11.49, 1.14, 90%, 1.14
+Flamebreak, 11.49, 1.14, 90%, 1.14
+Half-Life, 11.49, 1.14, 90%, 1.14
+POSTAL Redux, 9.99, 1.19, 88%, 1.19
+Reigns: Her Majesty, 3.89, 1.28, 67%, 1.28
+3D Math - Ultra, 1.29,0, 0%, 1.29
+Counter-Strike: Source, 12.99, 1.29, 90%, 1.29
+Day of Defeat: Source, 12.99, 1.29, 90%, 1.29
+Hacker Evolution: Untold, 1.29,0, 0%, 1.29
+Half-Life Deathmatch: Source, 12.99, 1.29, 90%, 1.29
+Half-Life: Source, 12.99, 1.29, 90%, 1.29
+Milk inside a bag of milk inside a bag of milk, 1.29,0, 0%, 1.29
+Receiver, 6.49, 1.29, 80%, 1.29
+Mountain, 1.32,0, 0%, 1.32
+AdvertCity, 13.49, 1.34, 90%, 1.34
+Earth 2160, 5.49, 1.37, 75%, 1.37
+Satellite Rush, 5.49, 1.37, 75%, 1.37
+Fire: Ungh’s Quest, 13.99, 1.39, 90%, 1.39
+ICY: Frostbite Edition, 13.99, 1.39, 90%, 1.39
+Zombie Night Terror, 13.99, 1.39, 90%, 1.39
+Cursed Sight, 5.69, 1.42, 75%, 1.42
+Lazy Galaxy, 5.69, 1.42, 75%, 1.42
+The Final Take, 2.19, 1.46, 33%, 1.46
+Moon Hunters, 14.99, 1.49, 90%, 1.49
+HunieCam Studio, 7.79, 1.55, 80%, 1.55
+Knytt Underground, 7.79, 1.55, 80%, 1.55
+Crash Drive 2, 6.49, 1.62, 75%, 1.62
+Home Behind, 6.49, 1.62, 75%, 1.62
+Lovely Planet, 6.49, 1.62, 75%, 1.62
+12 is Better Than 6, 10.99, 1.64, 85%, 1.64
+Boson X, 3.29, 1.64, 50%, 1.64
+Hexcells Infinite, 5.49, 1.64, 70%, 1.64
+Penarium, 10.99, 1.64, 85%, 1.64
+Pixel Heroes: Byte & Magic, 10.99, 1.64, 85%, 1.64
+The POSTAL 2 Collection, 17.48, 1.69, 90%, 1.69
+Spirits of Xanadu, 5.69, 1.70, 70%, 1.70
+Vertiginous Golf, 11.49, 1.72, 85%, 1.72
+Apocryph: an old-school shooter, 17.49, 1.74, 90%, 1.74
+Breach & Clear, 17.49, 1.74, 90%, 1.74
+Circuit Breakers, 7.79, 1.94, 75%, 1.94
+NEON STRUCT, 19.99, 1.99, 90%, 1.99
+
+# less then 3$
+Sector Six, 10.00, 2.00, 80%, 2.00
+Learn Programming: Python - Remake, 3.39, 2.03, 40%, 2.03
+Slain: Back from Hell, 13.99, 2.09, 85%, 2.09
+Bridge Constructor Medieval, 10.99, 2.19, 80%, 2.19
+Bridge Constructor Stunts, 10.99, 2.19, 80%, 2.19
+BUTCHER, 10.99, 2.19, 80%, 2.19
+Crisis in the Kremlin, 5.49, 2.19, 60%, 2.19
+Deponia Doomsday, 21.99, 2.19, 90%, 2.19
+Hatoful Boyfriend, 10.99, 2.19, 80%, 2.19
+Hatoful Boyfriend: Holiday Star, 10.99, 2.19, 80%, 2.19
+Knights of Pen and Paper 2, 8.79, 2.19, 75%, 2.19
+LUFTRAUSERS, 10.99, 2.19, 80%, 2.19
+Painkiller Hell & Damnation, 21.99, 2.19, 90%, 2.19
+Penumbra: Black Plague Gold Edition, 10.99, 2.19, 80%, 2.19
+Penumbra Overture, 10.99, 2.19, 80%, 2.19
+Race The Sun, 10.99, 2.19, 80%, 2.19
+Two Digits, 2.19,0, 0%, 2.19
+Where the Water Tastes Like Wine, 21.99, 2.19, 90%, 2.19
+Bound By Flame, 8.99, 2.24, 75%, 2.24
+Diluvion: Resubmerged, 22.79, 2.27, 90%, 2.27
+Hatred, 6.69, 2.27, 66%, 2.27
+Helheim Hassle, 22.79, 2.27, 90%, 2.27
+Hidden Ghost Town, 22.79, 2.27, 90%, 2.27
+Shing!, 22.79, 2.27, 90%, 2.27
+Path to Mnemosyne, 11.49, 2.29, 80%, 2.29
+Shatter, 2.29,0, 0%, 2.29
+moto RKD dash SP, 3.29, 2.30, 30%, 2.30
+Flipon, 4.65, 2.32, 50%, 2.32
+LUL inc., 5.99, 2.39, 60%, 2.39
+To the Moon, 10.99, 2.52, 77%, 2.52
+Interplanetary: Enhanced Edition, 16.99, 2.54, 85%, 2.54
+Gods Will Be Watching, 12.99, 2.59, 80%, 2.59
+Heavy Bullets, 12.99, 2.59, 80%, 2.59
+SATAZIUS, 6.49, 2.59, 60%, 2.59
+Shadow Warrior Classic Redux, 12.99, 2.59, 80%, 2.59
+BUTCHER - Game + Extended Soundtrack, 16.48, 2.62, 84%, 2.62
+Nihilumbra, 8.79, 2.63, 70%, 2.63
+The POSTAL Package: Curated Classics, 27.47, 2.64, 90%, 2.64
+Ostalgie: The Berlin Wall, 6.69, 2.67, 60%, 2.67
+Circle Empires, 8.99, 2.69, 70%, 2.69
+And Yet It Moves, 10.99, 2.74, 75%, 2.74
+Catlateral Damage, 10.99, 2.74, 75%, 2.74
+Cosmic Express, 10.99, 2.74, 75%, 2.74
+Costume Quest, 10.99, 2.74, 75%, 2.74
+Din's Curse, 10.99, 2.74, 75%, 2.74
+Downward, 10.99, 2.74, 75%, 2.74
+FTL: Faster Than Light, 10.99, 2.74, 75%, 2.74
+Knights of Pen and Paper +1 Edition, 10.99, 2.74, 75%, 2.74
+PAC-MAN 256, 5.49, 2.74, 50%, 2.74
+Pajama Sam's Lost & Found, 5.49, 2.74, 50%, 2.74
+Psychonauts, 10.99, 2.74, 75%, 2.74
+Punch Club, 10.99, 2.74, 75%, 2.74
+Putt-Putt® and Pep's Dog on a Stick, 5.49, 2.74, 50%, 2.74
+Stacking, 10.99, 2.74, 75%, 2.74
+Sunrider Academy, 10.99, 2.74, 75%, 2.74
+Super Chibi Knight, 5.49, 2.74, 50%, 2.74
+Surgeon Simulator, 10.99, 2.74, 75%, 2.74
+The Last Door - Collector's Edition, 10.99, 2.74, 75%, 2.74
+VVVVVV, 5.49, 2.74, 50%, 2.74
+You Must Build A Boat, 5.49, 2.74, 50%, 2.74
+Halfway, 13.99, 2.79, 80%, 2.79
+Upload Simulator, 4.65, 2.79, 40%, 2.79
+ComPressure, 5.69, 2.84, 50%, 2.84
+Dungeons of Dredmor, 5.69, 2.84, 50%, 2.84
+Rejoinder, 5.69, 2.84, 50%, 2.84
+Weird Worlds: Return to Infinite Space, 5.69, 2.84, 50%, 2.84
+AI War: Fleet Command, 11.49, 2.87, 75%, 2.87
+Don't Starve, 11.49, 2.87, 75%, 2.87
+Lovely Planet 2: April Skies, 11.49, 2.87, 75%, 2.87
+Sakura MMO 3, 11.49, 2.87, 75%, 2.87
+The Hex, 11.49, 2.87, 75%, 2.87
+Hiveswap Friendsim, 14.49, 2.89, 80%, 2.89
+
+# less then 4$
+Two Tribes Premium Pack, 33.98, 3.00, 91%, 3.00
+Where The Water Tastes Like Wine - Wayfarer Edition, 33.48, 3.00, 91%, 3.00
+Helheim Hassle + Soundtrack, 28.48, 3.06, 89%, 3.06
+Big Thinkers 1st Grade, 7.79, 3.11, 60%, 3.11
+Draw & Guess, 3.99, 3.19, 20%, 3.19
+To The Moon Game and Soundtrack Bundle, 13.99, 3.21, 77%, 3.21
+Hero of the Kingdom, 6.49, 3.24, 50%, 3.24
+Higurashi When They Cry Hou - Ch.4 Himatsubushi, 6.49, 3.24, 50%, 3.24
+Avadon: The Black Fortress, 10.99, 3.29, 70%, 3.29
+Hard West, 21.99, 3.29, 85%, 3.29
+Hyperdrive Massacre, 10.99, 3.29, 70%, 3.29
+Hyperspace Pinball, 3.29,0, 0%, 3.29
+Last Dream, 10.99, 3.29, 70%, 3.29
+Megamagic: Wizards of the Neon Age, 10.99, 3.29, 70%, 3.29
+Sakura Spirit, 10.99, 3.29, 70%, 3.29
+Toast Time, 5.49, 3.29, 40%, 3.29
+Worms Reloaded, 21.99, 3.29, 85%, 3.29
+Roma Invicta, 6.69, 3.34, 50%, 3.34
+On A Roll 3D, 4.49, 3.36, 25%, 3.36
+Cargo Commander, 3.39,0, 0%, 3.39
+Crypt of the NecroDancer, 16.99, 3.39, 80%, 3.39
+Curious Expedition, 16.99, 3.39, 80%, 3.39
+Dave Dave Dave, 3.39,0, 0%, 3.39
+Hue, 16.99, 3.39, 80%, 3.39
+Increlution, 3.39,0, 0%, 3.39
+Monaco: What's Yours Is Mine, 16.99, 3.39, 80%, 3.39
+OlliOlli2: Welcome to Olliwood, 16.99, 3.39, 80%, 3.39
+Sophie's Safecracking Simulator, 3.39,0, 0%, 3.39
+TowerFall Ascension, 16.99, 3.39, 80%, 3.39
+Deep Sky Derelicts, 22.79, 3.41, 85%, 3.41
+Outlast, 22.79, 3.41, 85%, 3.41
+Vampire: The Masquerade - Coteries of New York, 22.79, 3.41, 85%, 3.41
+Orwell: Ignorance is Strength, 11.49, 3.44, 70%, 3.44
+Party Hard, 11.49, 3.44, 70%, 3.44
+Bastion, 17.49, 3.49, 80%, 3.49
+Bite the Bullet, 17.49, 3.49, 80%, 3.49
+Creeper World 3: Arc Eternal, 17.49, 3.49, 80%, 3.49
+Particle Fleet: Emergence, 17.49, 3.49, 80%, 3.49
+Teleglitch: Die More Edition, 13.99, 3.49, 75%, 3.49
+Interrogation: You will be deceived, 14.49, 3.62, 75%, 3.62
+Sparkle 3 Genesis, 5.49, 3.67, 33%, 3.67
+The Dolls: Reborn, 5.49, 3.67, 33%, 3.67
+Turmoil, 10.99, 3.73, 66%, 3.73
+Interrogation: You will be deceived - Digital Collector's Edition, 17.88, 3.79, 78%, 3.79
+Kairo, 6.49, 3.82, 41%, 3.82
+Raptor Boyfriend: A High School Romance, 15.49, 3.87, 75%, 3.87
+Broforce, 19.49, 3.89, 80%, 3.89
+Crossing Souls, 19.49, 3.89, 80%, 3.89
+Do Not Feed the Monkeys, 12.99, 3.89, 70%, 3.89
+Fatty Bear's Birthday Surprise, 7.79, 3.89, 50%, 3.89
+Serious Sam 3: BFE, 38.99, 3.89, 90%, 3.89
+Snakebird, 7.79, 3.89, 50%, 3.89
+Tales of Maj'Eyal, 7.79, 3.89, 50%, 3.89
+War Brokers, 6.49, 3.89, 40%, 3.89
+The City Must Grow, 5.69, 3.98, 30%, 3.98
+Collapse: A Political Simulator, 7.99, 3.99, 50%, 3.99
+
+# less then 5$
+STAR WARS™ Knights of the Old Republic™ II - The Sith Lords™, 11.49, 4.02, 65%, 4.02
+MXGP3 - The Official Motocross Videogame, 26.99, 4.04, 85%, 4.04
+In The Shadows, 20.79, 4.15, 80%, 4.15
+Darkest Dungeon®, 27.99, 4.19, 85%, 4.19
+Audiosurf 2, 16.99, 4.24, 75%, 4.24
+Balrum, 16.99, 4.24, 75%, 4.24
+Clustertruck, 16.99, 4.24, 75%, 4.24
+Convoy, 16.99, 4.24, 75%, 4.24
+Crea, 16.99, 4.24, 75%, 4.24
+FORCED: Slightly Better Edition, 16.99, 4.24, 75%, 4.24
+Full Throttle Remastered, 16.99, 4.24, 75%, 4.24
+Ice Lakes, 16.99, 4.24, 75%, 4.24
+No Time To Explain Remastered, 16.99, 4.24, 75%, 4.24
+SpeedRunners, 16.99, 4.24, 75%, 4.24
+Trine Enchanted Edition, 16.99, 4.24, 75%, 4.24
+VoidExpanse, 16.99, 4.24, 75%, 4.24
+Warhammer Quest, 16.99, 4.24, 75%, 4.24
+Shoppe Keep, 5.69, 4.26, 25%, 4.26
+Death and Taxes, 14.49, 4.34, 70%, 4.34
+Hue Game and Soundtrack Bundle, 24.78, 4.34, 82%, 4.34
+A Valley Without Wind, 17.49, 4.37, 75%, 4.37
+A Valley Without Wind 2, 17.49, 4.37, 75%, 4.37
+Jotun: Valhalla Edition, 17.49, 4.37, 75%, 4.37
+Perilous Warp, 17.49, 4.37, 75%, 4.37
+Amnesia: The Dark Descent, 21.99, 4.39, 80%, 4.39
+Conarium, 21.99, 4.39, 80%, 4.39
+Dead Island Definitive Edition, 21.99, 4.39, 80%, 4.39
+Disgaea 2 PC, 21.99, 4.39, 80%, 4.39
+Higurashi When They Cry Hou - Ch.3 Tatarigoroshi, 8.79, 4.39, 50%, 4.39
+Iron Sky: Invasion, 21.99, 4.39, 80%, 4.39
+Long Live The Queen, 10.99, 4.39, 60%, 4.39
+Lucius II, 21.99, 4.39, 80%, 4.39
+Momodora: Reverie Under The Moonlight, 10.99, 4.39, 60%, 4.39
+Soul Axiom, 21.99, 4.39, 80%, 4.39
+Super Win the Game, 8.79, 4.39, 50%, 4.39
+Syder Arcade, 10.99, 4.39, 60%, 4.39
+This War of Mine, 21.99, 4.39, 80%, 4.39
+Deep Sky Derelicts: Definitive Edition, 40.77, 4.45, 89%, 4.45
+Despotism 3k, 8.99, 4.49, 50%, 4.49
+Snakebird Primer, 8.99, 4.49, 50%, 4.49
+This Is the Police, 17.99, 4.49, 75%, 4.49
+Game & Complete Soundtrack, 21.18, 4.50, 78%, 4.50
+Game & Complete Soundtrack, 21.18, 4.50, 78%, 4.50
+Beyond Mankind: The Awakening, 22.79, 4.55, 80%, 4.55
+Depraved, 22.79, 4.55, 80%, 4.55
+Help Will Come Tomorrow, 22.79, 4.55, 80%, 4.55
+Kind Words (lo fi chill beats to write to), 5.69, 4.55, 20%, 4.55
+Mosaic, 22.79, 4.55, 80%, 4.55
+Radio Commander, 22.79, 4.55, 80%, 4.55
+Rhythm Brawl, 5.69, 4.55, 20%, 4.55
+Stygian: Reign of the Old Ones, 22.79, 4.55, 80%, 4.55
+Pixross, 4.65,0, 0%, 4.65
+Freddi Fish 2: The Case of the Haunted Schoolhouse, 7.79, 4.67, 40%, 4.67
+Putt-Putt® Enters the Race, 7.79, 4.67, 40%, 4.67
+Putt-Putt® Joins the Circus, 7.79, 4.67, 40%, 4.67
+Putt-Putt® Joins the Parade, 7.79, 4.67, 40%, 4.67
+Putt-Putt® Saves The Zoo, 7.79, 4.67, 40%, 4.67
+Putt-Putt® Travels Through Time, 7.79, 4.67, 40%, 4.67
+"Spy Fox 2 ""Some Assembly Required""", 7.79, 4.67, 40%, 4.67
+Vampire: The Masquerade - Coteries of New York Deluxe Edition, 34.13, 4.70, 86%, 4.70
+shapez, 11.99, 4.79, 60%, 4.79
+Harvester, 6.49, 4.86, 25%, 4.86
+Hyperdrive Massacre - Deluxe Edition, 16.68, 4.88, 70%, 4.88
+The Hex - Game and Soundtrack, 18.63, 4.91, 73%, 4.91
+The Hex - Game and Soundtrack, 18.63, 4.91, 73%, 4.91
+Bastion + Original Soundtrack, 28.98, 4.92, 83%, 4.92
+Disgaea 2 PC Digital Dood Edition, 27.48, 4.93, 82%, 4.93
+EVERSPACE™, 32.99, 4.94, 85%, 4.94
+Kingdom Rush  - Tower Defense, 10.99, 4.94, 55%, 4.94
+Devil Daggers, 9.99, 4.99, 50%, 4.99
+
+# less then 6$
+ISLANDERS, 6.69, 5.01, 25%, 5.01
+Underworld Ascendant, 33.99, 5.09, 85%, 5.09
+VirtuaVerse, 16.99, 5.09, 70%, 5.09
+Radio Commander - Complete Edition, 28.48, 5.11, 82%, 5.11
+Crown of Pain, 5.69, 5.12, 10%, 5.12
+This War of Mine: Complete Edition, 35.47, 5.14, 85%, 5.14
+Orwell: Ignorance Is Strength Deluxe Edition, 22.98, 5.16, 77%, 5.16
+Serious Sam 3: BFE Gold Edition, 64.97, 5.17, 92%, 5.17
+Deep Sky Derelicts - Complete Your Set, 40.77, 5.18, 87%, 5.18
+NOT A HERO, 25.99, 5.19, 80%, 5.19
+Deus Ex: Mankind Divided, 34.99, 5.24, 85%, 5.24
+Poly Bridge 2, 17.49, 5.24, 70%, 5.24
+The Coma 2: Vicious Sisters, 17.49, 5.24, 70%, 5.24
+A Dance of Fire and Ice, 6.69, 5.35, 20%, 5.35
+Istanbul: Digital Edition, 13.49, 5.39, 60%, 5.39
+Project Starship X, 17.99, 5.39, 70%, 5.39
+ACE Academy, 21.99, 5.49, 75%, 5.49
+Axes and Acres, 10.99, 5.49, 50%, 5.49
+Company of Heroes 2, 21.99, 5.49, 75%, 5.49
+Deadfall Adventures, 21.99, 5.49, 75%, 5.49
+Dragon's Lair, 10.99, 5.49, 50%, 5.49
+Expeditions: Conquistador, 21.99, 5.49, 75%, 5.49
+Gateways, 5.49,0, 0%, 5.49
+Jagged Alliance Flashback, 21.99, 5.49, 75%, 5.49
+Legend of Dungeon, 10.99, 5.49, 50%, 5.49
+Saints Row: The Third, 10.99, 5.49, 50%, 5.49
+Slime Rancher, 21.99, 5.49, 75%, 5.49
+Soulslayer～灭魂·误佳期～, 10.99, 5.49, 50%, 5.49
+Space Pirates and Zombies, 10.99, 5.49, 50%, 5.49
+Staxel, 21.99, 5.49, 75%, 5.49
+Stories of Bethem: Full Moon, 5.49,0, 0%, 5.49
+The Book of Unwritten Tales, 21.99, 5.49, 75%, 5.49
+The Escapists 2, 21.99, 5.49, 75%, 5.49
+Torchlight II, 21.99, 5.49, 75%, 5.49
+Trine 2: Complete Story, 21.99, 5.49, 75%, 5.49
+Warlock 2: The Exiled, 21.99, 5.49, 75%, 5.49
+Woah Dave!, 5.49,0, 0%, 5.49
+Borderlands 2, 21.99, 5.50, 74%, 5.50
+Iron Sky Invasion: Ultimate Edition, 35.06, 5.58, 84%, 5.58
+Castle Story, 27.99, 5.59, 80%, 5.59
+SEUM: Speedrunners from Hell, 16.99, 5.60, 67%, 5.60
+Bloody Rally Show, 22.79, 5.69, 75%, 5.69
+duamo, 5.69,0, 0%, 5.69
+Holobunnies: Pause Cafe, 5.69,0, 0%, 5.69
+Pyre, 22.79, 5.69, 75%, 5.69
+Sophie's Dice, 5.69,0, 0%, 5.69
+Streets of Rogue, 22.79, 5.69, 75%, 5.69
+Sundered®: Eldritch Edition, 22.79, 5.69, 75%, 5.69
+We. The Revolution, 22.79, 5.69, 75%, 5.69
+Hatoful Boyfriend Complete Pack, 35.77, 5.70, 84%, 5.70
+SpeedRunners Deluxe Pack, 26.96, 5.71, 78%, 5.71
+Skirmish Line, 11.49, 5.74, 50%, 5.74
+SpaceChem, 11.49, 5.74, 50%, 5.74
+Tales From Off-Peak City Vol. 1, 11.49, 5.74, 50%, 5.74
+Golf With Your Friends, 17.49, 5.77, 67%, 5.77
+Forgotten Fields, 14.49, 5.79, 60%, 5.79
+Objects in Space, 28.99, 5.79, 80%, 5.79
+Beholder 2 FT Orwel 2 bundle, 28.48, 5.80, 79%, 5.80
+Higurashi When They Cry Hou - Ch.8 Matsuribayashi, 8.99, 5.84, 35%, 5.84
+Siralim 2, 19.49, 5.84, 70%, 5.84
+The Talos Principle, 38.99, 5.84, 85%, 5.84
+Frederic: Evil Strikes Back, 8.79, 5.88, 33%, 5.88
+Mosaic 1% Edition, 31.77, 5.90, 81%, 5.90
+Epistory - Typing Chronicles, 16.99, 5.94, 65%, 5.94
+ENCODYA, 29.99, 5.99, 80%, 5.99
+Motorsport Manager, 29.99, 5.99, 80%, 5.99
+No one lives under the lighthouse Director's cut, 7.99, 5.99, 25%, 5.99
+Trine 3: The Artifacts of Power, 23.99, 5.99, 75%, 5.99
+
+# less then 7$
+Lazy Galaxy 2, 8.99, 6.02, 33%, 6.02
+Party Hard Collector's Edition, 21.47, 6.10, 71%, 6.10
+All You Can Drill, 16.68, 6.16, 63%, 6.16
+Jester / King, 15.49, 6.19, 60%, 6.19
+American Truck Simulator, 24.99, 6.24, 75%, 6.24
+Faeria, 24.99, 6.24, 75%, 6.24
+Secret Agent HD, 8.99, 6.29, 30%, 6.29
+VEREDA - Mystery Escape Room Adventure, 8.99, 6.29, 30%, 6.29
+Jotun Game + Soundtrack, 28.48, 6.40, 77%, 6.40
+Loop Hero, 19.49, 6.43, 67%, 6.43
+Rencounter, 6.49,0, 0%, 6.49
+Tales From Off-Peak City Vol. 1 + Soundtrack, 19.48, 6.52, 66%, 6.52
+Road Redemption, 21.99, 6.59, 70%, 6.59
+Shotgun Farmers: Grow Your Guns, 10.99, 6.59, 40%, 6.59
+The Letter - Horror Visual Novel, 21.99, 6.59, 70%, 6.59
+War for the Overworld, 32.99, 6.59, 80%, 6.59
+Wayward, 8.79, 6.59, 25%, 6.59
+Mango, 11.49, 6.66, 42%, 6.66
+Vampire: The Masquerade - The New York Bundle, 37.28, 6.68, 82%, 6.68
+Castle Story + OST Bundle, 39.48, 6.70, 83%, 6.70
+VirtuaVerse + Soundtrack, 24.98, 6.73, 73%, 6.73
+Iratus: Lord of the Dead, 33.99, 6.79, 80%, 6.79
+Rise of Industry, 33.99, 6.79, 80%, 6.79
+Starbound, 16.99, 6.79, 60%, 6.79
+Transport Fever, 33.99, 6.79, 80%, 6.79
+Baldur's Gate: Enhanced Edition, 22.79, 6.83, 70%, 6.83
+Baldur's Gate II: Enhanced Edition, 22.79, 6.83, 70%, 6.83
+Dungeons 2, 22.79, 6.83, 70%, 6.83
+For The King, 22.79, 6.83, 70%, 6.83
+Gibbous -  A Cthulhu Adventure, 22.79, 6.83, 70%, 6.83
+Neverwinter Nights: Enhanced Edition, 22.79, 6.83, 70%, 6.83
+Contraption Maker, 11.49, 6.89, 40%, 6.89
+Ara Fell: Enhanced Edition, 17.49, 6.99, 60%, 6.99
+Besiege, 17.49, 6.99, 60%, 6.99
+Lucah: Born of a Dream, 17.49, 6.99, 60%, 6.99
+Reassembly, 17.49, 6.99, 60%, 6.99
+Rise of the Tomb Raider™, 34.99, 6.99, 80%, 6.99
+Sparkles & Gems, 17.49, 6.99, 60%, 6.99
+Train Valley 2, 17.49, 6.99, 60%, 6.99
+Turnip Boy Commits Tax Evasion, 17.49, 6.99, 60%, 6.99
+
+# less then 8$
+shapez Full Edition, 17.68, 7.06, 60%, 7.06
+SUNLESS SEA, 20.99, 7.13, 66%, 7.13
+Startup Company, 14.49, 7.24, 50%, 7.24
+Pyre: Soundtrack Edition, 34.28, 7.28, 78%, 7.28
+A Boy and His Blob, 10.99, 7.36, 33%, 7.36
+Ultimate Racing 2D 2, 10.99, 7.36, 33%, 7.36
+Easy Red 2, 8.99, 7.37, 18%, 7.37
+Deus Ex: Mankind Divided - Digital Deluxe Edition, 49.98, 7.41, 85%, 7.41
+Impostor Factory, 11.49, 7.46, 35%, 7.46
+Tandem: A Tale of Shadows, 14.99, 7.49, 50%, 7.49
+Total War: MEDIEVAL II – Definitive Edition, 29.99, 7.49, 75%, 7.49
+Pathway, 18.99, 7.59, 60%, 7.59
+Sundered Game + Soundtrack, 33.78, 7.59, 77%, 7.59
+Dungreed, 11.49, 7.69, 33%, 7.69
+OneShot, 10.99, 7.69, 30%, 7.69
+The Zachtronics Solitaire Collection, 11.49, 7.69, 33%, 7.69
+Deep Space Battle Simulator, 11.99, 7.79, 35%, 7.79
+Pictopix, 7.79,0, 0%, 7.79
+ROCKETSROCKETSROCKETS, 7.79,0, 0%, 7.79
+Kingdom Rush Origins - Tower Defense, 17.49, 7.87, 55%, 7.87
+Little Misfortune, 22.79, 7.97, 65%, 7.97
+Mists of Noyah, 22.79, 7.97, 65%, 7.97
+Holobunnies: Pause Café DX, 7.98,0, 0%, 7.98
+Desktop Dungeons, 15.99, 7.99, 50%, 7.99
+Feartress, 7.99,0, 0%, 7.99
+Oscura: Lost Light, 7.99,0, 0%, 7.99
+Sex Robot Road Trip: Highway to Harrisburg, 7.99,0, 0%, 7.99
+Sid Meier’s Civilization® VI, 79.99, 7.99, 90%, 7.99
+XCOM® 2, 79.99, 7.99, 90%, 7.99
+
+# less then 9$
+Synergia, 13.49, 8.09, 40%, 8.09
+Ostalgie: The full pack of DLCs!, 20.41, 8.11, 60%, 8.11
+Battle Chasers: Nightwar, 32.99, 8.24, 75%, 8.24
+BioShock Infinite, 32.99, 8.24, 75%, 8.24
+Pillars of Eternity, 32.99, 8.24, 75%, 8.24
+The Escapists 2 - Game of the Year Edition, 39.95, 8.25, 79%, 8.25
+Gibbous - A Cthulhu Adventure Deluxe Edition, 30.83, 8.31, 73%, 8.31
+War for the Overworld Underlord Edition, 43.98, 8.34, 81%, 8.34
+7 Days to Die, 27.99, 8.39, 70%, 8.39
+ATOM RPG Trudograd, 11.99, 8.39, 30%, 8.39
+Drunken Robot Pornography, 16.99, 8.49, 50%, 8.49
+Geometry Wars™ 3: Dimensions Evolved, 16.99, 8.49, 50%, 8.49
+Heliborne Collection, 33.99, 8.49, 75%, 8.49
+Prison Architect, 33.99, 8.49, 75%, 8.49
+Tyranny, 33.99, 8.49, 75%, 8.49
+No one lives under the lighthouse Supporter Pack, 12.64, 8.52, 32%, 8.52
+This Is the Police Bundle, 37.98, 8.53, 77%, 8.53
+Perfect Heist 2, 11.49, 8.61, 25%, 8.61
+As Far As The Eye, 28.99, 8.69, 70%, 8.69
+The Hand of Glory, 21.79, 8.71, 60%, 8.71
+Touhou Monster TD ~ 幻想乡妖怪塔防, 21.79, 8.71, 60%, 8.71
+Day of Infamy, 17.49, 8.74, 50%, 8.74
+Eliza, 17.49, 8.74, 50%, 8.74
+Littlewood, 17.49, 8.74, 50%, 8.74
+Making it Home, 17.49, 8.74, 50%, 8.74
+Rise to Ruins, 17.49, 8.74, 50%, 8.74
+SHENZHEN I/O, 17.49, 8.74, 50%, 8.74
+ThreatGEN: Red vs. Blue, 17.49, 8.74, 50%, 8.74
+Warstone TD, 17.49, 8.74, 50%, 8.74
+Battle Chess, 10.99, 8.79, 20%, 8.79
+Danganronpa: Trigger Happy Havoc, 21.99, 8.79, 60%, 8.79
+Sakura Dungeon, 21.99, 8.79, 60%, 8.79
+Skirmish Line Deluxe Edition, 19.56, 8.79, 55%, 8.79
+Borderlands 2 Game of the Year, 43.99, 8.80, 79%, 8.80
+Reassembly Deluxe Edition, 23.18, 8.80, 62%, 8.80
+EVERSPACE™ - Ultimate Edition, 55.97, 8.86, 84%, 8.86
+Cathedral, 17.99, 8.99, 50%, 8.99
+𝄢Gaia's Melody II: ECHOED MEMORIES, 8.99,0, 0%, 8.99
+Pants Quest, 8.99,0, 0%, 8.99
+This Is the President, 14.99, 8.99, 40%, 8.99
+
+# less then 10$
+Bean and Nothingness, 13.49, 9.03, 33%, 9.03
+Templar Battleforce, 12.99, 9.09, 30%, 9.09
+Commandos 2 - HD Remaster, 22.79, 9.11, 60%, 9.11
+Graveyard Keeper, 22.79, 9.11, 60%, 9.11
+Pathfinder: Kingmaker - Enhanced Plus Edition, 22.79, 9.11, 60%, 9.11
+Sudden Strike 4, 22.79, 9.11, 60%, 9.11
+The Pedestrian, 22.79, 9.11, 60%, 9.11
+Sudden Strike 4 - Starter Bundle, 29.77, 9.15, 69%, 9.15
+Descent, 11.49, 9.19, 20%, 9.19
+Tandem: A Tale of Shadows + OST, 20.68, 9.30, 55%, 9.30
+Robotality Bundle, 32.98, 9.34, 71%, 9.34
+Knights of Pen and Paper 1 & 2 Collection, 30.76, 9.38, 69%, 9.38
+Reigns Trilogy, 27.82, 9.41, 66%, 9.41
+Steel Assault, 18.99, 9.49, 50%, 9.49

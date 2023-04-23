@@ -1,0 +1,47 @@
+/* Set the background to black */
+body {
+  background-color: black;
+}
+
+/* Set the text color to white */
+body {
+  color: white;
+}
+
+/* Add a white border around images */
+img {
+  border: 1px solid white;
+}
+
+/* Set the color of links to white */
+a {
+  color: white;
+}
+
+/* Set the background color of the header to black and text color to white */
+header {
+  background-color: black;
+  color: white;
+}
+
+/* Add a white border to all the divs */
+div {
+  border: 1px solid white;
+}
+
+/* Set the color of headings to white */
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+/* Set the background color of buttons to black and text color to white */
+button {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+/* Add a white border to all the input fields */
+input {
+  border: 1px solid white;
+}
