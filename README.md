@@ -5,7 +5,7 @@ Source code for amosnimos.com a freedom-focused website analyzing politics, psyc
 <html>
 <body>
 	<header>
-		<img src="img/banner.png" alt="Banner image">
+		<img src="banner.png" alt="Banner image">
 		<nav>
 			<ul>
 				<li><a href="index.html">Home</a></li>
