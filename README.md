@@ -9,7 +9,7 @@ Source code for amosnimos.com a freedom-focused website analyzing politics, psyc
 		<nav>
 			<ul>
 				<li><a href="index.html">Home</a></li>
-				<li><a href="blog/freedom">Freedom</a></li>
+				<li><a href="blog.html">Freedom</a></li>
 				<li><a href="about.html">About</a></li>
 			</ul>
 		</nav>
@@ -22,6 +22,10 @@ Source code for amosnimos.com a freedom-focused website analyzing politics, psyc
       <p>All posts are located in the <code>/post</code> directory, and the CSS files are located in the <code>/css</code> directory. The <code>/img</code> directory contains image files for the website. The <code>about.html</code> file contains information about the author and the website, and the <code>index.html</code> file contains the landing page for the website.</p>
       <p>Please note that the <code>/draft</code> directory contains incomplete drafts and can be ignored.</p>
       <p>Finally, I would like to emphasize that the contents of this website are licensed under the MIT License.</p>
+<p>
+Due to GitHub's limit of a hundred files per repository, many of the files for this website had to be imported locally and added to the repository manually. As a result, the directory structure may not be exactly the same as it was on the original website.
+read the DirectoryStructure.txt file for the correct directory layout.
+</p>
 
 </body>
 </html>
