@@ -1,4 +1,10 @@
+#!/bin/bash
+
+# Add all changes
 git add .
-git add *
+
+# Commit with a message including the current date
 git commit -m "Update $(date +%F)" 
+
+# Push to the main branch
 git push origin main
