@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cat ../token.txt | copy
+
 # Add all changes
 git add .
 
