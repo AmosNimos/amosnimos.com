@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat ../token.txt | copy
+cat ../token.txt | xclip -selection clipboard
 
 # Add all changes
 git add .
