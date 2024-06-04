@@ -59,6 +59,11 @@
 	src: url("font/Amos.otf");
 }
 
+@font-face {
+	font-family: c64_font;
+	src: url("font/C64_Pro_Mono_Regular.otf");
+}
+
 /* CLASS */
 
 .menu-bar { 
@@ -79,7 +84,7 @@
 	color: #000000;
 	border: solid 4px #000000;
 	font-size: 27px;
-	font-family: tty_006;
+	font-family: c64_font;
 	text-decoration: none;
 	display: block;
 	margin: 0.5em 2em;
@@ -100,7 +105,7 @@
 	color: #000000;
 	border: solid 4px #000000;
 	font-size: 27px;
-	font-family: tty_006;
+	font-family: c64_font;
 	text-decoration: none;
 	display: inline;
 	cursor:pointer;	
@@ -126,7 +131,7 @@
 
 .article {
 	background: #FFFFFF;
-  	background-image: url("background/paper.jpg");
+  	background-image: url("background/noise.jpg");
   	background-repeat: repeat;
 	margin: auto;
 	border: solid 1em #000000;
@@ -211,7 +216,7 @@ p {
 p:hover {
 	/*border: solid 4px #000000;*/
 	font-size: x-large;
-	font-family: tty_006;
+	font-family: c64_font;
 	color: #000000;
 	/*background-color: #000000;*/
 	font-size: 30px;
@@ -273,12 +278,12 @@ img  {
 
 body {
 	/*font-weight: bold;*/
-	font-family: tty_006;
-	text-transform: lowercase;
-	font-variant: small-caps;
+	font-family: c64_font;
+	//text-transform: lowercase;
+	//font-variant: small-caps;
 	/*background-color: #FFFFFF;*/
 	background-color:#555555;
-	background-image: url("wallpaper/blue_print.jpg");
+	background-image: url("wallpaper/noise.jpg");
 	background-repeat: repeat;
 	color: #000000;
 	padding:3em 0em;
