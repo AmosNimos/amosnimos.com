@@ -1,7 +1,7 @@
 /* GLOBAL VARIABLE */
 :root {
-	--main-bck: #FFFFFF;
-	--body-bck: #000000;
+	--main-bck: #000000;
+	--body-bck: #FFFFFF;
 }
 
 /* EXCEPT */
@@ -131,7 +131,7 @@
 
 .article {
 	background: #FFFFFF;
-  	background-image: url("background/noise.jpg");
+  	background-image: url("background/white_noise.jpg");
   	background-repeat: repeat;
 	margin: auto;
 	border: solid 1em #000000;
@@ -143,6 +143,7 @@
 .post {
 	margin: auto;
 	background-color: #FFFFFF;
+	background-image: url("background/noise.jpg");;
 	border: solid 4px #000000;
 	padding: 2em;
 	font-family: tty_005;
@@ -150,9 +151,25 @@
 }
 
 .post p {
-	color: #000000;
+	color: #000000 !important;
+	background-color: #FFFF00;
 	font-size: 20px;
 }
+
+.article p:hover {
+	font-family: c64_font;
+	color: #FFFFFF !important;
+	background-color: #000000;
+	font-size: 20px;
+}
+
+.article p {
+	font-family: tty_002;
+	color: #000000 !important;
+	background-color: #FFFFFF;
+	font-size: 20px;
+}
+
 
 /*
 .post p:hover {
@@ -291,7 +308,7 @@ body {
 
 main {
 	background-color: var(--main-bck);
-	background-image: url("background/paper.jpg");
+	background-image: url("background/noise.jpg");
 	background-repeat: repeat;
 	max-width: 70%;
 	margin: auto;
