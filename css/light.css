@@ -131,7 +131,7 @@
 
 .article {
 	background: #FFFFFF;
-  	background-image: url("background/white_noise.jpg");
+  	background-image: url("background/white_noise2.jpg");
   	background-repeat: repeat;
 	margin: auto;
 	border: solid 1em #000000;
@@ -254,8 +254,10 @@ p:hover {
 */
 
 li {
+	font-family: tty_001;
 	padding:0.5em;
 	color: #FFFFFF;
+    background-color:#000000;
 }
 
 /* 
@@ -271,8 +273,10 @@ a:hover {
 }
 
 a {
+	background-color:#FFFFFF;
+	font-family: tty_001;
 	/*border: solid 4px #000000;*/
-	font-size: 30px;
+	font-size: 20px;
 	color: #1122BB
 }
 
@@ -307,11 +311,11 @@ body {
 }
 
 main {
-	background-color: var(--main-bck);
-	background-image: url("background/noise.jpg");
+	//background-color: var(--main-bck);
+	//background-image: url("background/noise.jpg");
 	background-repeat: repeat;
 	max-width: 70%;
 	margin: auto;
-	border: solid 4px;
+	//border: solid 4px;
 	padding: 2em;
 }
