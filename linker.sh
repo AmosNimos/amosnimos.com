@@ -1,4 +1,16 @@
 #!/bin/bash
+################################################################################
+# Name:        linker.sh
+# Date:        2024-06-06
+# Author:      Amosnimos
+# Description: Takes a URL and creates an html link where the text is the same as the URL
+################################################################################
+
+# ▌  ▜▘▙ ▌▌ ▌▛▀▘▛▀▖  ▞▀▖▌ ▌
+# ▌  ▐ ▌▌▌▙▞ ▙▄ ▙▄▘  ▚▄ ▙▄▌
+# ▌  ▐ ▌▝▌▌▝▖▌  ▌▚ ▗▖▖ ▌▌ ▌
+# ▀▀▘▀▘▘ ▘▘ ▘▀▀▘▘ ▘▝▘▝▀ ▘ ▘
+
 
 # Check if a URL is provided as an argument
 if [ $# -eq 0 ]; then
