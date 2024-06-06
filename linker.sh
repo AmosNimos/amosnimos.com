@@ -23,4 +23,4 @@ fi
 url=$(echo "$1" | tr -d '\t\r\n ')
 
 # Create the link
-echo "<a href=\"$url\">$url</a>"
+echo "<li><p><a href=\"$url\">$url</a></p></li>"
