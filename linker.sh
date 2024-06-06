@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check if a URL is provided as an argument
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <URL>"
+  exit 1
+fi
+
+# Sanitize the URL (optional)
+# This line removes leading/trailing whitespace and potential special characters
+url=$(echo "$1" | tr -d '\t\r\n ')
+
+# Create the link
+echo "<a href=\"$url\">$url</a>"

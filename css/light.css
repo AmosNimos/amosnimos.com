@@ -143,7 +143,7 @@
 .post {
 	margin: auto;
 	background-color: #FFFFFF;
-	background-image: url("background/noise.jpg");;
+	//background-image: url("background/noise.jpg");;
 	border: solid 4px #000000;
 	padding: 2em;
 	font-family: tty_005;
@@ -156,16 +156,17 @@
 	font-size: 20px;
 }
 
+/*
 .article p:hover {
-	font-family: c64_font;
-	color: #FFFFFF !important;
+	//font-family: c64_font;
+	color: #FFFFFF;
 	background-color: #000000;
-	font-size: 20px;
+	//font-size: 20px;
 }
-
+*/
 .article p {
 	font-family: tty_002;
-	color: #000000 !important;
+	color: #000000;
 	background-color: #FFFFFF;
 	font-size: 20px;
 }
@@ -314,7 +315,7 @@ main {
 	//background-color: var(--main-bck);
 	//background-image: url("background/noise.jpg");
 	background-repeat: repeat;
-	max-width: 70%;
+	max-width: 90%;
 	margin: auto;
 	//border: solid 4px;
 	padding: 2em;
