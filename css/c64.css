@@ -49,6 +49,14 @@ body {
     align-items: center;
 }
 
+a {
+    text-decoration: none;
+    color: #dad2b3;
+    font-family: 'C64 Pro Mono', monospace;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
 #dialogueBox {
     border: 2px solid #D5CCB5;
     padding: 10px;
