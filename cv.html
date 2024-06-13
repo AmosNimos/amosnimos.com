@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Class Linux Full-Stack Bash Expert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .service {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .service h3 {
+            margin-top: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        form div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AMOSNIMOS</h1>
+    <h2>Top-Class Linux Full-Stack Bash Expert</h2>
+    <p>Specializing in CLI Tool Development</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>About Me</h2>
+        <p>With over a decade of experience in Linux systems and Bash scripting, I offer top-notch services in developing custom CLI tools to streamline your workflows and improve productivity. My expertise covers full stack web development, Linux development, from system administration to advanced scripting and automation.</p>
+        <p>Open projects porfolio: <a href="https://github.com/AmosNimos">https://github.com/AmosNimos</a></p>
+    </section>
+
+    <section>
+        <h2>Services</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Custom CLI Tool Development</h3>
+                <p>Create powerful command-line tools tailored to your specific needs. Whether it's automating tasks, managing data, or enhancing your workflow, I can build the tools you need.</p>
+            </div>
+            <div class="service">
+                <h3>Linux System Administration</h3>
+                <p>Comprehensive system administration services, including server setup, configuration, maintenance, and troubleshooting. Ensure your Linux systems run smoothly and efficiently.</p>
+            </div>
+            <div class="service">
+                <h3>Bash Scripting and Automation</h3>
+                <p>Automate repetitive tasks and optimize processes with custom Bash scripts. From simple scripts to complex automation solutions, I can help streamline your operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>If you're interested in my services or have any questions, please feel free to reach out. I'm available for consultations and ready to discuss how I can assist with your Linux and Bash scripting needs.</p>
+        <div class="container">
+            <form id="contactForm" action="mailto:amosnimos0@gmail.com" method="get">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <div>
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                const mailtoLink = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\n\nMessage:\n' + message)}`;
+                window.location.href = mailtoLink;
+            });
+        </script>
+    </section>
+</div>
+
+<footer>
+    &copy; 2024 AMOSNIMOS. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typewriter Effect</title>
+    <style>
+        #text-container {
+            font-family: monospace;
+            font-size: 24px;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: .15em solid orange; /* The typewriter cursor */
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="text-container"></div>
+
+<script>
+    var textArray = [
+        "Hello, world! This is a typewriter effect.",
+        "This is the second line.",
+        "And this is the third line.",
+        "Hello, world! This is a typewriter effect.",
+        "Hello, world! This is a typewriter effect.",
+        "This is the second line.",
+        "And this is the third line.",
+        "Hello, world! This is a typewriter effect.",
+        "Hello, world! This is a typewriter effect.",
+        "This is the second line.",
+        "And this is the third line.",
+        "Hello, world! This is a typewriter effect.",
+    ];
+    var currentLineIndex = 0;
+    var currentText = textArray[currentLineIndex];
+    var typingSpeed = 120; // The speed (in milliseconds) at which characters are typed
+    var isTyping = true;
+
+    function typeWriter() {
+        if (isTyping && i < currentText.length) {
+            document.getElementById("text-container").innerHTML += currentText.charAt(i);
+            i++;
+            //var audio = new Audio('key_sound.mp3'); // Add path to your sound file
+            //audio.play();
+            setTimeout(typeWriter, typingSpeed);
+        } else {
+            isTyping = false;
+            document.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    document.getElementById("text-container").innerHTML = currentText; // Complete line
+                    isTyping = true;
+                    i = currentText.length; // Set i to the length of currentText to prevent further typing
+                    setTimeout(clearTextAndNextLine, 1000); // Wait for a brief moment before clearing the text
+                }
+            });
+        }
+    }
+
+    function clearTextAndNextLine() {
+        document.getElementById("text-container").innerHTML = ""; // Clear the text
+        currentLineIndex++;
+        if (currentLineIndex < textArray.length) {
+            currentText = textArray[currentLineIndex];
+            i = 0; // Reset the character index
+            isTyping = true;
+            typeWriter();
+        }
+    }
+
+    var i = 0;
+    typeWriter();
+</script>
+
+</body>
+</html>

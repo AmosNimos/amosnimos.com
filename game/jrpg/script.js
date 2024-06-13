@@ -1,0 +1,60 @@
+const dialogueLines = [
+    { character: 'Protagonist', image: 'protagonist.jpg', text: "Welcome to the JRPG!" },
+    { character: 'Protagonist', image: 'protagonist.jpg', text: "Press spacebar to instantly display the complete line." },
+    { character: 'Protagonist', image: 'protagonist.jpg', text: "Press enter to continue to the next line." }
+];
+
+const characterImage = document.getElementById('characterImage');
+const characterName = document.getElementById('characterName');
+const dialogueBox = document.getElementById('dialogueBox');
+const sound = document.getElementById('sound'); // Get the audio element
+let currentLine = 0;
+let currentCharacter = 0;
+let typingSpeed = 50; // in milliseconds
+
+function typeWriter() {
+    if (currentCharacter < dialogueLines[currentLine].text.length) {
+        dialogueBox.innerHTML += dialogueLines[currentLine].text.charAt(currentCharacter);
+        currentCharacter++;
+        setTimeout(typeWriter, typingSpeed);
+        playSound(); // Play sound each time a character is placed
+    }
+}
+
+function playSound() {
+    sound.pause(); // Pause the sound if it's already playing
+    sound.currentTime = 0; // Reset sound to beginning
+    sound.play(); // Play the sound
+}
+
+function printNextLine() {
+    if (currentLine < dialogueLines.length - 1) {
+        currentLine++;
+        currentCharacter = 0;
+        dialogueBox.innerHTML = '';
+        typeWriter();
+        updateCharacterInfo();
+    } else {
+        dialogueBox.innerHTML = 'End of dialogue.';
+    }
+}
+
+function updateCharacterInfo() {
+    characterName.textContent = dialogueLines[currentLine].character;
+    characterImage.style.backgroundImage = `url(${dialogueLines[currentLine].image})`;
+}
+
+document.addEventListener('keypress', function(event) {
+    if (event.key === ' ' && currentCharacter < dialogueLines[currentLine].text.length) {
+        // Print the complete line instantly
+        dialogueBox.innerHTML = dialogueLines[currentLine].text;
+        currentCharacter = dialogueLines[currentLine].text.length;
+    } else if (event.key === 'Enter') {
+        // Print the next line
+        printNextLine();
+    }
+});
+
+// Start typing the first line
+typeWriter();
+updateCharacterInfo();

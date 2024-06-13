@@ -1,0 +1,118 @@
+/*
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+*/
+
+
+#menu {
+    list-style-type: none;
+    padding: 0;
+    border: 2px solid #D5CCB5;
+    //border: 1px solid #333;
+    //background-color: #fff;
+    //width: 200px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+    //font-size: 24px;
+    display: none;
+}
+#menu li {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #D5CCB5;
+    //border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+#menu li:last-child {
+    border-bottom: none;
+}
+#menu li.selected {
+    background-color: #D5CCB5;
+    color: #101014;
+}
+
+body {
+    background-color: #101014;
+    color: #dad2b3;
+    font-family: 'C64 Pro Mono', monospace;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 20px;
+    margin: 20%;
+    
+    justify-content: left;
+    align-items: center;
+}
+
+#dialogueBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+#characterBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+}
+
+#characterImage {
+    width: 100px;
+    height: 100px;
+    background-color: #D5CCB5;
+    //border: 2px solid #101014;
+    border: 2px solid #D5CCB5;
+    margin-right: 10px;
+}
+
+#characterName {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#dialogueBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+#dialogueBox {
+    display: inline-block;
+    white-space: pre-wrap; /* Preserve whitespace formatting */
+    position: relative;
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1em;
+    background-color: black;
+    //animation: blink 1s step-end infinite;
+    position: absolute;
+}
+
+@keyframes blink {
+    50% {
+        background-color: transparent;
+    }
+}
+
+#dialogueText {
+    display: none;
+}
+#characterName {
+    display: none;
+}
