@@ -1,5 +1,8 @@
 // script.js
 
+// Listen for both key presses and mouse clicks
+document.addEventListener('click', handleClick);
+
 document.addEventListener('DOMContentLoaded', function() {
     document.body.focus(); // Focus on the document body when the page loads
 });
@@ -126,6 +129,12 @@ document.addEventListener('keypress', function(event) {
     }
 });
 
+function handleClick() {
+    if (currentCharacter >= dialogueLines[currentLine].text.length) {
+        // Print the next line if the current character is not less than the line's length
+        printNextLine();
+    }
+}
 
 // Function to show the menu once the dialogue ends
 function onDialogueEnd() {
