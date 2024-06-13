@@ -1,22 +1,22 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JRPG Menu</title>
-    <link rel="stylesheet" href="css/c64.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <audio id="typingSound" src="bip_sound_02.ogg"></audio>
 
-    <div id="dialogue" data-character="banner_v2.png" style="display:none;">
+    <div id="dialogue" data-character="protagonist.jpg">
         <div id="characterName">Protagonist</div>
         <div id="dialogueText">
-            <p>Welcome</p>
-            <p>To my digital territory.</p>
-            <p>Amosnimos.com</p>
+            <p>This is a line of dialogue.</p>
+            <p>This is the next line of dialogue.</p>
+            <p>xavier</p>
         </div>
     </div>
 
@@ -28,9 +28,11 @@
         <div id="dialogueBox"></div>
     </div>
     <ul id="menu">
-        <a href="home.html"><li data-target="home.html">BLOG</li></a>
-        <a href=""><li data-target="cv.html">CV</li></a>
+        <a href=""><li data-target="index.html">MENU</li></a>
+        <a href=""><li data-target="page2.html">Go to Page 2</li></a>
+        <a href=""><li data-target="page3.html">Go to Page 3</li></a>
     </ul>
-    <script src="scripts/menu.js"></script>
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

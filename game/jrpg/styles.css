@@ -1,0 +1,47 @@
+body {
+    background-color: #101014;
+    color: #dad2b3;
+    font-family: 'C64 Pro Mono', monospace;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 20px;
+}
+
+#dialogueBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
+
+#characterBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+}
+
+#characterImage {
+    width: 100px;
+    height: 100px;
+    background-color: #D5CCB5;
+    border: 2px solid #101014;
+    margin-right: 10px;
+}
+
+#characterName {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#dialogueBox {
+    border: 2px solid #D5CCB5;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+}
