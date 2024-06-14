@@ -1,0 +1,41 @@
+#!/bin/bash
+################################################################################
+# Name:        eith
+# Date:        2024-06-13
+# Author:      Amosnimos
+# Description: Extract images to HTML
+################################################################################
+
+# Directory containing the images
+image_dir="."
+
+# Start the HTML
+echo '<div class="gallery">' > links.html
+
+# Loop through each image in the directory
+for image_file in "$image_dir"/*.png; do
+    # Check if the file is an image
+    if [[ -f $image_file ]]; then
+        # Get the image file name without extension
+        image_name=$(basename "$image_file" .png)
+
+        # Replace @@ with /
+        url="https://${image_name//@@/}/$image_name.png"
+
+        # Generate the HTML for each image
+        echo '  <div class="item">' >> links.html
+        echo '    <div class="image">' >> links.html
+        echo "      <a href=\"$image_file\" target=\"_blank\">" >> links.html
+        echo "        <img src=\"$image_file\" alt=\"$image_name\">" >> links.html
+        echo '        <div class="overlay">View Image</div>' >> links.html
+        echo '      </a>' >> links.html
+        echo '    </div>' >> links.html
+        echo '    <div class="text">' >> links.html
+        echo "      <a href=\"$url\">$url</a>" >> links.html
+        echo '    </div>' >> links.html
+        echo '  </div>' >> links.html
+    fi
+done
+
+# End the HTML
+echo '</div>' >> links.html
