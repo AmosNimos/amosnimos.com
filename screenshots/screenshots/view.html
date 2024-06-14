@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+</head>
+<body>
+<div id="gallery"></div>
+
+<script>
+// Path to your images directory
+var path = '/home/amos/beta/screenshots';
+
+// Array of image file names
+var images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+
+// Get the gallery container element
+var gallery = document.getElementById('gallery');
+
+// Loop through the images array and create <img> elements
+images.forEach(function(image) {
+    var img = document.createElement('img');
+    img.src = path + image;
+    img.alt = image;
+    gallery.appendChild(img);
+});
+</script>
+</body>
+</html>
