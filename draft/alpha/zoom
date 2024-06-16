@@ -1,0 +1,11 @@
+The growing trend of remote work and distance learning has led to an increased usage of video conferencing platforms. While these platforms, such as Zoom and Microsoft Teams, have provided a convenient way for people to connect and communicate, there is still uncertainty surrounding their integrity, safety, and privacy.
+
+These concerns are not unfounded, as many video conferencing platforms have faced scrutiny for potential privacy and security issues. The potential risks associated with these platforms could be just as harmful to individuals as the de-anonymization of online profile pages.
+
+One area of particular concern is integrated webcams, which can compromise the safety and privacy of individuals. For this reason, it is recommended that individuals remove their integrated webcam and use an external one instead.
+
+If using video conferencing platforms on a Linux system, it is also advisable to use Snap when installing such software. Snap allows the application to run without root privileges, which minimizes the risk of exposing the entire system to potential threats.
+
+However, the most effective way to mitigate the potential risks associated with video conferencing platforms is to avoid using them altogether, if possible. While these platforms provide a convenient way to connect with others, the potential risks associated with them should not be ignored.
+
+In conclusion, as the use of video conferencing platforms continues to increase, it is important to prioritize privacy and security to protect individuals from potential threats. Removing integrated webcams, using Snap when installing video conferencing software on Linux, and avoiding these platforms altogether, if possible, are all ways to mitigate potential risks. Individuals should take the necessary precautions to safeguard their privacy and security, as the potential consequences of not doing so could be severe.

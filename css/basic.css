@@ -1,0 +1,146 @@
+/* GLOBAL VARIABLE */
+:root {
+  --main-bck: #000000;
+  --body-bck: #FFFFFF;
+}
+
+/* FONT */
+@font-face {
+  font-family: retro_font;
+  src: url("font/retro_font.ttf");
+}
+
+/* CLASS */
+
+.btn-v,
+.btn-h {
+    display: flex;
+    overflow-x: auto;
+    margin: 0.4em;
+    padding: 0.2em;
+    border: solid 4px #000000;
+    background-color: #FFFFFF;
+    color: #000000;
+    text-decoration: none;
+    max-width: calc(100% - 1em); /* Adjust max-width as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+}
+
+.btn-v:hover,
+.btn-h:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.title {
+  text-transform: uppercase;
+  padding: 1em;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.article {
+  background-color: #FFFFFF;
+  margin: auto;
+  border: solid 1em #000000;
+  padding: 2em;
+}
+
+.post {
+  margin: auto;
+  background-color: #FFFFFF;
+  border: solid 4px #000000;
+  padding: 2em;
+  font-family: retro_font;
+  color: #000000;
+}
+
+.post p {
+  color: #000000 !important;
+  background-color: #FFFF00;
+  font-size: 20px;
+}
+
+.post img {
+  width: 100%;
+  height: 25%;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5 {
+  color: #FFFFFF;
+  background-color: #000000;
+  padding-left: 0.3em;
+}
+
+.footer {
+  color: #000000;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* COMPONENT */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: x-large;
+  text-transform: capitalize;
+}
+
+blockquote {
+  font-size: 20px;
+  border: solid 4px #000000;
+  padding: 1.5em;
+}
+
+p {
+  font-size: large;
+  color: #000000;
+  padding: 0.5em;
+}
+
+li {
+  font-family: retro_font;
+  padding: 0.5em;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+a {
+  font-family: retro_font;
+  font-size: 20px;
+  color: #1122BB;
+}
+
+img {
+  width: 100%;
+  height: 25%;
+  max-height: 15em;
+  object-fit: cover;
+  border: solid 4px #000000;
+}
+
+body {
+  font-family: retro_font;
+  background-color: #555555;
+  color: #000000;
+  padding: 3em 0em;
+}
+
+main {
+  max-width: 90%;
+  margin: auto;
+  padding: 2em;
+}
