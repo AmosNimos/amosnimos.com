@@ -138,6 +138,7 @@ function handleClick() {
 
 // Function to show the menu once the dialogue ends
 function onDialogueEnd() {
+    window.location.href = "menu.html";
     displayMenu();
     dialogueBox.style.display = 'none';
 }

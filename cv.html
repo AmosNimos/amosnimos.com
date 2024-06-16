@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top-Class Linux Full-Stack Bash Expert</title>
+    <title>amosnimos.com - CV</title>
+    <link rel="stylesheet" href="css/basic.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +15,7 @@
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 0;
+            padding: 5px 0;
             text-align: center;
         }
         header h1 {
@@ -48,7 +49,7 @@
             padding: 10px 0;
             background-color: #333;
             color: #fff;
-            position: fixed;
+            //position: fixed;
             width: 100%;
             bottom: 0;
         }
@@ -75,11 +76,16 @@
 </head>
 <body>
 
+<div class="topnav">
+	<a class="btn-h" href="home.html">Home</a>
+</div>
+
 <header>
     <h1>AMOSNIMOS</h1>
     <h2>Top-Class Linux Full-Stack Bash Expert</h2>
     <p>Specializing in CLI Tool Development</p>
 </header>
+
 
 <div class="container">
     <section>
@@ -106,40 +112,8 @@
         </div>
     </section>
 
-    <section>
-        <h2>Contact</h2>
-        <p>If you're interested in my services or have any questions, please feel free to reach out. I'm available for consultations and ready to discuss how I can assist with your Linux and Bash scripting needs.</p>
-        <div class="container">
-            <form id="contactForm" action="mailto:amosnimos0@gmail.com" method="get">
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div>
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                </div>
-                <div>
-                    <button type="submit">Send</button>
-                </div>
-            </form>
-        </div>
-
-        <script>
-            document.getElementById('contactForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                const mailtoLink = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\n\nMessage:\n' + message)}`;
-                window.location.href = mailtoLink;
-            });
-        </script>
-    </section>
+    <p>If you're interested in my services or have any questions, please feel free to reach out. I'm available for consultations and ready to discuss how I can assist with your Linux and Bash scripting needs.</p>
+    <a class="btn-v" href="contact.html">Contact me</a>
 </div>
 
 <footer>
