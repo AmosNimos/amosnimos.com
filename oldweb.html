@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html">
+<html">
 <head>
+<html lang="en">
+<title>Internet Relics - amosnimos.com</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Internet Relics</title>
+<link rel="icon" type="img/x-icon" href="../../img/favicon.ico">
+<link rel="stylesheet" href="css/basic.css">
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -11,25 +14,38 @@ body {
   padding: 0;
   background-color: #f1f1f1;
 }
+
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   padding: 10px;
 }
+
 .image {
   position: relative;
-  overflow: hidden;
+  //overflow: hidden;
+  width: 200px;
 }
+
 .header {
   position: relative;
   margin: 2em;
 }
+
 .image img {
   width: 100%;
   height: auto;
   display: block;
 }
+
+.text {
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -52,10 +68,22 @@ body {
 </style>
 </head>
 <body>
+
+<div class="topnav">
+	<a class="btn-h" href="home.html">Home</a>
+	<a class="btn-h" href="links.html">Links</a>
+	<a class="btn-h" href="posts/2022-05-15_freedom_list.html">List</a>
+	<a class="btn-h" href="main.html">Wasteland</a>
+</div>
+
+<h2 class="title" id="blog">Internet Relics</h2> 
+<div class="article">
+<img src="banner_v2.png" alt="WE AMOSNIMOS">
+
 <div class="header">
-<h1>Internet Relics - Remains of the Old Web</h1>
 <p>A beautiful homage to the era of the free and decentralized internet. It captures the essence of individually created, handcrafted HTML sites that reflect the creativity and uniqueness of their creators. This project not only preserves the history of the internet but also reminds us of the importance of maintaining a decentralized and open web.</p>
 <p>This collection features screenshots and links to sites, automatically selected at random from <a href="http://wiby.me/surprise/">http://wiby.me/surprise/</a> using a custom script I developed.</p>
+<p>These are the remains of the Old Web</p>
 </div>
 <div class="gallery">
 <div class="item">
