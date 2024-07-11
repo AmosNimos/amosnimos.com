@@ -1,7 +1,7 @@
 /* GLOBAL VARIABLE */
 :root {
-  --main-bck: #000000;
-  --body-bck: #FFFFFF;
+  --main-bck: #e3cfaa;
+  --body-bck: #666547;
 }
 
 /* FONT */
@@ -16,11 +16,12 @@
 .btn-h {
     display: flex;
     overflow-x: auto;
-    margin: 0.4em;
-    padding: 0.2em;
-    border: solid 4px #000000;
-    background-color: #FFFFFF;
-    color: #000000;
+    margin: 0.4em; /* Applies 0.4em margin to top, right, bottom, and left */
+    padding: 0.4em;
+    padding-left: 0.5em; /* Overrides the left margin to be 1em */
+    border: solid 4px #170c32;
+    background-color: #6fcb9f;
+    color: #170c32;
     text-decoration: none;
     max-width: calc(100% - 1em); /* Adjust max-width as needed */
     box-sizing: border-box; /* Ensures padding and border are included in the width */
@@ -31,35 +32,36 @@
 
 .btn-v:hover,
 .btn-h:hover {
-  background-color: #000000;
-  color: #FFFFFF;
+  border: solid 4px #fffeb3;
+  background-color: #170c32;
+  color: #fffeb3;
 }
 
 .title {
   text-transform: uppercase;
   padding: 1em;
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: #170c32;
+  color: #fffeb3;
 }
 
 .article {
-  background-color: #FFFFFF;
+  background-color: var(--main-bck);
   margin: auto;
-  border: solid 1em #000000;
+  border: solid 1em #170c32;
   padding: 2em;
 }
 
 .post {
   margin: auto;
-  background-color: #FFFFFF;
-  border: solid 4px #000000;
+  background-color: #fffeb3;
+  border: solid 4px #170c32;
   padding: 2em;
   font-family: retro_font;
-  color: #000000;
+  color: #170c32;
 }
 
 .post p {
-  color: #000000 !important;
+  color: #170c32 !important;
   background-color: #FFFF00;
   font-size: 20px;
 }
@@ -74,13 +76,13 @@
 .post h3,
 .post h4,
 .post h5 {
-  color: #FFFFFF;
-  background-color: #000000;
+  color: #fffeb3;
+  background-color: #170c32;
   padding-left: 0.3em;
 }
 
 .footer {
-  color: #000000;
+  color: #170c32;
   text-align: center;
 }
 
@@ -101,27 +103,28 @@ h6 {
 
 blockquote {
   font-size: 20px;
-  border: solid 4px #000000;
+  border: solid 4px #170c32;
   padding: 1.5em;
 }
 
 p {
   font-size: large;
-  color: #000000;
+  color: #170c32;
   padding: 0.5em;
 }
 
 li {
   font-family: retro_font;
-  padding: 0.5em;
-  color: #000000;
-  background-color: #FFFFFF;
+  padding: 0.2em;
+  color: #170c32;
+  //background-color: #ffe28a;
+  list-style: none;
 }
 
 a {
   font-family: retro_font;
   font-size: 20px;
-  color: #1122BB;
+  color: #fb2e01;
 }
 
 img {
@@ -129,13 +132,13 @@ img {
   height: 25%;
   max-height: 15em;
   object-fit: cover;
-  border: solid 4px #000000;
+  border: solid 4px #170c32;
 }
 
 body {
   font-family: retro_font;
-  background-color: #555555;
-  color: #000000;
+  background-color: var(--body-bck);
+  color: #170c32;
   padding: 3em 0em;
 }
 
@@ -143,4 +146,49 @@ main {
   max-width: 90%;
   margin: auto;
   padding: 2em;
+}
+
+.footer {
+    content: 'AUTHOR: AMOSNIMOS';
+    font-family: 'Times New Roman', Times, serif; /* Serif font for a retro feel */
+    color: #202146; /* Retro color for the text */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add some padding */
+    font-size: 1.2em; /* Make the text a bit larger */
+    position: relative; /* For the decorative lines */
+    margin: 40px 0; /* Add some margin to separate it from the rest of the content */
+}
+
+.footer::before,
+.footer::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #202146;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.footer::before {
+    left: 0;
+}
+
+.footer::after {
+    right: 0;
+}
+
+.bnw {
+    object-fit: scale-down !important;
+    height: 100% !important;
+    filter: grayscale(100%);
+    //width: 100%;
+    border: none; /* Correct way to remove the border */
+}
+
+.topnav {
+    background-color: var(--main-bck);
+    border: solid 1em #170c32;
+    padding: 0.5em;
 }
