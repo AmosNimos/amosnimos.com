@@ -53,7 +53,7 @@ else
 fi
 
 image_extension="${image_url##*.}"
-curl "$image_url" "${output_directory}/${image_name}.${extension}"
+wget "$image_url" -O "${output_directory}/${image_name}.${extension}"
 
 output_file="post_${article_name_lower}/${day}_${article_name_lower}.html"
 
@@ -87,7 +87,6 @@ if [[ -d ../../post ]]; then
   cp $output_file ../../post/ 
 fi
 
-
 rss_file="rss_feed.xml"
 
 # Function to create RSS feed XML file if it doesn't exist
@@ -96,8 +95,8 @@ create_rss_file() {
         echo '<?xml version="1.0" encoding="UTF-8"?>' > "$rss_file"
         echo '<rss version="2.0">' >> "$rss_file"
         echo '<channel>' >> "$rss_file"
-        echo '<title>Your RSS Feed Title</title>' >> "$rss_file"
-        echo '<link>https://yourwebsite.com/rss_feed.xml</link>' >> "$rss_file"
+        echo '<title>Amosnimos RSS Feed</title>' >> "$rss_file"
+        echo '<link>https://amosnimos.com/rss_feed.xml</link>' >> "$rss_file"
         echo '<description>Latest articles from Your Website</description>' >> "$rss_file"
         echo '</channel>' >> "$rss_file"
         echo '</rss>' >> "$rss_file"
@@ -118,5 +117,8 @@ append_to_rss() {
 # Ensure RSS feed XML file exists
 create_rss_file
 
-# Append to RSS feed XML file
-append_to_rss "$title_selected" "$(date +%F)"
+# Example usage:
+#title_selected="digital sovereignty"
+#date_selected="2024-07-12"
+
+append_to_rss "$title_selected" "$date_selected"
