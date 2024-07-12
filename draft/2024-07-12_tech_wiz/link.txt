@@ -1,0 +1,1 @@
+<li><p>[2024-07-12]<a class="btn-v" href="posts/2024-07-12_tech_wiz/tech_wiz.html">Tech wiz</a></p></li>
