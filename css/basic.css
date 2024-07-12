@@ -12,13 +12,20 @@
 
 /* CLASS */
 
+ul {
+        list-style-type: none; /* Removes default bullets */
+        padding: 0; /* Optional: Removes default padding */
+        margin: 0; /* Optional: Removes default margin */
+}
+
 .btn-v,
 .btn-h {
     display: flex;
     overflow-x: auto;
     margin: 0.4em; /* Applies 0.4em margin to top, right, bottom, and left */
     padding: 0.4em;
-    padding-left: 0.5em; /* Overrides the left margin to be 1em */
+    //padding-left: 0.5em; /* Overrides the left margin to be 1em */
+    list-style: none;
     border: solid 4px #170c32;
     background-color: #6fcb9f;
     color: #170c32;
