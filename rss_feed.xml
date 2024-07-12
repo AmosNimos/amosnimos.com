@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Your RSS Feed Title</title>
+<link>https://yourwebsite.com/rss_feed.xml</link>
+<description>Latest articles from Your Website</description>
+</channel>
+</rss>
+<item>
+	<title>digital sovereignty</title>
+	<pubDate>2024-07-12</pubDate>
+</item>
+
