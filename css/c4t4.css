@@ -1,0 +1,203 @@
+/* GLOBAL VARIABLE */
+:root {
+  --main-bck: #e3cfaa;
+  --body-bck: #000;
+  --text: #FF007F
+}
+
+/* FONT */
+@font-face {
+  font-family: retro_font;
+  src: url("font/retro_font.ttf");
+}
+
+/* CLASS */
+
+ul {
+        list-style-type: none; /* Removes default bullets */
+        padding: 0; /* Optional: Removes default padding */
+        margin: 0; /* Optional: Removes default margin */
+}
+
+.btn-v,
+.btn-h {
+    display: flex;
+    overflow-x: auto;
+    margin: 0.4em; /* Applies 0.4em margin to top, right, bottom, and left */
+    padding: 0.4em;
+    //padding-left: 0.5em; /* Overrides the left margin to be 1em */
+    list-style: none;
+    border: solid 4px #170c32;
+    background-color: #6fcb9f;
+    color: #170c32;
+    border-radius:10px;
+    text-decoration: none;
+    max-width: calc(100% - 1em); /* Adjust max-width as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+}
+
+.btn-v:hover,
+.btn-h:hover {
+  border: solid 4px #fffeb3;
+  background-color: #170c32;
+  color: #fffeb3;
+}
+
+.title {
+  text-transform: uppercase;
+  padding: 1em;
+  background-color: #170c32;
+  color: #fffeb3;
+}
+
+.article {
+  background-color: var(--main-bck);
+  margin: auto;
+  border: solid 1em #170c32;
+  padding: 2em;
+}
+
+.post {
+  margin: auto;
+  background-color: #fffeb3;
+  border: solid 4px #170c32;
+  padding: 2em;
+  font-family: retro_font;
+  color: #170c32;
+}
+
+.post p {
+  color: #170c32 !important;
+  background-color: #FFFF00;
+  font-size: 20px;
+}
+
+.post img {
+  width: 100%;
+  height: 25%;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5 {
+  color: #fffeb3;
+  background-color: #170c32;
+  padding-left: 0.3em;
+}
+
+.footer {
+  color: #170c32;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* COMPONENT */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: x-large;
+  text-transform: capitalize;
+}
+
+blockquote {
+  font-size: 20px;
+  border: solid 4px #170c32;
+  padding: 1.5em;
+}
+
+p {
+  font-size: large;
+  color: #170c32;
+  padding: 0.5em;
+}
+
+li {
+  font-family: retro_font;
+  padding: 0.2em;
+  color: #170c32;
+  //background-color: #ffe28a;
+  list-style: none;
+}
+
+a {
+  font-family: retro_font;
+  font-size: 20px;
+  color: #fb2e01;
+}
+
+img {
+  width: 100%;
+  height: 25%;
+  max-height: 15em;
+  object-fit: cover;
+  border: solid 4px #170c32;
+}
+
+body {
+  font-family: retro_font;
+  background-color: var(--body-bck);
+  color: var(--text);
+  padding: 3em 0em;
+}
+
+main {
+  max-width: 90%;
+  margin: auto;
+  padding: 2em;
+}
+
+.footer {
+    content: 'AUTHOR: AMOSNIMOS';
+    font-family: 'Times New Roman', Times, serif; /* Serif font for a retro feel */
+    color: #202146; /* Retro color for the text */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add some padding */
+    font-size: 1.2em; /* Make the text a bit larger */
+    position: relative; /* For the decorative lines */
+    margin: 40px 0; /* Add some margin to separate it from the rest of the content */
+}
+
+.footer::before,
+.footer::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #202146;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.footer::before {
+    left: 0;
+}
+
+.footer::after {
+    right: 0;
+}
+
+.bnw {
+    object-fit: scale-down !important;
+    height: 100% !important;
+    filter: grayscale(100%);
+    //width: 100%;
+    border: none; /* Correct way to remove the border */
+}
+
+.topnav {
+    background-color: var(--main-bck);
+    border: solid 1em #170c32;
+    padding: 0.5em;
+}
