@@ -8,7 +8,7 @@ Source code for amosnimos.com a freedom-focused indie website.
 		<img src="banner.png" alt="Banner image">
 		<nav>
 			<ul>
-				<li><a href="index.html">Home</a></li>
+				<li><a href="home.html">Home</a></li>
 				<li><a href="blog.html">Freedom</a></li>
 				<li><a href="about.html">About</a></li>
 			</ul>
