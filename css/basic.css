@@ -153,6 +153,7 @@ main {
   max-width: 90%;
   margin: auto;
   padding: 2em;
+  padding-bottom: 0em;
 }
 
 .footer {
@@ -203,7 +204,7 @@ main {
 .badges {
     display:flex;
     margin-top:0.5em;
-    height:100%;
+    height:4em;
     width:100%;
 }
 

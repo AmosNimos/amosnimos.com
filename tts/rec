@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# CLI program to record sound from computer's default output
+
+# Check if parec is installed
+if ! command -v parec &> /dev/null; then
+    echo "parec could not be found. Please install PulseAudio utils."
+    exit 1
+fi
+
+# Check if sox is installed
+if ! command -v sox &> /dev/null; then
+    echo "sox could not be found. Please install sox."
+    exit 1
+fi
+
+# List available sources and prompt user to select one
+echo "Available PulseAudio sources:"
+pactl list short sources
+echo "Please enter the PulseAudio source to record from (e.g., alsa_output.pci-0000_00_1f.3.analog-stereo.monitor):"
+read SOURCE
+
+# Output file
+OUTPUT_FILE="output.wav"
+
+# Record sound
+echo "Recording... Press Ctrl+C to stop."
+parec --format=s16le --rate=44100 --channels=2 --device="$SOURCE" | sox -t raw -r 44100 -e signed-integer -b 16 -c 2 - $OUTPUT_FILE
+
+echo "Recording saved to $OUTPUT_FILE"
