@@ -1,0 +1,191 @@
+# tactiq.io free youtube transcript
+# Why The Indieweb?
+# https://www.youtube.com/watch/KRsMnTeCnG8
+
+00:00:01.500 [Music]
+00:00:17.350 [Music]
+00:00:26.150 [Music]
+00:00:34.340 [Music]
+00:00:44.300 [Music]
+00:00:57.199 the web was originally created for
+00:00:59.280 experts in their fields to share
+00:01:01.520 research with their peers from remote
+00:01:03.920 locations
+00:01:05.519 the small web of knowledge this created
+00:01:08.080 consisted of pros that would wrap and
+00:01:10.479 form lines of text to fit the window of
+00:01:12.880 any computer's web browser software
+00:01:16.000 it was only much later when some clever
+00:01:19.280 decided to put width 1024 pixels on an
+00:01:22.799 html element that we would begin to
+00:01:25.200 massively [ __ ] with this perfectly
+00:01:27.600 serviceable display algorithm
+00:01:31.920 but this video isn't about typography
+00:01:34.560 layout or the responsive web we've now
+00:01:36.880 begun to reclaim
+00:01:38.799 it's about how the invention of a suite
+00:01:40.640 of technologies including a markup
+00:01:42.799 language a resource identifier and a
+00:01:45.439 transfer protocol would ultimately lead
+00:01:47.759 a man to unlawfully enter a united
+00:01:49.920 states government building repeatedly
+00:01:52.320 taser himself in the junk and have a
+00:01:54.720 fatal heart attack
+00:01:56.390 [Music]
+00:01:57.520 the web's creator land mammal tim
+00:01:59.759 berners-lee believed his web of
+00:02:01.759 information would present a net benefit
+00:02:03.920 to society because information is well
+00:02:06.880 good goodini
+00:02:08.479 accordingly he elected to make its core
+00:02:10.479 technologies free for everyone to use
+00:02:13.599 however earnestly singularly failed to
+00:02:16.400 teach any of the new web users
+00:02:17.840 scientific methodology or critical
+00:02:20.239 thinking
+00:02:21.280 this as it turns out was a massive
+00:02:29.599 as the web grew and accumulated more
+00:02:31.599 information it accumulated
+00:02:33.599 misinformation along with it
+00:02:35.760 instead of becoming the knowledge source
+00:02:37.519 it's largely prosaic nature had us
+00:02:39.440 anticipate the platform's
+00:02:41.400 democratization saw it filled with what
+00:02:43.599 we know what we don't know and what we
+00:02:46.160 pretend we know when we don't actually
+00:02:48.560 have a [ __ ] clue
+00:02:50.879 in other words the web became a
+00:02:52.720 simulacrum
+00:02:54.080 a digital mirror of our hugely flawed in
+00:02:57.120 real life selves
+00:02:58.959 and it's at this point in the story that
+00:03:01.120 i introduced the villain
+00:03:06.720 to capitalists this new simulated space
+00:03:09.280 represented a virgin wood yet to be
+00:03:11.519 logged
+00:03:12.640 but they found the woodland creatures
+00:03:14.159 had become accustomed to free stuff
+00:03:16.879 their only recourse was to lure the
+00:03:18.560 creatures back into the real world with
+00:03:20.800 things they might buy there
+00:03:23.360 barbecue sets
+00:03:25.120 it's like that
+00:03:27.440 and for some time the free and open web
+00:03:29.920 was funded by people clicking on
+00:03:31.760 pictures of barbecue sets
+00:03:34.239 but only a very few people click on
+00:03:36.159 pictures of barbecue sets so not much
+00:03:38.720 money is made by the website or the
+00:03:40.720 barbecue advertiser that pays them
+00:03:43.200 boo hoo
+00:03:45.360 the greatest minds in online advertising
+00:03:48.319 quit arbuckle milton dingdong and jerry
+00:03:51.519 mcstupid
+00:03:53.120 put their heads together and came up
+00:03:55.200 with a solution
+00:03:57.680 more pictures of barbecue sets in fact
+00:04:00.799 so many pictures of barbecue sets all up
+00:04:03.280 in your grill excuse the pun that you
+00:04:05.519 might click on one accidentally
+00:04:09.040 unfortunately this was not a very
+00:04:11.120 sustainable business model
+00:04:13.290 [Music]
+00:04:15.760 what they really wanted was to determine
+00:04:18.079 who the bbq fetishists are and only
+00:04:20.560 advertise to them because they might
+00:04:22.720 actually buy a [ __ ] barbecue set
+00:04:25.840 so capitalism created social media
+00:04:28.880 literally social life but mediated by ad
+00:04:32.000 sellers
+00:04:33.280 using social media you do and say
+00:04:35.280 everything you would in real life but
+00:04:36.960 you're constantly being watched and
+00:04:38.560 listened to in case you say something
+00:04:40.800 enthusiastic about barbecues
+00:04:44.160 do you know what i fancy
+00:04:46.560 no go on
+00:04:48.639 i write fancy
+00:04:50.720 some
+00:04:51.520 me
+00:04:52.639 that's like
+00:04:53.840 raw in the middle
+00:04:55.680 but like
+00:04:57.040 burnt on the outside
+00:04:59.440 but
+00:05:00.320 what you mean like like bbq
+00:05:05.070 [Music]
+00:05:08.639 almost invariably the people most
+00:05:10.720 enthusiastic about barbecues are those
+00:05:13.039 who already [ __ ] own barbecue sets
+00:05:15.680 making the targeted advertising this
+00:05:17.759 massive dystopian surveillance project
+00:05:19.840 promised next to [ __ ] useless for
+00:05:22.160 barbecue vendors however the ad sellers
+00:05:25.520 were at least able to ascertain what
+00:05:27.280 kind of content people would be willing
+00:05:28.880 to sit through adverts to watch
+00:05:31.120 not really good content as it turns out
+00:05:33.840 but really really [ __ ] headed morally
+00:05:36.960 reprehensible content why because bad
+00:05:39.919 people like it edge lords pretend to
+00:05:42.160 like it masochists hate watch it and
+00:05:44.880 well-meaning people will tell you not to
+00:05:46.800 like it in terms of sheer engagement
+00:05:49.520 objectionable content is the most
+00:05:51.440 popular
+00:05:52.479 as ubiquitous as this kind of content
+00:05:54.639 has become it still presents itself as
+00:05:56.960 secret knowledge attracting most anyone
+00:05:59.440 who wants to identify as a free thinker
+00:06:01.840 without actually having to do any
+00:06:03.440 thinking for themselves
+00:06:05.280 this is how engagement algorithms
+00:06:07.120 catalyze bad ideas into cults that
+00:06:09.680 begets movements that attempt clumsy
+00:06:12.240 insurrections resulting in people
+00:06:14.319 electrocuting their own genitals
+00:06:16.960 it's how arch capitalists have upset the
+00:06:19.840 yin and yang of the web
+00:06:23.570 [Applause]
+00:06:25.360 so
+00:06:26.800 what what now as a content creator you
+00:06:29.440 can reclaim your content and self-host
+00:06:31.199 it this way your content is your content
+00:06:33.280 and you don't lose anything when mega
+00:06:34.880 surveillance media code decides to kick
+00:06:36.639 you off their platform or goes bust
+00:06:38.800 you get to do simple things like edit
+00:06:40.560 your content after it's published and
+00:06:42.080 you won't inadvertently lure people into
+00:06:43.759 the clutches of nazi propagandists
+00:06:45.600 sharing the same contaminated space just
+00:06:48.240 because you publish independently
+00:06:49.520 doesn't mean you have to be isolated you
+00:06:51.199 can syndicate your content with
+00:06:52.560 technologies like rss and invite
+00:06:54.639 engagement by implementing a back feed
+00:06:56.800 using standards like web mentions this
+00:06:59.039 stuff is all part of the indie web
+00:07:00.560 movements which unlike the so-called
+00:07:02.240 indie bands of the early 90s who were
+00:07:04.080 generally assigned to major record
+00:07:05.440 labels is genuinely about independence
+00:07:07.840 and decentralization as a consumer of
+00:07:10.319 contents do not engage with awful people
+00:07:12.560 saying awful things engaging with them
+00:07:14.960 even to condemn them only legitimates
+00:07:17.120 them and their bullsh
+00:07:18.639 and finally the man who entered the
+00:07:20.479 capitol building and had a fatal heart
+00:07:22.240 attack did not do so by accidentally
+00:07:24.479 electrocuting his with a taser he just
+00:07:27.120 got himself overexcited from all the
+00:07:28.960 anger he was being told he should be
+00:07:30.639 feeling
+00:07:31.520 hey
+00:07:32.479 hey it's the interweb
+00:07:34.320 [Music]
+00:07:38.160 hey it's the interway
+00:07:40.020 [Music]
+00:07:44.240 it's the interwebs
+00:07:47.320 [Music]

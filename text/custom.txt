@@ -1,0 +1,502 @@
+# tactiq.io free youtube transcript
+# Whatever Happened to Profile Customization?
+# https://www.youtube.com/watch/peYYxM_pamQ
+
+00:00:00.120 I love personalizing things because I'm
+00:00:02.480 the main character and I'm going to act
+00:00:04.400 like it my water bottle is covered in
+00:00:06.279 stickers my iPad is covered in stickers
+00:00:08.960 my car is covered in stickers even my
+00:00:11.440 body's covered in stickers in school you
+00:00:14.040 could always hear me coming because my
+00:00:15.639 backpack was covered in keychains and
+00:00:17.439 buttons I have always highly valued my
+00:00:19.600 individuality and this extends to my
+00:00:21.600 online life as well I was that person
+00:00:23.840 who couldn't have their username just be
+00:00:25.800 their name that was too boring I had to
+00:00:28.320 have a different unique username for
+00:00:30.439 every social media account yes I did
+00:00:32.558 have a prominent not like the other
+00:00:33.960 girls phase why do you ask however
+00:00:36.120 opportunities for personal expression
+00:00:38.000 online seem to be few and far between
+00:00:40.480 these days today's digital landscape
+00:00:42.640 looks very different from the seizure
+00:00:44.440 inducing websites and profile pages of
+00:00:47.160 the early internet so what exactly
+00:00:49.640 happened how did we get here let's start
+00:00:53.160 at the
+00:00:55.030 [Music]
+00:00:57.960 beginning geoc cities was a a free web
+00:01:00.640 hosting platform founded in 1994 it
+00:01:03.239 allowed users to create their own
+00:01:04.760 websites and browse other people's
+00:01:06.400 websites completely for free websites
+00:01:08.520 were organized into neighborhoods based
+00:01:10.640 on their topic such as Hollywood for
+00:01:12.880 movies and entertainment or Tokyo for
+00:01:15.320 anime and manga users could totally
+00:01:17.520 customize their web pages from the
+00:01:19.040 ground up changing the colors and fonts
+00:01:21.320 adding graphics and midi songs having a
+00:01:23.720 guestbook or a chat room and much more
+00:01:26.119 you didn't need to have extensive coding
+00:01:27.960 or web design knowledge to build a site
+00:01:30.040 which is evident when looking at some of
+00:01:32.280 these Pages very much giving graphic
+00:01:34.439 design is my passion anyone and everyone
+00:01:36.680 could carve out their own personal
+00:01:38.159 little corner of the internet Geo cities
+00:01:40.360 hosted everything from personal web
+00:01:42.240 pages Made For Fun by teenagers to
+00:01:44.560 Memorial websites fan sites small
+00:01:46.960 businesses and school clubs and while
+00:01:49.240 they all had that distinctive web 1.0
+00:01:51.479 look the contents and Designs varied
+00:01:53.640 wildly from one website to another other
+00:01:55.960 web hosting platforms popped up in the
+00:01:57.799 late '90s as well such as angel and
+00:02:00.399 tripod but none were as popular as geoc
+00:02:02.719 cities Yahoo bought geoc cities in 1999
+00:02:05.759 at which time it was the third most
+00:02:07.399 visited site on the web unfortunately it
+00:02:09.959 wasn't exactly a profitable Venture for
+00:02:12.040 Yahoo GE cities also had premium web
+00:02:14.480 hosting services for a fee but not
+00:02:16.640 enough people were using it so Yahoo
+00:02:18.800 chose to close the site down in 2009 at
+00:02:21.640 which point it had more than 38 million
+00:02:23.519 Pages although for some reason remained
+00:02:25.480 active only in Japan until 2019 luckily
+00:02:28.760 it has been archived by several groups
+00:02:30.720 including our besties over at the
+00:02:32.440 internet archive where it can be
+00:02:34.000 accessed by the Wayback machine at the
+00:02:36.160 time the shutdown was announced the
+00:02:37.680 internet archives stated that they
+00:02:39.319 wanted to make sure geoc cities was
+00:02:41.360 preserved because it had been an
+00:02:42.720 important outlet for personal expression
+00:02:44.519 on the web for almost 15 years my
+00:02:46.879 favorite way to browse the archive is
+00:02:48.480 through GIF cities a project by the
+00:02:50.480 internet archive that allows you to
+00:02:51.959 search their collection of those
+00:02:53.640 blinking clip artes GIFs that were so
+00:02:55.959 popular on geoc City Sites if you click
+00:02:58.159 on a gif it will take you to the archive
+00:03:00.080 snapshot of the site it came from people
+00:03:02.200 used to cramp so much stuff on their
+00:03:03.799 pages that it's sometimes a bit slow to
+00:03:05.680 load on 2024 highspeed Fiber Optic
+00:03:08.640 internet I don't know how anyone was
+00:03:10.400 loading these pages on dialog if like me
+00:03:13.319 you were a small child in the late '90s
+00:03:15.159 and early 2000s and never had a chance
+00:03:17.360 to make your own geoc cities page fear
+00:03:19.360 not a modern-day spiritual successor
+00:03:21.840 called neoc cities was launched in 2013
+00:03:24.840 and aims to provide an experience as
+00:03:26.760 close to the original as possible
+00:03:28.640 although I will say most Neo cities
+00:03:30.519 users seem to have slightly better
+00:03:32.360 design sensibilities in their
+00:03:33.879 counterparts from 20 years ago I did get
+00:03:36.560 jump scared by a few autop playing midi
+00:03:38.519 songs however so glad to see they're
+00:03:40.560 keeping that Spirit Alive developer of
+00:03:42.920 neoc cities Kyle Drake lamented that
+00:03:45.280 modern sites like Facebook control the
+00:03:47.920 type shape and arrangement of the
+00:03:49.560 content you contribute and deviation is
+00:03:51.879 not possible he made Neo cities because
+00:03:54.239 he wanted there to be an alternative to
+00:03:55.920 these kinds of platforms and allow
+00:03:57.720 people to have a web presence that they
+00:03:59.879 can truly make their
+00:04:05.120 own Myspace launched in 2003 was the
+00:04:08.720 first really big social media website it
+00:04:11.120 allowed users to create profile Pages
+00:04:13.200 where they could upload photos write
+00:04:14.920 blog posts list their interests and add
+00:04:17.279 people as friends it became especially
+00:04:19.440 popular among independent musicians
+00:04:21.759 giving them a platform where they could
+00:04:23.120 share their music many now famous
+00:04:25.320 musicians such as Lana Del re and Katie
+00:04:27.639 Perry got their start on MySpace it also
+00:04:30.320 attracted members of Music based
+00:04:31.880 subcultures like emo scene or goth most
+00:04:34.800 of whom were teenagers or young adults
+00:04:36.960 users profile Pages were highly
+00:04:38.759 customizable letting them add colorful
+00:04:40.840 backgrounds wallpapers glittery graphics
+00:04:43.600 and songs that autoplayed at full volume
+00:04:46.240 very reminiscent of geoc cities but now
+00:04:48.280 with a mid-2000s code of paint the funny
+00:04:50.919 thing is though Myspace profiles
+00:04:52.919 actually weren't intended by the
+00:04:54.320 developers to be this customizable there
+00:04:56.639 was a mistake during programming that
+00:04:58.479 allowed end users to add HTML into forms
+00:05:01.240 that would change the look of their
+00:05:02.560 profile by the time Myspace staff
+00:05:04.680 noticed this error they decided to keep
+00:05:06.600 it since users seemed to like it and
+00:05:08.759 this customizability if that's even a
+00:05:11.120 word ended up becoming one of the site's
+00:05:13.240 defining features Myspace peak in
+00:05:15.680 popularity between 2005 and 2008 and
+00:05:18.960 began to slowly decline around the turn
+00:05:20.759 of the decade while the site is still up
+00:05:22.880 to this day it is largely defunct you
+00:05:25.199 can't sign up for a new account or
+00:05:26.720 anything and if you had an account back
+00:05:28.639 in the day chances are it's gone because
+00:05:31.919 all user content from launch until 2015
+00:05:34.759 was lost in a botched server migration
+00:05:37.039 in 2019 great work guys interestingly
+00:05:40.360 myspace's customizability may have
+00:05:42.440 contributed to its downfall the same
+00:05:44.440 shoddy cating that had accidentally
+00:05:46.319 allowed for profile customization also
+00:05:48.680 allowed hackers to easily gain access to
+00:05:51.120 the site and up Myspace began
+00:05:53.680 to gain a bit of a reputation for being
+00:05:55.680 unsafe around this time another social
+00:05:58.039 networking site was coming up that was
+00:05:59.639 was thought of as being safer Facebook
+00:06:02.520 ohow the irony unlike Myspace Facebook
+00:06:05.160 had virtually no customization options
+00:06:07.479 you could upload a profile picture and
+00:06:09.280 eventually a header photo but other than
+00:06:11.440 that everyone's profiles had the exact
+00:06:13.759 same look and layout Facebook's main
+00:06:15.960 feature became its news feed where you
+00:06:17.880 could see your friends posts without
+00:06:19.479 having to visit their profile the
+00:06:21.240 emphasis here was less on individuality
+00:06:23.440 and personal expression and more on the
+00:06:25.560 social part of social network which is
+00:06:27.960 lame as hell in my opinion but however
+00:06:30.440 this safe standardized approach appealed
+00:06:32.560 more to advertisers and apparently to
+00:06:34.560 users as well because they began leaving
+00:06:36.840 Myspace in droves I think for most
+00:06:39.240 people my age who were entering their
+00:06:41.080 teenage years in the late 2000s and
+00:06:43.039 early 2010s Facebook was their first
+00:06:45.560 social media and they didn't even bother
+00:06:47.560 with Myspace I did have a MySpace
+00:06:49.919 account but the Heyday had long since
+00:06:52.039 passed by the time I made it and I don't
+00:06:54.000 think I hardly ever used it another site
+00:06:56.360 that became synonymous with Myspace was
+00:06:58.400 blingy and animated gif creation site
+00:07:01.000 that launched in 2006 to allow people to
+00:07:03.400 add personalized imagery to their
+00:07:05.000 Myspace Pages you could create layered
+00:07:07.160 images by uploading a photo and
+00:07:09.160 decorating it with stamps that were
+00:07:10.919 created by other users it even became a
+00:07:13.120 bit of a community unto itself with the
+00:07:15.160 addition of forums and blingy making
+00:07:17.240 competitions as you would expect the
+00:07:19.199 site declined in popularity along with
+00:07:21.080 the decline in Myspace and the blingy
+00:07:23.800 aesthetic came to be seen as cringey and
+00:07:25.960 tacky only used for ironic memes they
+00:07:28.680 announced they would be shutting down in
+00:07:30.319 2015 but walked this back after fan
+00:07:33.039 outcry there was some concern that the
+00:07:35.039 site would stop working after the death
+00:07:36.800 of Flash in 2020 but they found a way to
+00:07:39.599 persist as of a few days ago at the time
+00:07:42.000 of researching the site became defunct
+00:07:44.400 with a message saying that the blingy
+00:07:46.199 team are working on transforming blingy
+00:07:48.960 into something new that preserves the
+00:07:51.159 passion and creativity of this amazing
+00:07:53.159 Community who knows what that means but
+00:07:55.240 I guess we'll see if you're interested
+00:07:56.960 in a deep dive on blingy specifically
+00:07:59.639 izes and strange eons have both made
+00:08:01.840 videos on it recently another site
+00:08:03.879 called Pik mix is still up and running
+00:08:05.919 and is basically the same thing as
+00:08:07.639 blingy as for Myspace a Revival called
+00:08:10.440 space hay was launched in 2020 by German
+00:08:13.120 software developer Anton Rome with the
+00:08:15.720 goal of resurrecting all the things you
+00:08:17.639 missed most about social networks Rome
+00:08:20.120 was only 19 when space hay launched
+00:08:22.639 meaning he was too young to have used
+00:08:24.479 Myspace but felt inspired to create a
+00:08:26.759 Revival after he came to the conclusion
+00:08:28.879 that you can't find something like this
+00:08:30.520 nowadays where everyone can be this
+00:08:32.519 creative as of June 2024 it has over a
+00:08:35.679 million users and many of these users
+00:08:37.799 are definitely keeping the spirit of the
+00:08:39.640 original Myspace profiles alive a lot of
+00:08:42.240 them seem to be teenagers as well the
+00:08:44.440 children yearn for 2009 Facebook ended
+00:08:47.279 up setting a precedent that later social
+00:08:49.320 media like Twitter and Instagram
+00:08:51.200 followed so going into the 2010s
+00:08:54.080 customization online was scarcer than
+00:08:56.240 ever there was one platform that kept it
+00:08:58.640 alive a little longer longer
+00:09:00.420 [Music]
+00:09:03.720 however if it wasn't already obvious I
+00:09:06.360 was on Tumblr a lot during my formative
+00:09:08.320 years and I would say it's foundational
+00:09:10.240 to the person I am today Tumblr is a
+00:09:12.600 micro blogging platform created in 2007
+00:09:15.519 but it didn't really start taking off
+00:09:17.120 until 2010 or 2011 and was hugely
+00:09:20.440 popular from about 2012 to 2015 it
+00:09:23.480 became a Haven for various communities
+00:09:25.519 including fandoms artists writers
+00:09:28.079 fashion enthusiasts and lgbtq folks
+00:09:30.959 however towards the mid-2010s it gained
+00:09:33.279 a bit of a reputation for being filled
+00:09:35.079 with fandom drama social justice
+00:09:37.120 Warriors and just some very strange
+00:09:39.480 people and was often mocked by the rest
+00:09:41.720 of the internet even though most of the
+00:09:43.560 posts that went viral on places like r/
+00:09:46.160 Tumblr and action were very obvious
+00:09:48.240 satire and troll posts bone gazi was
+00:09:51.240 unfortunately real though one thing
+00:09:53.000 Tumblr was great for was allowing users
+00:09:55.079 to heavily customize their blogs you
+00:09:57.160 could either choose one of the pre-made
+00:09:58.720 templates called themes that were
+00:10:00.640 available or you could use the built-in
+00:10:02.600 HTML Editor to edit your theme from
+00:10:04.760 scratch theme customization became a big
+00:10:07.120 part of Tumblr culture people created
+00:10:09.320 theme blogs dedicated to sharing the
+00:10:11.279 different layouts they had created those
+00:10:13.200 of us who were not proficient in HTML
+00:10:15.440 could simply copy and paste the codes
+00:10:17.200 onto our own blogs and even the
+00:10:19.000 templates themselves were often very
+00:10:20.839 customizable with options to do
+00:10:22.800 everything from change the colors to add
+00:10:25.160 custom cursors and favicons for many
+00:10:27.760 people this was how they learned h HTML
+00:10:30.079 raise your hand if you used to spend
+00:10:31.560 entire afternoons editing your theme I
+00:10:33.920 don't have it anymore sadly but I
+00:10:35.760 remember I used to have this one crazy
+00:10:37.720 theme that had like an animated
+00:10:39.680 background and glitter falling and a
+00:10:42.040 whole bunch of gifs on it and I had like
+00:10:44.360 a separate page where I listed all my
+00:10:46.519 favorite ships using little pixel art
+00:10:48.440 Sprites of the characters then there was
+00:10:50.639 my first blog which is uh no comment
+00:10:54.120 Tumblr started to decline in popularity
+00:10:56.240 in the latter half of the 2010s it was
+00:10:58.639 purchased by Yahoo yes the same Yahoo
+00:11:01.639 that killed geoc cities in 2013 which
+00:11:04.800 did have some people nervous we made fun
+00:11:07.360 of them at the time but we should have
+00:11:09.160 listened it was sold again in 2019 to
+00:11:12.200 automatic the company that owns another
+00:11:14.440 blogging platform WordPress for
+00:11:16.839 reportedly less than $3 million so far
+00:11:19.839 they're doing a terrible job at
+00:11:21.959 running it some cite the infamous failed
+00:11:24.399 Tumblr convention dashcon in 2014 as the
+00:11:27.480 beginning of the end but the real
+00:11:29.760 not final nail in the coffin because
+00:11:31.720 Tumblr is still up and running but I
+00:11:34.320 guess second to last nail in the coffin
+00:11:36.560 was when they banned all adult content
+00:11:39.040 at the end of 2018 causing a mass Exodus
+00:11:42.440 of users from the site real tumblrina
+00:11:44.839 stuck a around post porn band although I
+00:11:47.160 will say the general Vibe on the site
+00:11:48.839 now is that we're all just kind of
+00:11:50.600 sitting around waiting for that final
+00:11:52.519 killing blow you can still edit your
+00:11:54.720 blog theme but customization seems to
+00:11:57.000 have been deemphasized in recent years I
+00:11:59.360 almost never see those theme blogs or
+00:12:01.279 post sharing themes anymore when you
+00:12:03.440 click on someone's profile it takes you
+00:12:05.480 to a version of their blog with this
+00:12:07.040 more typical social media profile layout
+00:12:09.639 where all you can customize are two
+00:12:11.399 colors profile and header images and the
+00:12:13.920 font of your blog title this is also how
+00:12:16.320 blogs look on mobile then if you want to
+00:12:18.639 see the full version of their blog with
+00:12:20.199 the custom theme if they have one you
+00:12:22.399 have to click on their name. tumblr.com
+00:12:24.600 URL when I made a new Tumblr account in
+00:12:27.240 2023 it took me a hot minute to even
+00:12:29.720 figure out how to edit my theme and for
+00:12:32.040 a while I thought they'd removed the
+00:12:33.560 feature for new accounts or something
+00:12:35.279 but now it's sort of presented as a
+00:12:36.880 bonus feature you can opt into if you
+00:12:38.680 want rather than a core part of the user
+00:12:40.839 experience it wouldn't surprise me if
+00:12:43.040 someone totally new to Tumblr in the
+00:12:44.800 past few years if such a person exists
+00:12:47.560 wasn't even aware of custom themes it
+00:12:49.760 seems like in an effort to stay relevant
+00:12:51.839 they've tried to become more like other
+00:12:53.680 social media sites but I don't know that
+00:12:55.880 it's doing them any favors
+00:12:57.940 [Music]
+00:13:02.760 lastly I want to talk about a few
+00:13:04.600 smaller examples of lost customization
+00:13:06.639 in recent years one of these is on this
+00:13:09.160 website right here wherever the logo is
+00:13:12.360 YouTube I'm talking about YouTube
+00:13:13.959 although I've only been making videos
+00:13:15.399 for a little over a year I've been on
+00:13:17.480 YouTube since 2010 fellow YouTube
+00:13:20.279 oldheads might remember when Channel
+00:13:22.279 Pages were a lot more customizable than
+00:13:24.360 they are currently similar to Myspace
+00:13:26.720 profiles you could choose the colors add
+00:13:28.760 a back background photo and customize
+00:13:30.880 the text graphics and layout there was
+00:13:32.959 also just a lot more information
+00:13:34.399 displayed on your channel page as well
+00:13:36.360 such as total Channel views and watch
+00:13:38.360 time last login date country friends
+00:13:41.279 subscribers favorites and channel
+00:13:43.160 comments I believe most of these
+00:13:45.000 customization options were lost around
+00:13:47.079 the time YouTube merged with Google+ in
+00:13:49.839 2013 and a more Bare Bones layout very
+00:13:52.759 similar to the current one was
+00:13:54.120 introduced smash's Channel page is a
+00:13:56.560 particularly good case study for this
+00:13:58.199 Evolution since they were on YouTube
+00:14:00.040 since the beginning and are still around
+00:14:01.800 today in addition to Lost customization
+00:14:04.279 in online spaces I feel like we're
+00:14:06.240 seeing a move away from personalization
+00:14:08.240 in other spheres as well for example one
+00:14:11.160 feature people loved about the Nintendo
+00:14:13.040 3DS was that it allowed you to purchase
+00:14:15.320 and download custom themes from the
+00:14:17.240 eShop for the home menu of your system
+00:14:19.440 these themes included custom background
+00:14:21.440 music background images icons and sound
+00:14:24.320 effects and were usually themed around
+00:14:26.480 Nintendo franchises like Pokémon The
+00:14:29.199 Legend of Zelda Fire Emblem Metroid and
+00:14:31.759 Mario there's a very popular 3DS
+00:14:34.120 Homebrew community that allows for
+00:14:35.839 people among other things to download
+00:14:37.880 custom themes from the internet Nintendo
+00:14:40.240 fans were hopeful that the theme feature
+00:14:42.199 would be carried over to the switch but
+00:14:43.920 were disappointed when they found that
+00:14:45.560 they could only toggle between two lame
+00:14:47.959 ass default themes it' be great if they
+00:14:50.399 brought back themes on the next console
+00:14:52.440 but it's Nintendo and I think doing the
+00:14:54.880 opposite of what their fans want must be
+00:14:57.079 part of their corporate motto or
+00:14:58.600 something so I'm not overly optimistic
+00:15:01.480 there seem to be a lot fewer design and
+00:15:03.519 color options for the physical pieces of
+00:15:05.360 tech we buy as well like look at all
+00:15:07.440 these different colors the PS2 came in
+00:15:09.519 there was even a transparent one
+00:15:10.959 remember transparent Tech as opposed to
+00:15:13.120 the PS5 which as far as I'm aware just
+00:15:15.839 comes in this one color my first laptop
+00:15:18.399 in 2011 was this pink Sony bio but after
+00:15:21.600 the rise of the MacBook every PC laptop
+00:15:24.160 company was like we have to copy them so
+00:15:26.680 laptops started to come in either gray
+00:15:28.680 or slightly different shade of gray
+00:15:31.160 overall with design and Aesthetics there
+00:15:33.519 seems to have been a shift sometime in
+00:15:35.240 the 2010s towards sleekness and
+00:15:37.199 minimalism think of the shift from the
+00:15:39.199 friger Aro aesthetic that everyone is
+00:15:41.040 currently obsessed with to the more
+00:15:42.680 modern corporate Memphis aesthetic or
+00:15:44.959 the rise of the sad beige mom aesthetic
+00:15:47.360 on Tik Tok however as with all Trends I
+00:15:50.279 think we might be starting to see things
+00:15:51.920 swing in the opposite direction I've
+00:15:53.720 seen a lot more fashion influencers
+00:15:55.480 embracing maximalism lately and it looks
+00:15:58.000 like companies like Apple are starting
+00:15:59.800 to reintroduce greater color options for
+00:16:01.800 their products we're definitely in an
+00:16:03.880 era where people are starting to get fed
+00:16:05.839 up with the big social media sites so
+00:16:08.279 I'm thinking we should all migrate to
+00:16:09.680 neoc cities and space hay and forums
+00:16:12.079 where we can all have our own custom
+00:16:13.519 signatures that probably won't happen
+00:16:15.800 but a girl can
+00:16:16.970 [Music]
+00:16:20.759 dream so why do I think there was this
+00:16:23.440 widespread abandonment of
+00:16:24.880 personalization and customization
+00:16:26.800 options on the web well I think part
+00:16:28.880 part of it definitely has to do with the
+00:16:30.440 trend cycle of Aesthetics time passed
+00:16:33.160 tastes changed and people looked back at
+00:16:35.240 their old geoc cities or Myspace pages
+00:16:37.440 and cringed at what they saw was
+00:16:39.040 tackiness but a larger part of it in my
+00:16:41.440 opinion is the loss of the Democracy of
+00:16:43.759 the web the early web was a little bit
+00:16:45.680 anarchic and chaotic but people were
+00:16:47.800 free to express themselves in whichever
+00:16:49.639 way they chose now the internet has been
+00:16:51.759 taken over and homogenized by these
+00:16:53.800 massive corporations like meta and
+00:16:56.360 everything has to be sanitized and
+00:16:58.040 watered down in order to be Advertiser
+00:16:59.920 friendly let me
+00:17:01.920 say YouTube I can't even scroll through
+00:17:04.559 my own blog on the Tumblr app without
+00:17:06.439 seeing ads as I said before people are
+00:17:09.160 getting sick of this and the old web
+00:17:11.079 revivals like Neo cities and space hay
+00:17:13.400 are proudly adree to be clear I'm not
+00:17:16.400 saying the old web was perfect it was
+00:17:18.559 maybe a little under moderated at times
+00:17:21.160 let me know if you want to see me make a
+00:17:22.439 video about old shock sites but I think
+00:17:24.959 we've swung a little too far in the
+00:17:26.760 opposite direction I love the dating and
+00:17:29.200 at times garish looks of old geoc cities
+00:17:31.480 and Myspace Pages I'm sure a lot of
+00:17:33.600 people don't really care about the
+00:17:34.960 decline of customization but I think
+00:17:37.360 having the opportunity to be creative
+00:17:39.240 and let your freak flag fly is
+00:17:41.240 incredibly important make the internet
+00:17:43.320 weird again have you ever used geoc
+00:17:45.360 cities Myspace or pre 2018 Tumblr if so
+00:17:49.000 what do you miss most about
+00:17:50.480 customization do you have a neoc cities
+00:17:52.640 or space hey page I would love to hear
+00:17:54.720 your thoughts as always thank you so
+00:17:56.760 much for watching if you enjoyed the
+00:17:58.280 video like liking and subscribing would
+00:17:59.840 be very much appreciated now if you'll
+00:18:02.039 excuse me I'm going to go learn HTML so
+00:18:04.600 I can make the ugliest Neo cities web
+00:18:06.600 page known to man I'll catch youall on
+00:18:08.720 the next one
+00:18:11.750 [Music]
