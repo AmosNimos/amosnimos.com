@@ -7,7 +7,7 @@
 /* FONT */
 @font-face {
   font-family: retro_font;
-  src: url("font/retro_font.ttf");
+  src: url("fonts/C64_Pro_Mono_Regular.otf");
 }
 
 /* CLASS */
@@ -17,6 +17,28 @@ ul {
         padding: 0; /* Optional: Removes default padding */
         margin: 0; /* Optional: Removes default margin */
 }
+
+.btn-g {
+    font-family: retro_font;
+    display: flex;
+    overflow-x: auto;
+    //margin: 0.4em; /* Applies 0.4em margin to top, right, bottom, and left */
+    padding: 0.4em;
+    //padding-left: 0.5em; /* Overrides the left margin to be 1em */
+    list-style: none;
+    border: solid 4px #170c32;
+    background-color: #F97300;
+    color: #32012F;
+    text-decoration: none;
+    max-width: calc(100% - 1em); /* Adjust max-width as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+    text-align: center;
+    margin: auto;
+}
+
 
 .btn-v,
 .btn-h {
@@ -37,7 +59,7 @@ ul {
     text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
 }
 
-.btn-v:hover,
+.btn-g:hover, .btn-v:hover,
 .btn-h:hover {
   border: solid 4px #fffeb3;
   background-color: #170c32;
@@ -63,7 +85,7 @@ ul {
   background-color: #fffeb3;
   border: solid 4px #170c32;
   padding: 2em;
-  font-family: retro_font;
+  //font-family: retro_font;
   color: #170c32;
 }
 
@@ -116,12 +138,13 @@ blockquote {
 
 p {
   font-size: large;
+  font-size:24px;
   color: #170c32;
   padding: 0.5em;
 }
 
 li {
-  font-family: retro_font;
+  //font-family: retro_font;
   padding: 0.2em;
   color: #170c32;
   //background-color: #ffe28a;
@@ -129,7 +152,7 @@ li {
 }
 
 a {
-  font-family: retro_font;
+  //font-family: retro_font;
   font-size: 20px;
   color: #fb2e01;
 }
@@ -143,7 +166,11 @@ img {
 }
 
 body {
-  font-family: retro_font;
+  //font-family: retro_font;
+  font-family: 'Courier New', monospace;
+  //font-family: Georgia, serif;
+  
+  //font-size:2em;
   background-color: var(--body-bck);
   color: #170c32;
   padding: 3em 0em;
@@ -158,7 +185,7 @@ main {
 
 .footer {
     content: 'AUTHOR: AMOSNIMOS';
-    font-family: 'Times New Roman', Times, serif; /* Serif font for a retro feel */
+    font-family: 'Times New Roman', Times, serif !important; /* Serif font for a retro feel */
     color: #202146; /* Retro color for the text */
     text-align: center; /* Center the text */
     padding: 20px; /* Add some padding */
