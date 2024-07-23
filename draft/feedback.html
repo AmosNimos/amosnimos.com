@@ -1,0 +1,119 @@
+<a href="stars.html?url=<%= encodeURIComponent(window.location.href) %>">Leave Feedback</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .feedback-form label {
+            margin-top: 10px;
+        }
+        .feedback-form input, .feedback-form textarea {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .feedback-form button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback</h2>
+        <form class="feedback-form" onsubmit="submitForm(event)">
+            <label for="username">Username (optional):</label>
+            <input type="text" id="username" name="username">
+
+            <label for="url">Article/Page URL:</label>
+            <input type="url" id="url" name="url" required>
+
+            <label>Rate this article:</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">5 Stars</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">4 Stars</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">3 Stars</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">2 Stars</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">1 Star</label>
+            </div>
+
+            <label for="feedback">Leave a comment (optional):</label>
+            <textarea id="feedback" name="feedback" rows="4"></textarea>
+
+            <div>
+                <button type="submit" name="feedbackType" value="like">Like</button>
+                <button type="submit" name="feedbackType" value="dislike">Dislike</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlField = document.getElementById('url');
+            const articleUrl = getQueryParam('url');
+            if (articleUrl) {
+                urlField.value = decodeURIComponent(articleUrl);
+            }
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const username = formData.get('username') || 'Anonymous';
+            const url = formData.get('url');
+            const rating = formData.get('rating') || 'No rating';
+            const feedback = formData.get('feedback') || 'No comment';
+            const feedbackType = formData.get('feedbackType');
+
+            const subject = `Feedback: ${feedbackType.charAt(0).toUpperCase() + feedbackType.slice(1)}`;
+            const body = `Username: ${username}\nURL: ${url}\nRating: ${rating} Stars\nComment: ${feedback}`;
+
+            window.location.href = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>

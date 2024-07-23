@@ -70,7 +70,19 @@ I suggest you view this site from your terminal using tools such as "lynx" and "
 
 <li><a class="btn-v" href="https://addons.mozilla.org/en-CA/firefox/user/17875243/">Firefox Extensions</a></li>
 
+
 </ul>
+
+</br>
+<button class="btn-h" id="feedback-button">Leave Feedback</button>
+
+<script>
+    document.getElementById('feedback-button').addEventListener('click', () => {
+        const currentUrl = window.location.href;
+        const feedbackUrl = `feedback.html?url=${encodeURIComponent(currentUrl)}`;
+        window.location.href = feedbackUrl;
+    });
+</script>
 
 </div>
 <div class="badges" style="padding-top: 8px;">
