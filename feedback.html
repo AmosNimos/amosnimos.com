@@ -51,8 +51,19 @@
 </head>
 <body>
 <main>
+	<div class="topnav">
+	    <ul>
+    		<li><a class="btn-h" href="home.html">Home</a>
+            <li><a class="btn-v" href="rss.html" alt="RSS Feed"> 📶 RSS</a></li>
+        </ul>
+	</div>
+
+	<h2 class="title" id="blog">Feedback</h2> 
+
     <div class="article">
-        <h2>Feedback</h2>
+        <p>Disclaimer:
+        This page uses minimal JavaScript for strictly functional purposes.
+        </p>
         <div id="url-preview" class="url-preview"></div>
         <form class="feedback-form" onsubmit="submitForm(event)">
             <label for="username">Username (optional):</label>
