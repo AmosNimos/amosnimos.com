@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .feedback-form label {
+            margin-top: 10px;
+        }
+        .feedback-form input, .feedback-form textarea {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .feedback-form button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        .url-preview {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback</h2>
+        <div id="url-preview" class="url-preview"></div>
+        <form class="feedback-form" onsubmit="submitForm(event)">
+            <label for="username">Username (optional):</label>
+            <input type="text" id="username" name="username">
+
+            <label>Rate this article:</label>
+            <div class="rating">
+                <span data-value="1">☆</span>
+                <span data-value="2">☆</span>
+                <span data-value="3">☆</span>
+                <span data-value="4">☆</span>
+                <span data-value="5">☆</span>
+            </div>
+            <input type="hidden" id="rating" name="rating" required>
+            <input type="hidden" id="url" name="url" required>
+
+            <label for="feedback">Leave a comment (optional):</label>
+            <textarea id="feedback" name="feedback" rows="4"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlField = document.getElementById('url');
+            const urlPreview = document.getElementById('url-preview');
+            const articleUrl = getQueryParam('url');
+            if (articleUrl) {
+                const decodedUrl = decodeURIComponent(articleUrl);
+                urlField.value = decodedUrl;
+                urlPreview.textContent = `Feedback for: ${decodedUrl}`;
+            }
+
+            const stars = document.querySelectorAll('.rating span');
+            const ratingInput = document.getElementById('rating');
+
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const ratingValue = star.getAttribute('data-value');
+                    ratingInput.value = ratingValue;
+
+                    stars.forEach(s => {
+                        s.textContent = '☆';
+                    });
+
+                    for (let i = 0; i < ratingValue; i++) {
+                        stars[i].textContent = '⭐';
+                    }
+                });
+            });
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const username = formData.get('username') || 'Anonymous';
+            const url = formData.get('url');
+            const rating = formData.get('rating') || 'No rating';
+            const feedback = formData.get('feedback') || 'No comment';
+
+            const subject = `Feedback: ${rating} Stars`;
+            const body = `Username: ${username}\nURL: ${url}\nRating: ${rating} Stars\nComment: ${feedback}`;
+
+            window.location.href = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Page</title>
+</head>
+<body>
+    <!-- Your article content here -->
+
+    <button id="feedback-button">Leave Feedback</button>
+
+    <script>
+        document.getElementById('feedback-button').addEventListener('click', () => {
+            const currentUrl = window.location.href;
+            const feedbackUrl = `feedback.html?url=${encodeURIComponent(currentUrl)}`;
+            window.location.href = feedbackUrl;
+        });
+    </script>
+</body>
+</html>
