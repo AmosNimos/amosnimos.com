@@ -1,0 +1,211 @@
+body {
+    margin: 0;
+    //font-family: 'Times New Roman', serif;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-position: center;
+    //background-attachment: fixed;
+}
+
+header {
+    position: relative; /* Ensure positioning context for pseudo-element */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    padding-top: 2.5em;
+    //background-color: #000;
+    //border-bottom: 1px solid #444;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(90%) blur(10px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    z-index: -1; /* Ensure the pseudo-element is behind other content */
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.logo p {
+    margin: 0;
+    font-size: 0.5em;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #aaa;
+}
+
+.portfolio-grid{
+    //display: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 3em;
+    /* From https://css.glass */
+    margin:2em;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1%;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    //border: 1px solid rgba(255, 255, 255, 0.3);
+    content: "";
+    display: table;
+    clear: both;
+}
+
+img {
+    width: auto;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2%;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2%;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+    //width: 120%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay .text {
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.project-detail {
+    padding:3em;
+}
+
+.project-detail p {
+    padding-top:2em;
+}
+
+.project-detail {
+    /* From https://css.glass */
+    margin:2em;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1%;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    //border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-centered {
+    text-align: center;
+    //margin: 20px 0;
+}
+
+.header-centered h2 {
+    //padding-top:1em;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 2em;
+    margin: 0;
+}
+
+footer {
+    margin: 2em;
+    border-top: 1px solid #555;
+    padding: 1em;
+}
+
+footer a {
+    text-decoration: none;
+    color: #FFF
+}
+
+.logo-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the parent's color */
+}
+
+.logo {
+    display: inline-block; /* Ensure the div behaves like an inline element within the link */
+}
+
+
+// test
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.column .portfolio-item {
+  margin-top: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

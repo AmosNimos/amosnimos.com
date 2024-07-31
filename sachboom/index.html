@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+header {
+    position: relative; /* Ensure positioning context for pseudo-element */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    padding-top: 2.5em;
+    //background-color: #000;
+    //border-bottom: 1px solid #444;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(90%) blur(10px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    z-index: -1; /* Ensure the pseudo-element is behind other content */
+}
+.logo h1 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.logo p {
+    margin: 0;
+    font-size: 0.5em;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #aaa;
+}
+
+
+img {
+    width: auto;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+    padding: 1vw;
+    //margin: 0.5em;
+}
+
+img:hover {
+  //margin: 0.1em;
+  //padding: 0.1em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+
+body {
+    margin: 0;
+    //font-family: 'Times New Roman', serif;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-position: center;
+    //background-attachment: fixed;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+/* Create four equal columns that float next to each other */
+.column {
+  float: left;
+  width: 25%;
+  //padding: 10px;
+  //padding: 1em;
+}
+
+.column img {
+  //margin-top: 12px;
+  //margin-top: 1em;
+  width: 100%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.portfolio-grid{
+    //display: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    /* From https://css.glass */
+    margin:20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1%;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    //border: 1px solid rgba(255, 255, 255, 0.3);
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.header-centered {
+    text-align: center;
+    //margin: 20px 0;
+}
+
+.header-centered h2 {
+    //padding-top:1em;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 2em;
+    margin: 0;
+}
+
+footer {
+    margin: 2em;
+    border-top: 1px solid #555;
+    padding: 1em;
+}
+
+footer a {
+    text-decoration: none;
+    color: #FFF
+}
+
+.logo-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the parent's color */
+}
+
+.logo {
+    display: inline-block; /* Ensure the div behaves like an inline element within the link */
+}
+
+</style>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        <h1>Juliette Melodyl Bedard</h1>
+        <p>SACHBOOM - Artist Polyvalente & Multimedia</p>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cv.pdf">CV</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="header-centered">
+    <h2>- Folio -</h2>
+</div>
+
+<main>
+    <section class="portfolio-grid">
+        <!-- Photo Grid -->
+        <div class="row">
+          <div class="column">
+            <a href="img/30.jpeg"><img src="img/30.jpeg"></a>
+            <a href="img/45.jpeg"><img src="img/45.jpeg"></a>
+            <a href="img/36.jpeg"><img src="img/36.jpeg"></a>
+            <a href="img/46.jpeg"><img src="img/46.jpeg"></a>
+            <a href="img/37.jpeg"><img src="img/37.jpeg"></a>
+            <a href="img/13.jpeg"><img src="img/13.jpeg"></a>
+            <a href="img/3.jpeg"><img src="img/3.jpeg"></a>
+            <a href="img/26.jpeg"><img src="img/26.jpeg"></a>
+            <a href="img/8.jpeg"><img src="img/8.jpeg"></a>
+            <a href="img/42.jpeg"><img src="img/42.jpeg"></a>
+            <a href="img/39.jpeg"><img src="img/39.jpeg"></a>
+            <a href="img/7.jpeg"><img src="img/7.jpeg"></a>
+          </div>
+          <div class="column">
+            <a href="img/41.jpeg"><img src="img/41.jpeg"></a>
+            <a href="img/9.jpeg"><img src="img/9.jpeg"></a>
+            <a href="img/38.jpeg"><img src="img/38.jpeg"></a>
+            <a href="img/2.jpeg"><img src="img/2.jpeg"></a>
+            <a href="img/23.jpeg"><img src="img/23.jpeg"></a>
+            <a href="img/5.jpeg"><img src="img/5.jpeg"></a>
+            <a href="img/15.jpeg"><img src="img/15.jpeg"></a>
+            <a href="img/29.jpeg"><img src="img/29.jpeg"></a>
+            <a href="img/16.jpeg"><img src="img/16.jpeg"></a>
+            <a href="img/14.jpeg"><img src="img/14.jpeg"></a>
+            <a href="img/18.jpeg"><img src="img/18.jpeg"></a>
+            <a href="img/28.jpeg"><img src="img/28.jpeg"></a>
+          </div>
+          <div class="column">
+            <a href="img/10.jpeg"><img src="img/10.jpeg"></a>
+            <a href="img/17.jpeg"><img src="img/17.jpeg"></a>
+            <a href="img/22.jpeg"><img src="img/22.jpeg"></a>
+            <a href="img/43.jpeg"><img src="img/43.jpeg"></a>
+            <a href="img/27.jpeg"><img src="img/27.jpeg"></a>
+            <a href="img/40.jpeg"><img src="img/40.jpeg"></a>
+            <a href="img/24.jpeg"><img src="img/24.jpeg"></a>
+            <a href="img/11.jpeg"><img src="img/11.jpeg"></a>
+            <a href="img/34.jpeg"><img src="img/34.jpeg"></a>
+          </div>
+          <div class="column">
+            <a href="img/44.jpeg"><img src="img/44.jpeg"></a>
+            <a href="img/12.jpeg"><img src="img/12.jpeg"></a>
+            <a href="img/6.jpeg"><img src="img/6.jpeg"></a>
+            <a href="img/21.jpeg"><img src="img/21.jpeg"></a>
+            <a href="img/31.jpeg"><img src="img/31.jpeg"></a>
+            <a href="img/35.jpeg"><img src="img/35.jpeg"></a>
+            <a href="img/1.jpeg"><img src="img/1.jpeg"></a>
+            <a href="img/25.jpeg"><img src="img/25.jpeg"></a>
+            <a href="img/32.jpeg"><img src="img/32.jpeg"></a>
+            <a href="img/33.jpeg"><img src="img/33.jpeg"></a>
+            <a href="img/20.jpeg"><img src="img/20.jpeg"></a>
+            <a href="img/19.jpeg"><img src="img/19.jpeg"></a>
+          </div>
+        </div>
+    </section>
+    <footer style="text-align: center; font-size: small; margin-top: 20px;">
+        Site created by <a href="https://amosnimos.com/cv.html">Amosnimos</a> - 2024
+    </footer>
+</body>
+</html>

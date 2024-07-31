@@ -1,0 +1,15 @@
+--2024-07-16 18:47:02--  https://www.facebook.com/denise.aucoinduthe/posts/pfbid0WqwEuXLCH7b8VwBUpNN6uBHA1HR74LmQGZNBtXZMUqdUjXotYtT8Q2wR6QzCceK2l?notif_id=1721095597308843
+Resolving www.facebook.com (www.facebook.com)... 31.13.71.36, 2a03:2880:f175:81:face:b00c:0:25de
+Connecting to www.facebook.com (www.facebook.com)|31.13.71.36|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.facebook.com/unsupportedbrowser [following]
+--2024-07-16 18:47:08--  https://www.facebook.com/unsupportedbrowser
+Reusing existing connection to www.facebook.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘pfbid0WqwEuXLCH7b8VwBUpNN6uBHA1HR74LmQGZNBtXZMUqdUjXotYtT8Q2wR6QzCceK2l?notif_id=1721095597308843’
+
+      pfbid            0  --.-KB/s          pfbid0WqwEu       48.23K  --.-KB/s    in 0.09s   
+
+2024-07-16 18:47:08 (511 KB/s) - ‘pfbid0WqwEuXLCH7b8VwBUpNN6uBHA1HR74LmQGZNBtXZMUqdUjXotYtT8Q2wR6QzCceK2l?notif_id=1721095597308843’ saved [49388]
+
