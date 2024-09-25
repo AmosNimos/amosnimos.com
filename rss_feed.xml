@@ -7,7 +7,33 @@
     <language>en-us</language>
     <pubDate>Fri, 12 Jul 2024 14:57:04 -0400</pubDate>
     <lastBuildDate>Fri, 12 Jul 2024 14:57:04 -0400</lastBuildDate>
-    <generator>ChatGPT RSS Generator</generator>
+    <generator>RSS Generator NONE (It's hand crafted thus why it suck)</generator>
+    <item>
+      <title>October Project Update</title>
+      <pubDate>2024-09-25</pubDate>
+      <description>
+        # In the coming month, I have several exciting projects lined up:
+
+        1. **Documentary**: I will be working on a documentary titled **"Ça va bien aller,"** which will explore the COVID-19 situation in Quebec, Canada. The film aims to shed light on the lies and tyranny that have occurred under the pretext of a health crisis.
+
+        2. **Text Editor Development**: I plan to develop a text editor in Python, inspired by Nano, but with added features like code folding for enhanced usability.
+
+        3. **Game Engine**: In the future, I aspire to create a fake 2D game engine for developing simple Doom-like games.
+
+        4. **CLI Projects**: I am also considering the release of a CLI CAD program and a CLI MIDI program.
+
+        5. **Blog Articles**: I aim to write new articles for my blog and will keep you informed about my progress. I think I will use RSS feeds for updates like this instead of full articles. 
+
+        ### Questions on Future Features
+
+        - Should all my articles be formatted as RSS feeds that can be expanded?
+        - Would it be beneficial to implement a comment feature on coin-arena.com, my social media site, allowing users to comment and discuss the articles I write?
+        - Should the site have language options?
+        - Should the site provide audio files for every article?
+        - Should every article be fully RSS compatible to allow complete reading in applications like Newsboat?
+        These are the thoughts I’m currently exploring, and I look forward to sharing more updates soon!
+      </description>
+    </item>
     <item>
     	<title>The Irony of Modern Antifa</title>
     	<pubDate>2024-07-27</pubDate>
