@@ -61,7 +61,31 @@ Curiosity definitely plays a role in my process, but it’s not enough on its ow
 <p>Ultimately, I follow my instincts, build on my interests, and don’t worry if my work resonates with everyone. I focus on creating things I’d want to use, understanding that if I love it, maybe others will too.
 If I could just focus on creating instead of getting bogged down by day-to-day survival, I reckon I could make some serious advancements.</p>
 
+    <button id="speakBtn">Read Article</button>
+
+    <script>
+        // Check if the Web Speech API is supported
+        if ('speechSynthesis' in window) {
+            const speakButton = document.getElementById('speakBtn');
+            const articleContent = document.querySelector('.article').innerText;
+
+            speakButton.addEventListener('click', () => {
+                const speech = new SpeechSynthesisUtterance(articleContent);
+                
+                // Optionally, change voice and language
+                speech.lang = 'en-US';  // English language (can change based on preference)
+                speech.voice = speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Male') || null;
+                
+                // Speak the text
+                speechSynthesis.speak(speech);
+            });
+        } else {
+            alert('Sorry, your browser does not support text-to-speech.');
+        }
+    </script>
+
 <p class="footer">By Amos Nimos</p>
 </div>
 </main>
 </body>
+
