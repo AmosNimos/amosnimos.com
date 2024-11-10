@@ -8,6 +8,18 @@
     <pubDate>Fri, 12 Jul 2024 14:57:04 -0400</pubDate>
     <lastBuildDate>Fri, 12 Jul 2024 14:57:04 -0400</lastBuildDate>
     <generator>RSS Generator NONE (It's hand crafted thus why it suck)</generator>
+
+    <item>
+    	<title>Creativity in Code</title>
+    	<pubDate>2024-11-10</pubDate>
+    	<description>
+    	    (The rss feed is missing a lot of article I should try to use it more or automate it, so far it's still a work in progress.)
+        	Curiosity drives creativity, but necessity fuels real progress. By solving problems I dread, like coding game menus, I turn challenges into reusable solutions, making the work more enjoyable and efficient.
+    	</description>
+    	<guid>https://amosnimos.com/posts/2024-11-10_creativity_in_code:_balancing_curiosity_and_necessity/article.html</guid>
+    </item>
+
+
     <item>
       <title>October Project Update</title>
       <pubDate>2024-09-25</pubDate>
