@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Linux Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .game-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+        .game-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .tags {
+            font-size: 14px;
+            color: #666;
+        }
+        .cli-games {
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .intro {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Favorite Linux Games</h1>
+
+    <div class="intro">
+        <p>On Debian-based systems, between apt packages and snap packages, there are plenty of options to play games. I prefer picking games that are modular, FOSS, customizable, and enjoyable. If you don’t want to wait for long updates to start gaming, these are simple games that you can spend a lot of time in.</p>
+        <p>Most of them barely take any memory on your system, and if you don’t like something in them, you can change it. Worst case scenario, you ain't losing anything since they’re free and not that hard to install.</p>
+    </div>
+    
+    <div class="game-list">
+        <!-- Gzdoom -->
+        <div class="game-item">
+            <img src="path-to-image/gzdoom.png" alt="Gzdoom">
+            <h2>Gzdoom (with Freedoom)</h2>
+            <p>Gzdoom is a versatile game engine for Doom, supporting modding and enhanced graphics. Freedoom is a free, open-source game data replacement for Doom.</p>
+            <div class="tags">Tags: 3D, Shooter, Engine</div>
+        </div>
+
+        <!-- Cube2: Sauerbraten -->
+        <div class="game-item">
+            <img src="path-to-image/cube2.png" alt="Cube2: Sauerbraten">
+            <h2>Cube2: Sauerbraten</h2>
+            <p>A fast-paced multiplayer FPS with a strong emphasis on modding and community maps, powered by the Cube engine.</p>
+            <div class="tags">Tags: 3D, Racing, Shooter</div>
+        </div>
+
+        <!-- Luanti (Minetest) -->
+        <div class="game-item">
+            <img src="path-to-image/luanti.png" alt="Luanti (Minetest)">
+            <h2>Luanti (Minetest)</h2>
+            <p>Minetest is a free, open-source voxel game engine. Luanti is a mod that adds RPG-style gameplay, similar to Minecraft.</p>
+            <div class="tags">Tags: 3D, Sandbox, RPG</div>
+        </div>
+
+        <!-- Super Tux Kart -->
+        <div class="game-item">
+            <img src="path-to-image/super-tux-kart.png" alt="Super Tux Kart">
+            <h2>Super Tux Kart</h2>
+            <p>A free, open-source kart racing game starring Tux the penguin and friends. It's fun for all ages!</p>
+            <div class="tags">Tags: 3D, Racing, Fun</div>
+        </div>
+
+        <!-- Assault Cube -->
+        <div class="game-item">
+            <img src="path-to-image/assault-cube.png" alt="Assault Cube">
+            <h2>Assault Cube</h2>
+            <p>A fast-paced, multiplayer FPS with a focus on simplicity and competitive play.</p>
+            <div class="tags">Tags: 3D, Shooter, Multiplayer</div>
+        </div>
+
+        <!-- Hedge Wars -->
+        <div class="game-item">
+            <img src="path-to-image/hedge-wars.png" alt="Hedge Wars">
+            <h2>Hedge Wars</h2>
+            <p>A turn-based strategy game similar to Worms, featuring hedgehogs with a wide variety of weapons and tactics.</p>
+            <div class="tags">Tags: 2D, Strategy, Turn-based</div>
+        </div>
+    </div>
+
+    <!-- CLI Games Section -->
+    <div class="cli-games">
+        <h2>CLI Games</h2>
+        <div class="game-item">
+            <h3>Dwarf Fortress (Classic)</h3>
+            <p>A simulation game where you control a group of dwarves, building and managing a fortress while facing challenges and dangers.</p>
+            <div class="tags">Tags: Simulation, Management, Hardcore</div>
+        </div>
+        <div class="game-item">
+            <h3>God of Ammock</h3>
+            <p>A roguelike game combining fast-paced combat with exploration and resource management.</p>
+            <div class="tags">Tags: Roguelike, Action</div>
+        </div>
+        <div class="game-item">
+            <h3>Angband</h3>
+            <p>A classic dungeon-crawling roguelike based on the works of J.R.R. Tolkien.</p>
+            <div class="tags">Tags: Roguelike, Dungeon-crawler</div>
+        </div>
+        <div class="game-item">
+            <h3>Nethack</h3>
+            <p>A complex roguelike dungeon crawler where every game is different and features permanent death.</p>
+            <div class="tags">Tags: Roguelike, Dungeon-crawler</div>
+        </div>
+        <div class="game-item">
+            <h3>Gnuchess</h3>
+            <p>A classic chess game that you can play against a computer opponent.</p>
+            <div class="tags">Tags: Strategy, Chess</div>
+        </div>
+    </div>
+
+    <div class="cli-games">
+        <h2>Not in APT</h2>
+        <div class="game-item">
+            <h3>Cataclysm: Dark Days Ahead</h3>
+            <p>A post-apocalyptic roguelike survival game where you must scavenge, craft, and fight to stay alive.</p>
+            <div class="tags">Tags: Roguelike, Survival</div>
+        </div>
+        <div class="game-item">
+            <h3>Spelunky</h3>
+            <p>A roguelike platformer where you explore caves, collect treasure, and avoid traps and enemies.</p>
+            <div class="tags">Tags: Roguelike, Platformer</div>
+        </div>
+        <div class="game-item">
+            <h3>PPSSPP</h3>
+            <p>A PSP emulator that lets you play PlayStation Portable games on your Linux machine.</p>
+            <div class="tags">Tags: Emulator</div>
+        </div>
+    </div>
+
+</body>
+</html>
