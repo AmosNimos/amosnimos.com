@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abilities</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .cooldown-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            display: none;
+        }
+
+        .cooldown-overlay.active {
+            display: block;
+        }
+
+        .cooldown-overlay::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            border: 5px solid transparent;
+            border-top: 5px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div style="position: relative;">
+      <img src="banners/banner_001.jpg" style="margin: 0; left: 0; width: 100%; height: auto;">
+      
+      <!-- Gradient Overlay -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, #333333, rgba(0, 0, 0, 0));"></div>
+
+      <!-- Title and Subtitle -->
+      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; color: white;">
+        <h1 style="font-family: 'New Rocker', cursive; font-size: 9em; text-shadow: 0.1em 0.1em 0.5em rgba(100, 0, 0, 1); margin: 0; color: #FFFFFF">Demonlord Ascension</h1>
+      </div>
+    </div>
+
+    <h2>Abilities:</h2>
+
+    <div id="skills-container"></div>
+
+    <script>
+        let level = 1;
+        let xp = 0;
+        let xpGoal = 2;
+
+        let skillLevels = [];
+        let skillProgress = [];
+        let skillGoals = [];
+        let skillNames = [];
+        let skillTrainingActive = [];  // To track if training is active for a skill
+        let skillIcons = [];
+        let skillHueShifts = [];
+
+        // Clear localStorage and reset data
+        function clearStorage() {
+            localStorage.removeItem('skillsData');
+            localStorage.removeItem('playerData');
+            skillLevels = [];
+            skillProgress = [];
+            skillGoals = [];
+            skillNames = [];
+            skillIcon = [];
+            level = 1;
+            xp = 0;
+            xpGoal = 2;
+            alert('Skill progress has been cleared!');
+            location.reload();
+        }
+
+        /// SOUNDS
+        // Function to play a system notification sound (a victory bell or similar)
+        function playNotificationSound(index = 0) {
+            // Define an array of sound file paths
+            const sounds = [
+                'sounds/win.mp3',  // index 0
+                'sounds/sounds2.wav', // index 1
+            ];
+
+            // Make sure the index is within the bounds of the array
+            const sound = sounds[index] || sounds[0];  // Default to index 0 if out of bounds
+
+            const audio = new Audio(sound);
+            audio.play();
+        }
+
+        // Images
+        const iconsDir = 'icons/ability';
+
+        // Render skills from the loaded data
+        function renderSkills() {
+            const skillsContainer = document.getElementById("skills-container");
+            skillsContainer.innerHTML = ''; // Clear existing skills
+
+            for (let skillID = 0; skillID < skillLevels.length; skillID++) {
+                const skillName = skillNames[skillID];
+                const skillLevel = skillLevels[skillID];
+                const skillGoal = skillGoals[skillID];
+                const skillProgressValue = skillProgress[skillID];
+                const skillIcon = skillIcons[skillID];  // Fix the typo from skillIconss to skillIcons
+                const hueShift = skillHueShifts[skillID] || 0;
+                
+                // Create the skill element
+                const newSkill = document.createElement("div");
+                newSkill.classList.add("skill");
+                newSkill.innerHTML = `
+                    <div class="SkillHeader">
+                        <img class="SkillIcon" src="${skillIcon}" alt="${skillName} icon" style="filter: hue-rotate(${hueShift}deg);">
+                        <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevel}</h3>                    
+                    </div>
+                    <div class="training">
+                        <div class="progress-container">
+                            <div id="skill-${skillID}" class="progress-bar" style="width: ${Math.round((skillProgressValue / skillGoal) * 100)}%;">${Math.round((skillProgressValue / skillGoal) * 100)}%</div>
+                        </div>
+                        <button id="train-btn-${skillID}" onclick="startTraining(${skillID})">Train ${skillName}</button>
+                    </div>
+                `;
+
+                // Append the new skill to the container
+                skillsContainer.appendChild(newSkill);
+            }
+        }
+
+        // Save skills and player data to localStorage
+        function saveSkillsToStorage() {
+            const skillsData = { skillLevels, skillProgress, skillGoals, skillNames, skillIcons, skillHueShifts };
+            localStorage.setItem('skillsData', JSON.stringify(skillsData));
+            const playerData = { xp, xpGoal, level };
+            localStorage.setItem('playerData', JSON.stringify(playerData));
+        }
+
+        // Load skills and player data from localStorage
+        function loadSkillsFromStorage() {
+            const storedSkillsData = localStorage.getItem('skillsData');
+            if (storedSkillsData) {
+                const { skillLevels: storedLevels, skillProgress: storedProgress, skillGoals: storedGoals, skillNames: storedNames, skillIcons: storedIcons, skillHueShifts: storedHueShifts } = JSON.parse(storedSkillsData);
+                skillLevels = storedLevels || [];
+                skillProgress = storedProgress || [];
+                skillGoals = storedGoals || [];
+                skillNames = storedNames || [];
+                skillIcons = storedIcons || ['icons/default-icon.png'];  // Default fallback
+                skillHueShifts = storedHueShifts || [];  // Fix this line
+            } else {
+                // If no skills data exists, create default skills
+                addNewSkill(); // Create the first skill if none exist
+            }
+
+            const storedPlayerData = localStorage.getItem('playerData');
+            if (storedPlayerData) {
+                const { xp: storedXp, xpGoal: storedXpGoal, level: storedLevel } = JSON.parse(storedPlayerData);
+                xp = storedXp || 0;
+                xpGoal = storedXpGoal || 5;
+                level = storedLevel || 1;
+            }
+        }
+
+        // Generate a random skill name
+        function generateSkillName() {
+            const firstPart = [
+                "Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
+                "Cursed", "Blood", "Abyssal", "Soul", "Blight", "Nightmare", 
+                "Infernal", "Hellish", "Grim", "Eternal", "Vile", "Malice", 
+                "Wicked", "Necrotic", "Corrupt", "Searing", "Feral", "Unholy", "Phantom",
+                "Malevolent", "Sinister", "Diabolic", "Gore", "Ruinous", "Tormented", "Fiendish",
+                "Desolate", "Forsaken", "Accursed", "Devilish", "Blackened", "Ravaged",
+                "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
+                "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
+                "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", 
+                "Malevolence", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding"
+            ];
+            const secondPart = [
+                "Bolt", "Blast", "Beam", "Laser", "Bullet", "Wave", "Pulse", "Cannon", 
+                "Orb", "Dart", "Surge", "Jet", "Arrow", "Spear", "Bomb", "Strike", 
+                "Bind","Grasp", "Superheat", "Rush",
+                "Burst", "Cloak", "Fang", "Vortex", "Storm", "Howl", "Touch", "Flare", "Fist",
+                "Corrosion", "Decay", "Shred", "Pierce", "Eruption", "Pain", "Ruin", "Slash",
+                "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
+                "Meltdown", "Sear", "Vapor", "Fracture", "Discharge", "Annihilation", "Scald",
+                "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow"
+            ];
+
+            return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
+        }
+
+        // Add new skill
+        function addNewSkill() {
+            const skillID = skillLevels.length;
+
+            let skillName = generateSkillName();
+            let attempt=0;
+
+            // Keep generating a new name if it exists in the list, up to 100 times
+            if (Array.isArray(skillNames) && skillNames.length > 0) {
+                while (skillNames.includes(skillName) && attempts < 100) {
+                    skillName = generateSkillName();
+                    attempts++;
+                }
+            }
+            const skillGoal = 1;
+
+            if (skillID > 0) {
+                playNotificationSound();  // Play the sound when level-up is achieved
+                alert(`Skill [${skillName}] Acquired!`);
+            }
+
+            skillNames[skillID] = skillName;
+            skillLevels[skillID] = 1;
+            skillGoals[skillID] = skillGoal;
+            skillProgress[skillID] = 0;
+            skillTrainingActive[skillID] = false;  // Start with training inactive
+            
+            // Generate a random integer between 1 and 132 (formatted as 3-digit string)
+            const randomIconNumber = String(Math.floor(Math.random() * 132 + 1)).padStart(3, '0');
+            skillIcons[skillID] = iconsDir + randomIconNumber + ".png";
+            
+            // Generate random hue shift (between 0 and 360 degrees)
+            const randomHueShift = Math.floor(Math.random() * 360);
+
+            // Store the hue shift in skill data
+            skillHueShifts[skillID] = randomHueShift;
+
+            const newSkill = document.createElement("div");
+            newSkill.classList.add("skill");
+            newSkill.innerHTML = `
+                <div class="SkillHeader">
+                    <img class="SkillIcon" src="${skillIcons[skillID]}" alt="Skill Icon" style="filter: hue-rotate(${randomHueShift}deg);">
+                    <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevels[skillID]}</h3>
+                </div>
+                <div class="progress-container">
+                    <div id="skill-${skillID}" class="progress-bar" style="width: 0%;">0%</div>
+                </div>
+                <button id="train-btn-${skillID}" onclick="startTraining(${skillID})">Train ${skillName}</button>
+            `;
+            document.getElementById("skills-container").appendChild(newSkill);
+
+            // Start auto-training for the skill
+            //startTraining(skillID);
+
+            saveSkillsToStorage();
+        }
+
+        // Start the training for a skill
+        function startTraining(skillID) {
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            if (trainButton.disabled) return; // Prevent starting training if already completed
+
+            skillTrainingActive[skillID] = true;
+            trainButton.disabled = true; // Disable the button during training
+
+            const interval = setInterval(() => {
+                if (!skillTrainingActive[skillID]) {
+                    clearInterval(interval);
+                    return;
+                }
+
+                skillProgress[skillID] += 0.1; // Increase progress over time
+                updateProgressBar(skillID); // Update the progress bar
+                
+
+                if (skillProgress[skillID] >= skillGoals[skillID]) {
+
+                    clearInterval(interval); // Stop training once it reaches 100%
+                    skillLevels[skillID]++; // Level up the skill
+                    skillProgress[skillID] = 0; // Reset progress for next level
+                    skillGoals[skillID] *= 1.5;
+                    xp++; // Increase player's XP
+                    if (xp >= xpGoal) {
+                        xp = 0;
+                        xpGoal *= 1.5;
+                        level++;
+                        addNewSkill(); // Automatically add a new skill when level up
+                    }
+
+                    // Reset the progress bar and re-enable the training button
+                    updateProgressBar(skillID); // Reset progress bar
+                    document.getElementById(`train-btn-${skillID}`).disabled = false; // Re-enable the button
+
+                    // Update skill level display
+                    const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+                    skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+
+                    saveSkillsToStorage(); // Save the updated data
+                }
+            }, 100); // Update progress every 100ms
+        }
+
+        // Update the progress bar
+        function updateProgressBar(skillID) {
+            const progress = Math.min((skillProgress[skillID] / skillGoals[skillID]) * 100, 100);
+            const bar = document.getElementById(`skill-${skillID}`);
+            const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+            bar.style.width = `${progress}%`;
+            //bar.textContent = `${progress.toFixed(1)}%`;
+            bar.textContent = `${Math.round(progress)}%`;
+
+            // Disable the button when training is completed (100%)
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            if (progress === 100) {
+                // Reset the progress bar and re-enable the training button
+                playNotificationSound(1);  // Play the sound when level-up is achieved
+                alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                trainButton.disabled = true;  // Disable the button when progress reaches 100%
+            }
+        }
+
+        // Load skills on page load
+        loadSkillsFromStorage();
+        renderSkills(); // Render the skills after loading from storage
+
+    </script>
+</body>
+</html>
