@@ -70,7 +70,8 @@ h1, h2, h3 {
 
 button {
     padding: 10px 20px;
-    background-color: #007BFF;
+    background-color: #e61c1c;
+    background: linear-gradient(to bottom, #e61c1c, #8f0000);  /* Gradient background */
     color: white;
     border: none;
     cursor: pointer;
@@ -79,7 +80,8 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #ad0000;
+    background: linear-gradient(to bottom, #f04d4d, #d41e1e);  /* Gradient background */
 }
 
 /* Disabled button style */
