@@ -5,46 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overlord Ascension</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .cooldown-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 4px;
-            display: none;
-        }
-
-        .cooldown-overlay.active {
-            display: block;
-        }
-
-        .cooldown-overlay::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 60px;
-            height: 60px;
-            border: 5px solid transparent;
-            border-top: 5px solid #fff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes spin {
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-    </style>
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -241,16 +201,16 @@
         // Generate a random skill name
         function generateSkillName() {
             const firstPart = [
-                "Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
-                "Cursed", "Blood", "Abyssal", "Soul", "Blight", "Nightmare", 
-                "Infernal", "Hellish", "Grim", "Eternal", "Vile", "Malice", 
+                "Sinful", "Ruthless", "Evil", "Netherworld", "Merciless", "Colossal", "Monstrous", "Brutal","Cruel", "Inhumane","Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
+                "Cursed", "Blood", "Damnation", "Inferno", "Undead", "Dead", "Abyss", "Abyssal", "Soul", "Blight", "Nightmare", "Night", "Moonlight",
+                "Infernal", "Hell", "Hellish", "Grim", "Eternal", "Vile", "Malice", 
                 "Wicked", "Necrotic", "Corrupt", "Searing", "Feral", "Unholy", "Phantom",
                 "Malevolent", "Sinister", "Diabolic", "Gore", "Ruinous", "Tormented", "Fiendish",
                 "Desolate", "Forsaken", "Accursed", "Devilish", "Blackened", "Ravaged",
                 "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
                 "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
                 "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", 
-                "Malevolence", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding"
+                "Malevolence", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Merciful", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Madness", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless"
             ];
             const secondPart = [
                 "Bolt", "Blast", "Beam", "Laser", "Bullet", "Wave", "Pulse", "Cannon", 
@@ -261,7 +221,7 @@
                 "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
                 "Meltdown", "Sear", "Vapor", "Fracture", "Discharge", "Annihilation", "Scald",
                 "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
-                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow"
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith"
             ];
 
             return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
