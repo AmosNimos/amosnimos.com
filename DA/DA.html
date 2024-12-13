@@ -348,11 +348,11 @@
                     clearInterval(interval); // Stop training once it reaches 100%
                     skillLevels[skillID]++; // Level up the skill
                     skillProgress[skillID] = 0; // Reset progress for next level
-                    skillGoals[skillID] *= 1.5;
+                    skillGoals[skillID] *= 1.2;
                     xp++; // Increase player's XP
                     if (xp >= xpGoal) {
                         xp = 0;
-                        xpGoal *= 1.5;
+                        xpGoal *= 1.2;
                         level++;
                         addNewSkill(); // Automatically add a new skill when level up
                     }
