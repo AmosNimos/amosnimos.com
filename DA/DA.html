@@ -61,6 +61,41 @@
       </div>
     </div>
 
+    <button id="toggle-music-btn">Play Music</button>
+
+    <audio id="background-music" src="music/track1.mp3"></audio>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const button = document.getElementById('toggle-music-btn');
+
+        // Set volume to 0.3 (30%)
+        music.volume = 0.3;
+
+        // Function to play music
+        function playMusic() {
+            music.play();
+            button.textContent = 'Stop Music'; // Change button text
+        }
+
+        // Function to stop music
+        function stopMusic() {
+            music.pause();
+            music.currentTime = 0; // Reset the music to the start
+            button.textContent = 'Play Music'; // Change button text
+        }
+
+        // Button click event listener to toggle play/stop music
+        button.addEventListener('click', () => {
+            if (music.paused || music.ended) {
+                playMusic(); // Start music if it’s not playing
+            } else {
+                stopMusic(); // Stop music if it's playing
+            }
+        });
+    </script>
+
+
     <h2>Abilities:</h2>
 
     <div id="skills-container"></div>
@@ -94,13 +129,35 @@
             location.reload();
         }
 
+        /// BACKGROUND MUSIC
+        // Function to play background music in a loop
+        function playBackgroundMusic(index = 0) {
+            // Define an array of background music file paths
+            const tracks = [
+                'musics/track1.mp3', // index 0
+                'musics/track2.mp3', // index 1
+            ];
+
+            // Ensure the index is within the bounds of the array
+            const track = tracks[index] || tracks[0]; // Default to index 0 if out of bounds
+
+            // Create a single audio instance to play the background music
+            const backgroundAudio = new Audio(track);
+            backgroundAudio.loop = true; // Enable looping
+
+            backgroundAudio.play();
+
+            return backgroundAudio; // Return the audio instance for potential control (e.g., pause or stop)
+        }
+
         /// SOUNDS
         // Function to play a system notification sound (a victory bell or similar)
         function playNotificationSound(index = 0) {
             // Define an array of sound file paths
             const sounds = [
                 'sounds/win.mp3',  // index 0
-                'sounds/sounds2.wav', // index 1
+                'sounds/level.mp3', // index 1
+                'sounds/select.mp3', // index 2
             ];
 
             // Make sure the index is within the bounds of the array
@@ -268,6 +325,7 @@
 
         // Start the training for a skill
         function startTraining(skillID) {
+            playNotificationSound(2);  // Play the sound when level-up is achieved
             const trainButton = document.getElementById(`train-btn-${skillID}`);
             if (trainButton.disabled) return; // Prevent starting training if already completed
 
