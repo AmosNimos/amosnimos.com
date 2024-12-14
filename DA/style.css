@@ -11,7 +11,7 @@ h1, h2, h3 {
 
 .progress-container {
     width: 100%-2em;
-    margin: 2em;
+    margin: 1em;
     background-color: #333333;
     background: linear-gradient(to bottom, #444, #222);
     border-radius: 5px;
@@ -41,7 +41,7 @@ h1, h2, h3 {
     backdrop-filter: blur(8px);                 /* Blurred background effect */
     margin: 2em;
     min-height: 5em;
-    padding: 1em;                               /* Added padding for content spacing */
+    //padding: 1em;                               /* Added padding for content spacing */
     border-radius: 12px;                        /* Rounded edges for a modern look */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
     color: #ddeeff;                             /* Light text for contrast */
@@ -78,7 +78,7 @@ button {
     cursor: pointer;
     display: block; 
     margin: 2em auto;
-    min-width: 260px;
+    min-width: 400px;
 }
 
 button:hover {
@@ -114,25 +114,16 @@ button:disabled {
 .skill {
     display: flex;
     flex-direction: column;  /* Stack content vertically */
-    align-items: center;     /* Center content horizontally */
-}
-
-.SkillHeader {
-    display: flex;
-    align-items: center;     /* Vertically center the header next to the image */
-    justify-content: center; /* Center the header horizontally */
-    margin-bottom: 1em;      /* Space between SkillHeader and training */
+    align-items: right;     /* Center content horizontally */
+    //box-sizing: border-box;  /* Prevent overflow from padding/margins */
+    overflow: hidden;   
 }
 
 .SkillIcon {
     border: 5px solid #111122;
     width: 80px;
     height: 80px;
-    margin-right: 1em; /* Space between the image and the header */
-}
-
-.SkillHeader h3 {
-    margin: 0; /* Remove default margin for better alignment */
+    margin: 1em; /* Space between the image and the header */
 }
 
 .training {
@@ -149,6 +140,7 @@ button:disabled {
     background-color: #333333;
     background: linear-gradient(to bottom, #444, #222);
     border-radius: 5px;
+    margin-top:0%;
 }
 
 .progress-bar {
@@ -199,7 +191,7 @@ button:disabled {
     margin: 2em;
     margin-top:2em;
     border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
-    //overflow: hidden;   
+    overflow: hidden;   
     padding: 10px;             /* Optional padding around the container */
     background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
     padding: 1em;                               /* Added padding for content spacing */
@@ -224,6 +216,23 @@ button:disabled {
   transition: background-color 0.3s; /* Smooth background color transition */
 }
 
-.nav-button:hover {
-  background-color: #ddd;    /* Hover effect */
+.SkillHeader {
+    display: flex;
+    //justify-content: space-between; /* Spread out the columns */
+    align-items: center; /* Vertically center the items */
+    margin-bottom: 0em;
+}
+
+.SkillHeader .col {
+    margin: 2em;
+    display: flex;
+    align-items: left; /* Align items vertically within each column */
+}
+
+.SkillIcon {
+    margin-right: 10px; /* Space between image and text */
+}
+
+.nav-button {
+    margin-right: 10px; /* Space between button and other elements */
 }

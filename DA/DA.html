@@ -173,14 +173,18 @@
                 newSkill.classList.add("skill");
                 newSkill.innerHTML = `
                     <div class="SkillHeader">
-                        <img class="SkillIcon" src="${skillIcon}" alt="${skillName} icon" style="filter: hue-rotate(${hueShift}deg);">
-                        <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevel}</h3>                    
+                        <div class="col">
+                            <button class="nav-button" id="train-btn-${skillID}" onclick="startTraining(${skillID})">Train ${skillName}</button>
+                        </div>
+                        <div class="col">
+                            <img class="SkillIcon" src="${skillIcon}" alt="${skillName} icon" style="filter: hue-rotate(${hueShift}deg);">
+                            <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevel}</h3>
+                        </div>
                     </div>
                     <div class="training">
                         <div class="progress-container">
                             <div id="skill-${skillID}" class="progress-bar" style="width: ${Math.round((skillProgressValue / skillGoal) * 100)}%;">${Math.round((skillProgressValue / skillGoal) * 100)}%</div>
                         </div>
-                        <button id="train-btn-${skillID}" onclick="startTraining(${skillID})">Train ${skillName}</button>
                     </div>
                 `;
 
