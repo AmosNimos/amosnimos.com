@@ -340,7 +340,7 @@
                         xp++; // Increase player's XP
                         if (xp >= xpGoal) {
                             xp = 0;
-                            xpGoal *= progressDelay;
+                            xpGoal *= 1.6;
                             level++;
                             addNewSkill(); // Automatically add a new skill when level up
                         }
