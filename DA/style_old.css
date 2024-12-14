@@ -1,0 +1,285 @@
+body {
+    background-color: #333333;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    color: #ffff99;
+    //margin: 2em;
+    text-align: center;
+}
+
+.progress-container {
+    width: 100%-2em;
+    //margin: 10px;
+    //margin-left: 1em;
+    margin-right: 1em;
+    background-color: #333333;
+    background: linear-gradient(to bottom, #444, #222);
+    border-radius: 5px;
+    //height: 50px;
+    //line-height: 50px;
+    margin: 0; /* Set margin to 0 to remove vertical offset */
+    height: 40px;  /* Same height as button */
+    margin: 0;  /* Reset margins */
+    padding: 0; /* Ensure no internal padding */
+}
+
+.progress-bar {
+    //margin-top:50%;
+    width: 0;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    background-color: #A020F0;
+    background: linear-gradient(to bottom, #d700ff, #4b0082);
+    //height: 50px;
+    //line-height: 50px;
+    padding: 5px;
+    margin: 0; /* Set margin to 0 to remove vertical offset */
+}
+
+//.skill {
+//    border: 5px solid #112233;
+//    background-color: #334455;
+//    margin: 2em;
+//    min-height: 5em;
+//}
+
+.skill {
+    border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
+    background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
+    backdrop-filter: blur(8px);                 /* Blurred background effect */
+    margin: 0.5em;
+    min-height: 4em;
+    //padding: 1em;                               /* Added padding for content spacing */
+    border-radius: 12px;                        /* Rounded edges for a modern look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
+    color: #ddeeff;                             /* Light text for contrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); /* Slight text shadow for depth */
+    transition: transform 0.2s ease-in-out;     /* Smooth transition for hover effect */
+}
+
+/* Optional hover effect for interactivity */
+//.skill:hover {
+//    transform: translateY(-5px);                /* Slight lift on hover for a dynamic feel */
+//    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* More intense shadow when hovered */
+//}
+
+
+#manual-bar {
+    background-color: #4CAF50;
+}
+
+#delay-bar {
+    background-color: #FF9800;
+}
+
+#automatic-bar {
+    background-color: #2196F3;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #e61c1c;
+    background: linear-gradient(to bottom, #e61c1c, #8f0000);  /* Gradient background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block; 
+    margin: 2em auto;
+    min-width: 250px;
+}
+
+button:hover {
+    background-color: #ad0000;
+    background: linear-gradient(to bottom, #f04d4d, #d41e1e);  /* Gradient background */
+}
+
+/* Disabled button style */
+button:disabled {
+    background-color: #888888;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+// NAVBAR
+.navbar {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #444;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;  /* Stack content vertically */
+    align-items: right;     /* Center content horizontally */
+    //box-sizing: border-box;  /* Prevent overflow from padding/margins */
+    overflow: hidden;   
+}
+
+.SkillIcon {
+    height: 40px;
+}
+
+.iconBorder {
+    //margin: 0.5em; /* Space between the image and the header */
+    border-style: ridge;
+    border: 0.2em solid #444455;  /* Border around the SkillHeader */
+    //border: 5px solid #111122;
+    height:40px;
+}
+
+.training {
+    display: flex;
+    flex-direction: column;  /* Stack training content vertically */
+    align-items: center; /* Vertically center items in the row */
+    width: 100%;             /* Ensure the training div takes the full width of its parent */
+    box-sizing: border-box;  /* Prevent overflow from padding/margins */
+}
+
+.progress-container {
+    width: calc(100% - 4em); /* Make the progress bar container 100% width minus 2em on each side */
+    margin: 2em;             /* Adds margin around the container */
+    background-color: #333333;
+    background: linear-gradient(to bottom, #444, #222);
+    border-radius: 5px;
+    margin-top:0%;
+    min-width: 200px;
+}
+
+.progress-bar {
+    width: 0;                /* Progress bar starts at 0 width */
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 5px;
+}
+
+.cooldown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    display: none;
+}
+
+.cooldown-overlay.active {
+    display: block;
+}
+
+.cooldown-overlay::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 5px solid transparent;
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.button-container {
+    margin: 2em;
+    margin-top:2em;
+    border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
+    overflow: hidden;   
+    padding: 10px;             /* Optional padding around the container */
+    background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
+    padding: 1em;                               /* Added padding for content spacing */
+    border-radius: 12px;                        /* Rounded edges for a modern look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
+    color: #ddeeff;                             /* Light text for contrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); /* Slight text shadow for depth */
+    display: flex;             /* Use Flexbox to align buttons horizontally */
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px;                 /* Space between the buttons */
+}
+
+.nav-button {
+  //padding: 10px 20px;        /* Button padding */
+  //border: 1px solid #ccc;    /* Optional border */
+  margin-right: 10px; /* Space between button and other elements */
+  //margin: 10px;
+  //float: left;
+  background-color: #f0f0f0; /* Optional background color */
+  cursor: pointer;           /* Pointer on hover */
+  font-size: 16px;            /* Font size */
+  //border-radius: 5px;         /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth background color transition */
+  height: 40px;  /* Ensure same height as progress bar */
+  margin: 0;  /* Reset margins */
+}
+
+.SkillHeader {
+    align-items: center; /* Vertically center items in the row */   
+    display: flex;
+    //justify-content: space-between; /* Spread out the columns */
+    align-items: center; /* Vertically center the items */
+    margin-bottom: 0em;
+}
+
+//.SkillHeader .col {
+//    margin-left: 1em;
+//    margin-right: 1em;
+//    display: flex;
+//    align-items: center; /* Vertically center items */
+//    justify-content: center; /* Horizontally center if needed */
+//    min-width:30%;
+//    display: flex;
+//    align-items: center;  /* Vertically align items within each column */
+//    justify-content: center;  /* Optional: center horizontally */
+//}
+
+.nav-button {
+    height: 40px;
+    margin: 0;
+}
+
+.progress-container {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.SkillHeader .col {
+    overflow: hidden;   
+    max-height:3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0.5em;
+    width: 30%;
+}
+
+.SkillHeader .col h3 {
+  margin:0.3;
+  font-size: 2vw; /* Base font size scales with viewport width */
+}

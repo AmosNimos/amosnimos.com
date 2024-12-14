@@ -3,87 +3,134 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Headers */
 h1, h2, h3 {
     color: #ffff99;
-    margin: 2em auto;
     text-align: center;
+    margin: 0.5em 0;
 }
 
-.progress-container {
-    width: 100%-2em;
-    margin: 1em;
-    background-color: #333333;
-    background: linear-gradient(to bottom, #444, #222);
-    border-radius: 5px;
-}
-
-.progress-bar {
-    width: 0;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    border-radius: 5px;
-    background-color: #A020F0;
-    background: linear-gradient(to bottom, #d700ff, #4b0082);
-}
-
-//.skill {
-//    border: 5px solid #112233;
-//    background-color: #334455;
-//    margin: 2em;
-//    min-height: 5em;
-//}
-
+/* Skill container styling */
 .skill {
-    border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
-    background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
-    backdrop-filter: blur(8px);                 /* Blurred background effect */
-    margin: 2em;
-    min-height: 5em;
-    //padding: 1em;                               /* Added padding for content spacing */
-    border-radius: 12px;                        /* Rounded edges for a modern look */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
-    color: #ddeeff;                             /* Light text for contrast */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); /* Slight text shadow for depth */
-    transition: transform 0.2s ease-in-out;     /* Smooth transition for hover effect */
+    border: 2px solid #1a2a3a;
+    background: linear-gradient(to bottom, #445566, #223344);
+    backdrop-filter: blur(8px);
+    margin: 0.5em;
+    min-height: 4em;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    color: #ddeeff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Optional hover effect for interactivity */
-//.skill:hover {
-//    transform: translateY(-5px);                /* Slight lift on hover for a dynamic feel */
-//    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* More intense shadow when hovered */
-//}
-
-
-#manual-bar {
-    background-color: #4CAF50;
+/* Skill header container */
+.SkillHeader {
+    display: flex;
+    align-items: center; /* Vertically center items in the row */
+    justify-content: space-between;
+    margin-bottom: 0.5em;
 }
 
-#delay-bar {
-    background-color: #FF9800;
+/* Each column in SkillHeader */
+.SkillHeader .col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
+    width: 30%;
 }
 
-#automatic-bar {
-    background-color: #2196F3;
+/* Each column in SkillHeader */
+.SkillHeader .mid {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0.5em;
+    width: 30%;
+    white-space: nowrap;     /* Prevents the text from wrapping */
+    min-width: fit-content;  /* Sets the minimum width to the button's text width */
 }
 
-
-button {
-    padding: 10px 20px;
+/* Button styling */
+.nav-button {
+    height: 40px;
+    padding: 5px 10px;
     background-color: #e61c1c;
-    background: linear-gradient(to bottom, #e61c1c, #8f0000);  /* Gradient background */
+    background: linear-gradient(to bottom, #e61c1c, #8f0000);
     color: white;
     border: none;
     cursor: pointer;
-    display: block; 
-    margin: 2em auto;
-    min-width: 250px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin: 0;
+    width: 100%;
+
+    font-size: auto; /* Responsive font size based on viewport width */
+    white-space: nowrap;     /* Prevents the text from wrapping */
+    min-width: fit-content;  /* Sets the minimum width to the button's text width */
+
 }
 
-button:hover {
+.nav-button:hover {
     background-color: #ad0000;
-    background: linear-gradient(to bottom, #f04d4d, #d41e1e);  /* Gradient background */
+    background: linear-gradient(to bottom, #f04d4d, #d41e1e);
+}
+
+/* Icon styling - square and consistent */
+.SkillIcon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border: 0.2em solid #444455;
+    border-style: ridge;
+}
+
+/* Progress container styling */
+.progress-container {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, #444, #222);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    overflow: hidden;        /* Hides any overflowed content */
+}
+
+/* Progress bar styling */
+.progress-bar {
+    width: 0;  /* Progress bar starts at 0 width */
+    height: 100%;  /* Fill the height of the container */
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #d700ff, #4b0082);
+}
+
+/* Responsive font size for skill name */
+.SkillHeader .col h3 {
+    margin: 0;
+    font-size: 1.5vw; /* Responsive font size based on viewport width */
+    border: 0.2em solid #444455;
+}
+
+.col{
+    overflow: hidden;      /* Hide overflow */
+    text-overflow: ellipsis; /* Add "..." to indicate overflow (if using single-line truncation) */
+    white-space: nowrap;     /* Prevents the text from wrapping */
+    min-width: fit-content;  /* Sets the minimum width to the button's text width */
+}
+
+.mid {
+    word-wrap: break-word;    /* Allows long words to break and wrap onto the next line */
+    overflow-wrap: break-word;/* Standard property for breaking long words */
+    white-space: normal;      /* Allows text to wrap naturally */
+    height: 40px;
+    min-width:30%;
 }
 
 /* Disabled button style */
@@ -93,146 +140,34 @@ button:disabled {
     opacity: 0.6;
 }
 
-// NAVBAR
-.navbar {
-    background-color: #222;
-    padding: 10px;
-    text-align: center;
+/* Animation for skills */
+.animate {
+    opacity: 0;  /* Start with the skill hidden */
+    transform: translateY(-50px);  /* Start above its final position */
+    animation-name: dropAndFlash;   /* Apply the animation */
+    animation-duration: 0.6s;         /* Adjust duration as needed */
+    animation-fill-mode: forwards; /* Ensure the final state persists */
 }
 
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: inline-block;
-}
-
-.navbar a:hover {
-    background-color: #444;
-}
-
-.skill {
-    display: flex;
-    flex-direction: column;  /* Stack content vertically */
-    align-items: right;     /* Center content horizontally */
-    //box-sizing: border-box;  /* Prevent overflow from padding/margins */
-    overflow: hidden;   
-}
-
-.SkillIcon {
-    border: 5px solid #111122;
-    width: 80px;
-    height: 80px;
-    margin: 1em; /* Space between the image and the header */
-}
-
-.training {
-    display: flex;
-    flex-direction: column;  /* Stack training content vertically */
-    align-items: center;     /* Center the training content horizontally */
-    width: 100%;             /* Ensure the training div takes the full width of its parent */
-    box-sizing: border-box;  /* Prevent overflow from padding/margins */
-}
-
-.progress-container {
-    width: calc(100% - 4em); /* Make the progress bar container 100% width minus 2em on each side */
-    margin: 2em;             /* Adds margin around the container */
-    background-color: #333333;
-    background: linear-gradient(to bottom, #444, #222);
-    border-radius: 5px;
-    margin-top:0%;
-}
-
-.progress-bar {
-    width: 0;                /* Progress bar starts at 0 width */
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    border-radius: 5px;
-}
-
-.cooldown-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 4px;
-    display: none;
-}
-
-.cooldown-overlay.active {
-    display: block;
-}
-
-.cooldown-overlay::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 60px;
-    height: 60px;
-    border: 5px solid transparent;
-    border-top: 5px solid #fff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes spin {
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
+@keyframes dropAndFlash {
+    0% {
+        transform: translateY(-50px) scale(1.1);  /* Start slightly above and slightly bigger */
+        opacity: 0;  /* Start invisible */
+        box-shadow: 0 14px 15px rgba(0, 0, 0, 0.9);  /* Intense shadow */
+        background: linear-gradient(to bottom, #66888A, #335566);  /* Lighter gradient */
+    }
+    25% {
+        opacity: 1;  /* Fade in */
+        transform: translateY(0) scale(1);  /* Settle into place with normal size */
+        box-shadow: 0 9px 15px rgba(0, 0, 0, 0.7);  /* Less intense shadow */
+        background: linear-gradient(to bottom, #55778A, #224455);  /* Lighter gradient */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);  /* Final position, no size change */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);  /* Soft shadow when settled */
+        background: #ffffff; /* Final background */
+        background: linear-gradient(to bottom, #445566, #223344);
     }
 }
 
-.button-container {
-    margin: 2em;
-    margin-top:2em;
-    border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
-    overflow: hidden;   
-    padding: 10px;             /* Optional padding around the container */
-    background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
-    padding: 1em;                               /* Added padding for content spacing */
-    border-radius: 12px;                        /* Rounded edges for a modern look */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
-    color: #ddeeff;                             /* Light text for contrast */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); /* Slight text shadow for depth */
-    display: flex;             /* Use Flexbox to align buttons horizontally */
-    justify-content: flex-start; /* Align buttons to the left */
-    gap: 10px;                 /* Space between the buttons */
-}
-
-.nav-button {
-  //padding: 10px 20px;        /* Button padding */
-  //border: 1px solid #ccc;    /* Optional border */
-  margin: 10px;
-  //float: left;
-  background-color: #f0f0f0; /* Optional background color */
-  cursor: pointer;           /* Pointer on hover */
-  font-size: 16px;            /* Font size */
-  //border-radius: 5px;         /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth background color transition */
-}
-
-.SkillHeader {
-    display: flex;
-    //justify-content: space-between; /* Spread out the columns */
-    align-items: center; /* Vertically center the items */
-    margin-bottom: 0em;
-}
-
-.SkillHeader .col {
-    margin: 2em;
-    display: flex;
-    align-items: left; /* Align items vertically within each column */
-}
-
-.SkillIcon {
-    margin-right: 10px; /* Space between image and text */
-}
-
-.nav-button {
-    margin-right: 10px; /* Space between button and other elements */
-}
