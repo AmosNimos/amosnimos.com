@@ -50,10 +50,10 @@ h1, h2, h3 {
 }
 
 /* Optional hover effect for interactivity */
-.skill:hover {
-    transform: translateY(-5px);                /* Slight lift on hover for a dynamic feel */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* More intense shadow when hovered */
-}
+//.skill:hover {
+//    transform: translateY(-5px);                /* Slight lift on hover for a dynamic feel */
+//    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* More intense shadow when hovered */
+//}
 
 
 #manual-bar {
