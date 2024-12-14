@@ -104,8 +104,6 @@
             if( level > ascension_level){
                 // Increase player progress speed
                 ascension_level=level;
-            } else {
-                ascension_level=1;
             }
             level = 1;
             xp = 0;
@@ -228,7 +226,7 @@
         // Generate a random skill name
         function generateSkillName() {
             const firstPart = [
-                "Sinful", "Ruthless", "Evil", "Netherworld", "Merciless", "Colossal", "Monstrous", "Brutal","Cruel", "Inhumane","Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
+                "Maestro", "Magus", "Occultist", "Sorcerer", "Warlock","Necromancer", "wizard", "Spirit", "Hellhound", "Fiend", "Demon", "Impish", "Sinful", "Ruthless", "Evil", "Netherworld", "Merciless", "Colossal", "Monstrous", "Brutal","Cruel", "Inhumane","Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
                 "Cursed", "Blood", "Damnation", "Inferno", "Undead", "Dead", "Abyss", "Abyssal", "Soul", "Blight", "Nightmare", "Night", "Moonlight",
                 "Infernal", "Hell", "Hellish", "Grim", "Eternal", "Vile", "Malice", 
                 "Wicked", "Necrotic", "Corrupt", "Searing", "Feral", "Unholy", "Phantom",
@@ -277,7 +275,7 @@
 
             skillNames[skillID] = skillName;
             skillLevels[skillID] = 1;
-            skillGoals[skillID] = skillGoal;
+            skillGoals[skillID] = skillGoal + skillID;
             skillProgress[skillID] = 0;
             skillTrainingActive[skillID] = false;  // Start with training inactive
             
