@@ -57,6 +57,20 @@
     </script>
 
 
+    <button onclick="confirmAscension()">Ascend</button>
+
+    <script>
+    function confirmAscension() {
+        const confirmation = confirm(
+            "Warning: Ascending to a new body will cause you to lose all your skills, but some of your knowledge will be passed on to your next self, making training faster in the next life.\n\nAre you sure you want to ascend?"
+        );
+
+        if (confirmation) {
+            executeAscension();
+        }
+    }
+    </script>
+
     <h2>Abilities:</h2>
 
     <div id="skills-container"></div>
@@ -64,6 +78,7 @@
     <script>
         let level = 1;
         let xp = 0;
+        let ascension_level = 1;
         let xpGoal = 2;
 
         let skillLevels = [];
@@ -73,20 +88,31 @@
         let skillTrainingActive = [];  // To track if training is active for a skill
         let skillIcons = [];
         let skillHueShifts = [];
+        let progressDelay = 2;
 
         // Clear localStorage and reset data
-        function clearStorage() {
+        function executeAscension() {
             localStorage.removeItem('skillsData');
             localStorage.removeItem('playerData');
             skillLevels = [];
             skillProgress = [];
             skillGoals = [];
             skillNames = [];
-            skillIcon = [];
+            skillTrainingActive = [];  // To track if training is active for a skill
+            skillIcons = [];
+            skillHueShifts = [];
+            if( level > ascension_level){
+                // Increase player progress speed
+                ascension_level=level;
+            } else {
+                ascension_level=1;
+            }
             level = 1;
             xp = 0;
             xpGoal = 2;
-            alert('Skill progress has been cleared!');
+            addNewSkill(); // Create the first skill if none exist
+            saveSkillsToStorage();
+            alert("Reincarnation complete. You are reborn!");
             location.reload();
         }
 
@@ -169,7 +195,7 @@
         function saveSkillsToStorage() {
             const skillsData = { skillLevels, skillProgress, skillGoals, skillNames, skillIcons, skillHueShifts };
             localStorage.setItem('skillsData', JSON.stringify(skillsData));
-            const playerData = { xp, xpGoal, level };
+            const playerData = { xp, xpGoal, level, ascension_level };
             localStorage.setItem('playerData', JSON.stringify(playerData));
         }
 
@@ -191,10 +217,11 @@
 
             const storedPlayerData = localStorage.getItem('playerData');
             if (storedPlayerData) {
-                const { xp: storedXp, xpGoal: storedXpGoal, level: storedLevel } = JSON.parse(storedPlayerData);
+                const { xp: storedXp, xpGoal: storedXpGoal, level: storedLevel, ascension_level: storedAscension  } = JSON.parse(storedPlayerData);
                 xp = storedXp || 0;
                 xpGoal = storedXpGoal || 5;
                 level = storedLevel || 1;
+                ascension_level  = storedAscension || 1;
             }
         }
 
@@ -285,6 +312,7 @@
             saveSkillsToStorage();
         }
 
+
         // Start the training for a skill
         function startTraining(skillID) {
             playNotificationSound(2);  // Play the sound when level-up is achieved
@@ -300,55 +328,65 @@
                     return;
                 }
 
-                skillProgress[skillID] += 0.1; // Increase progress over time
+                skillProgress[skillID] += ascension_level / 10; // Increase progress over time
                 updateProgressBar(skillID); // Update the progress bar
-                
 
                 if (skillProgress[skillID] >= skillGoals[skillID]) {
-
                     clearInterval(interval); // Stop training once it reaches 100%
                     skillLevels[skillID]++; // Level up the skill
-                    skillProgress[skillID] = 0; // Reset progress for next level
-                    skillGoals[skillID] *= 1.2;
-                    xp++; // Increase player's XP
-                    if (xp >= xpGoal) {
-                        xp = 0;
-                        xpGoal *= 1.2;
-                        level++;
-                        addNewSkill(); // Automatically add a new skill when level up
-                    }
 
-                    // Reset the progress bar and re-enable the training button
-                    updateProgressBar(skillID); // Reset progress bar
-                    document.getElementById(`train-btn-${skillID}`).disabled = false; // Re-enable the button
+                    // Wait a bit to allow progress bar to reach 100% before resetting
+                    setTimeout(() => {
+                        skillProgress[skillID] = 0; // Reset progress for next level
+                        skillGoals[skillID] *= progressDelay;
+                        xp++; // Increase player's XP
+                        if (xp >= xpGoal) {
+                            xp = 0;
+                            xpGoal *= progressDelay;
+                            level++;
+                            addNewSkill(); // Automatically add a new skill when level up
+                        }
 
-                    // Update skill level display
-                    const skillNameElement = document.getElementById(`skill-${skillID}-name`);
-                    skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+                        // Update the progress bar and re-enable the training button
+                        updateProgressBar(skillID); // Reset progress bar after level up
+                        document.getElementById(`train-btn-${skillID}`).disabled = false; // Re-enable the button
 
-                    saveSkillsToStorage(); // Save the updated data
+                        // Update skill level display
+                        const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+                        skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+
+                        saveSkillsToStorage(); // Save the updated data
+
+                        // LEVEL UP!
+                        playNotificationSound(1);  // Play the sound when level-up is achieved
+                        alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                    }, 100); // Wait 100ms before resetting progress
                 }
             }, 100); // Update progress every 100ms
         }
 
         // Update the progress bar
         function updateProgressBar(skillID) {
+            if (skillProgress[skillID] > skillGoals[skillID]) {
+                skillProgress[skillID] = skillGoals[skillID];
+            }
             const progress = Math.min((skillProgress[skillID] / skillGoals[skillID]) * 100, 100);
             const bar = document.getElementById(`skill-${skillID}`);
             const skillNameElement = document.getElementById(`skill-${skillID}-name`);
             bar.style.width = `${progress}%`;
-            //bar.textContent = `${progress.toFixed(1)}%`;
             bar.textContent = `${Math.round(progress)}%`;
 
             // Disable the button when training is completed (100%)
             const trainButton = document.getElementById(`train-btn-${skillID}`);
-            if (progress === 100) {
-                // Reset the progress bar and re-enable the training button
-                playNotificationSound(1);  // Play the sound when level-up is achieved
-                alert(`Skill [${skillNames[skillID]}] leveled up!`);
-                trainButton.disabled = true;  // Disable the button when progress reaches 100%
-            }
+            //if (progress === 100) {
+                // LEVEL UP!
+                //playNotificationSound(1);  // Play the sound when level-up is achieved
+                //alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                //trainButton.disabled = true;  // Disable the button when progress reaches 100%
+            //}
         }
+
+
 
         // Load skills on page load
         loadSkillsFromStorage();
