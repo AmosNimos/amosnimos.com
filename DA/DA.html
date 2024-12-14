@@ -209,7 +209,7 @@
                 "Desolate", "Forsaken", "Accursed", "Devilish", "Blackened", "Ravaged",
                 "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
                 "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
-                "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", "Corrupted"
+                "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", "Corrupted",
                 "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Merciful", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Madness", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful"
             ];
             const secondPart = [
@@ -254,8 +254,9 @@
             skillProgress[skillID] = 0;
             skillTrainingActive[skillID] = false;  // Start with training inactive
             
-            // Generate a random integer between 1 and 132 (formatted as 3-digit string)
-            const randomIconNumber = String(Math.floor(Math.random() * 132 + 1)).padStart(3, '0');
+            // Generate a random integer between 1 and icon_count (formatted as 3-digit string)
+            const icon_count = 255;
+            const randomIconNumber = String(Math.floor(Math.random() * icon_count + 1)).padStart(3, '0');
             skillIcons[skillID] = iconsDir + randomIconNumber + ".png";
             
             // Generate random hue shift (between 0 and 360 degrees)
