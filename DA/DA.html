@@ -177,7 +177,6 @@
                 // Create the skill element
                 const newSkill = document.createElement("div");
                 newSkill.classList.add("skill");
-                newSkill.classList.add("animate");
                 newSkill.innerHTML = `
                     <div class="SkillHeader">
                             <div class="col">
@@ -305,15 +304,24 @@
 
             const newSkill = document.createElement("div");
             newSkill.classList.add("skill");
+            newSkill.classList.add("animate");
             newSkill.innerHTML = `
                 <div class="SkillHeader">
-                    <img class="SkillIcon" src="${skillIcons[skillID]}" alt="Skill Icon" style="filter: hue-rotate(${randomHueShift}deg);">
-                    <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevels[skillID]}</h3>
+                    <div class="col">
+                        <button class="nav-button" id="train-btn-${skillID}" onclick="startTraining(${skillID})">Refine</button>
+                    </div>
+                    <div class="mid">
+                        <div class="iconBorder">
+                            <img class="SkillIcon" src="${skillIcons[skillID]}" alt="Skill Icon" style="filter: hue-rotate(${randomHueShift}deg);">
+                        </div>
+                        <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevels[skillID]}</h3>
+                    </div>
+                    <div class="col">
+                        <div class="progress-container">
+                            <div id="skill-${skillID}" class="progress-bar" style="width: 0%;">0%</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="progress-container">
-                    <div id="skill-${skillID}" class="progress-bar" style="width: 0%;">0%</div>
-                </div>
-                <button id="train-btn-${skillID}" onclick="startTraining(${skillID})">Train ${skillName}</button>
             `;
             document.getElementById("skills-container").appendChild(newSkill);
 
