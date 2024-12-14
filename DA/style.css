@@ -78,6 +78,7 @@ button {
     cursor: pointer;
     display: block; 
     margin: 2em auto;
+    min-width: 260px;
 }
 
 button:hover {
@@ -192,4 +193,37 @@ button:disabled {
     to {
         transform: translate(-50%, -50%) rotate(360deg);
     }
+}
+
+.button-container {
+    margin: 2em;
+    margin-top:2em;
+    border: 2px solid #1a2a3a;                 /* Slightly lighter border for a sleek look */
+    //overflow: hidden;   
+    padding: 10px;             /* Optional padding around the container */
+    background: linear-gradient(to bottom, #445566, #223344);  /* Gradient background */
+    padding: 1em;                               /* Added padding for content spacing */
+    border-radius: 12px;                        /* Rounded edges for a modern look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Floating shadow effect */
+    color: #ddeeff;                             /* Light text for contrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); /* Slight text shadow for depth */
+    display: flex;             /* Use Flexbox to align buttons horizontally */
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px;                 /* Space between the buttons */
+}
+
+.nav-button {
+  //padding: 10px 20px;        /* Button padding */
+  //border: 1px solid #ccc;    /* Optional border */
+  margin: 10px;
+  //float: left;
+  background-color: #f0f0f0; /* Optional background color */
+  cursor: pointer;           /* Pointer on hover */
+  font-size: 16px;            /* Font size */
+  //border-radius: 5px;         /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.nav-button:hover {
+  background-color: #ddd;    /* Hover effect */
 }

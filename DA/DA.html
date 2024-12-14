@@ -20,8 +20,11 @@
         <h1 style="font-family: 'New Rocker', cursive; font-size: 9em; text-shadow: 0.1em 0.1em 0.5em rgba(100, 0, 0, 1); margin: 0; color: #FFFFFF">Demonlord Ascension</h1>
       </div>
     </div>
-
-    <button id="toggle-music-btn">Play Music</button>
+    
+    <div class="button-container">
+        <button class="nav-button" id="toggle-music-btn">Play Music</button>
+        <button class="nav-button" onclick="confirmAscension()">Ascend</button>
+    </div>
 
     <audio id="background-music" src="music/track1.mp3"></audio>
 
@@ -55,9 +58,6 @@
             }
         });
     </script>
-
-
-    <button onclick="confirmAscension()">Ascend</button>
 
     <script>
     function confirmAscension() {
