@@ -172,67 +172,53 @@ button:disabled {
 }
 
     
-/* Notification Box Container */
-#notification-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(128, 0, 0, 0.8)); /* Red gradient */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    max-width: 80%;
-    z-index: 1000;
-    opacity: 1;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid #ff0000; /* Red border */
-    animation: glow 1.5s ease-in-out infinite; /* Glowing border animation */
-}
 
-/* Glowing Border Animation */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+    /* Notification Box Container */
+    #notification-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(to bottom, rgba(0, 128, 255, 0.8), rgba(0, 64, 128, 0.8));
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        max-width: 80%;
+        z-index: 1000;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
-    50% {
-        box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 0.8);
+
+    /* Hidden State */
+    .hidden {
+        display: none;
     }
-    100% {
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+
+    /* Notification Content */
+    .notification-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
-}
 
-/* Hidden State */
-.hidden {
-    display: none;
-}
+    /* OK Button Styling */
+    #notification-ok-btn {
+        background-color: #0056b3;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1em;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
 
-/* Notification Content */
-.notification-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-/* OK Button Styling */
-#notification-ok-btn {
-    background-color: #ff4d4d; /* Lighter red */
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-#notification-ok-btn:hover {
-    background-color: #d42d2d; /* Darker red on hover */
-}
+    #notification-ok-btn:hover {
+        background-color: #003d80;
+    }

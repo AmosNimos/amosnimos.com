@@ -20,6 +20,55 @@
         <h1 style="font-family: 'New Rocker', cursive; font-size: 9em; text-shadow: 0.1em 0.1em 0.5em rgba(100, 0, 0, 1); margin: 0; color: #FFFFFF">Demonlord Ascension</h1>
       </div>
     </div>
+
+    <!-- Notification Container -->
+    <div id="notification-box" class="hidden">
+        <div class="notification-content">
+            <p id="notification-message"></p>
+            <button id="notification-ok-btn">OK</button>
+        </div>
+    </div>
+    <script>
+    //document.addEventListener("DOMContentLoaded", () => {
+        const notificationBox = document.getElementById("notification-box");
+        const notificationMessage = document.getElementById("notification-message");
+        const notificationOkBtn = document.getElementById("notification-ok-btn");
+
+        const notificationQueue = [];
+
+        function showNotification(message) {
+            notificationQueue.push(message);
+            if (!notificationBox.classList.contains("visible")) {
+                displayNextNotification();
+            }
+        }
+
+        function displayNextNotification() {
+            if (notificationQueue.length === 0) return;
+
+            const message = notificationQueue.shift();
+            notificationMessage.textContent = message;
+            notificationBox.classList.remove("hidden");
+            notificationBox.classList.add("visible");
+            playNotificationSound();
+        }
+
+        function closeNotification() {
+            notificationBox.classList.add("hidden");
+            notificationBox.classList.remove("visible");
+            if (notificationQueue.length > 0) {
+                setTimeout(displayNextNotification, 200);
+            }
+        }
+
+        notificationOkBtn.addEventListener("click", closeNotification);
+        notificationBox.addEventListener("click", closeNotification);
+
+        // Example usage
+        showNotification(`Example notification text.`);
+    //});
+    </script>
+
     <div class="skill">    
         <div class="SkillHeader">
             <div class="col">
@@ -31,7 +80,10 @@
         </div>
     </div>
 
+    
+    
     <audio id="background-music" src="music/track1.mp3"></audio>
+
 
     <script>
         const music = document.getElementById('background-music');
@@ -76,10 +128,10 @@
     }
     </script>
 
-    <h2>Abilities:</h2>
+c    <h2>Abilities:</h2>
 
     <div id="skills-container"></div>
-
+    
     <script>
         let level = 1;
         let xp = 0;
@@ -115,7 +167,7 @@
             xpGoal = 2;
             addNewSkill(); // Create the first skill if none exist
             saveSkillsToStorage();
-            alert("Reincarnation complete. You are reborn!");
+            //alert("Reincarnation complete. You are reborn!");
             location.reload();
         }
 
@@ -258,7 +310,7 @@
                 "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
                 "Meltdown", "Sear", "Vapor", "Fracture", "Release", "Annihilation", "Scald",
                 "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
-                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness"
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination"
             ];
 
             return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
@@ -282,7 +334,9 @@
 
             if (skillID > 0) {
                 playNotificationSound();  // Play the sound when level-up is achieved
-                alert(`Skill [${skillName}] Acquired!`);
+                //alert(`Skill [${skillName}] Acquired!`);
+                //showNotification("Skill [${skillName}] Acquired!");
+                showNotification("Skill [" + skillName + "] Acquired!");
             }
 
             skillNames[skillID] = skillName;
@@ -377,7 +431,7 @@
 
                         // LEVEL UP!
                         playNotificationSound(1);  // Play the sound when level-up is achieved
-                        alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                        //alert(`Skill [${skillNames[skillID]}] leveled up!`);
                     }, 100); // Wait 100ms before resetting progress
                 }
             }, 100); // Update progress every 100ms
