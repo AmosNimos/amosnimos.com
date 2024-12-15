@@ -26,48 +26,11 @@
         <div class="notification-content">
             <p id="notification-message"></p>
             <button id="notification-ok-btn">OK</button>
+            <button id="notification-cancel-btn" class="hidden">CANCEL</button>
         </div>
     </div>
-    <script>
-    //document.addEventListener("DOMContentLoaded", () => {
-        const notificationBox = document.getElementById("notification-box");
-        const notificationMessage = document.getElementById("notification-message");
-        const notificationOkBtn = document.getElementById("notification-ok-btn");
 
-        const notificationQueue = [];
-
-        function showNotification(message) {
-            notificationQueue.push(message);
-            if (!notificationBox.classList.contains("visible")) {
-                displayNextNotification();
-            }
-        }
-
-        function displayNextNotification() {
-            if (notificationQueue.length === 0) return;
-
-            const message = notificationQueue.shift();
-            notificationMessage.textContent = message;
-            notificationBox.classList.remove("hidden");
-            notificationBox.classList.add("visible");
-            playNotificationSound();
-        }
-
-        function closeNotification() {
-            notificationBox.classList.add("hidden");
-            notificationBox.classList.remove("visible");
-            if (notificationQueue.length > 0) {
-                setTimeout(displayNextNotification, 200);
-            }
-        }
-
-        notificationOkBtn.addEventListener("click", closeNotification);
-        notificationBox.addEventListener("click", closeNotification);
-
-        // Example usage
-        //showNotification(`Example notification text.`);
-    //});
-    </script>
+    <script src="notification.js"></script> 
 
     <div class="skill">    
         <div class="SkillHeader">
@@ -167,6 +130,7 @@ c    <h2>Abilities:</h2>
             xpGoal = 2;
             addNewSkill(); // Create the first skill if none exist
             saveSkillsToStorage();
+            showNotification("Reincarnation complete. You are reborn!");
             //alert("Reincarnation complete. You are reborn!");
             location.reload();
         }
@@ -432,6 +396,9 @@ c    <h2>Abilities:</h2>
                         // LEVEL UP!
                         playNotificationSound(1);  // Play the sound when level-up is achieved
                         //alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                        skillNameElement.classList.remove('animate-level');
+                        void skillNameElement.offsetWidth; // Force reflow
+                        skillNameElement.classList.add('animate-level');
                     }, 100); // Wait 100ms before resetting progress
                 }
             }, 100); // Update progress every 100ms

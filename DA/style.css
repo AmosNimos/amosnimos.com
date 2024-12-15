@@ -149,6 +149,31 @@ button:disabled {
     animation-fill-mode: forwards; /* Ensure the final state persists */
 }
 
+.animate-level {
+    transform: translateY(-10px);  /* Start above its final position */
+    animation-name: Flash;   /* Apply the animation */
+    animation-duration: 0.6s;         /* Adjust duration as needed */
+    animation-fill-mode: forwards; /* Ensure the final state persists */
+}
+
+@keyframes Flash {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6);
+        transform: translateY(-10px) scale(1.5);  /* Start slightly above and slightly bigger */
+        color:#00FF00;
+    }
+    25% {
+        text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px 
+        transform: translateY(-5px) scale(1.2);  /* Settle into place with normal size */
+        color:#FFFFFF;
+    }
+    100% {
+        transform: translateY(0) scale(1);  /* Final position, no size change */
+        color: #ffff99;
+    }
+}
+
+
 @keyframes dropAndFlash {
     0% {
         transform: translateY(-50px) scale(1.1);  /* Start slightly above and slightly bigger */
