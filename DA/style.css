@@ -279,3 +279,57 @@ button:disabled {
     white-space: nowrap;     /* Prevents the text from wrapping */
     min-width: fit-content;  /* Sets the minimum width to the button's text width */
 }
+
+
+// SETTINGS
+
+
+/* Modal Styling */
+.settings-modal {
+    display: none; /* Hidden by default, will be toggled */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Slight dark background */
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.8), rgba(128, 0, 0, 0.8)); /* Red gradient */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ff0000; /* Red border */
+    animation: glow 1.5s ease-in-out infinite; /* Glowing border animation */
+}
+
+.setting {
+    margin-bottom: 20px;
+}
+
+#saveSettings {
+    background-color: #ff4d4d; /* Lighter red */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}

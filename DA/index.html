@@ -29,8 +29,30 @@
             <button id="notification-cancel-btn" class="hidden">CANCEL</button>
         </div>
     </div>
-
     <script src="notification.js"></script> 
+
+    <!-- Settings Modal (hidden by default) -->
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden">
+        <div class="settings-content">
+            <h2>Game Settings</h2>
+            <div class="setting">
+                <label for="ttsToggle">Enable Audio Alerts:</label>
+                <input type="checkbox" id="ttsToggle">
+            </div>
+            <div class="setting">
+                <label for="musicVolume">Music Volume:</label>
+                <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="musicVolumeLabel">50%</span>
+            </div>
+            <div class="setting">
+                <label for="soundVolume">Sound Effects Volume:</label>
+                <input type="range" id="soundVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="soundVolumeLabel">50%</span>
+            </div>
+            <button id="saveSettings">Confirm</button>
+        </div>
+    </div>
 
     <div class="skill">    
         <div class="SkillHeader">
@@ -40,12 +62,28 @@
             <div class="col">
                 <button class="nav-button" onclick="confirmAscension()">Ascend</button>
             </div>
+            <!-- Settings Button -->
+            <div class="col">
+                <button class="nav-button" id="settingsButton">Settings</button>
+            </div>
         </div>
     </div>
 
-    <div class="">
 
+    <script>
+        // Global volume variable for all sounds
+        let globalVolume = 0.3; // Default volume
+        let toggleTTS = false;
+    </script>
+    <script src="settings.js"></script> 
+
+
+    <!-- Main Music -->
     <audio id="background-music" src="music/track1.mp3"></audio>
+    <!-- Sounds -->
+    <audio id="sound-win" src="sounds/win.mp3" preload="auto"></audio>
+    <audio id="sound-level" src="sounds/level.mp3" preload="auto"></audio>
+    <audio id="sound-select" src="sounds/select.mp3" preload="auto"></audio>
 
 
     <script>
@@ -54,6 +92,7 @@
 
         // Set volume to 0.3 (30%)
         music.volume = 0.3;
+        //music.volume = musicVolume;
 
         // Function to play music
         function playMusic() {
@@ -71,6 +110,7 @@
 
         // Button click event listener to toggle play/stop music
         button.addEventListener('click', () => {
+            console.log(musicVolume);
             if (music.paused || music.ended) {
                 playMusic(); // Start music if it’s not playing
             } else {
@@ -144,6 +184,29 @@
         let skillHueShifts = [];
         let progressDelay = 2;
 
+         
+        //TTS prototype
+        function speakNotification(message) {
+            if (toggleTTS){
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 0.9;  // Adjust rate
+                utterance.pitch = 0.1;  // Adjust pitch
+
+                // Create an AudioContext and GainNode
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const gainNode = audioContext.createGain();
+
+                // Adjust the volume (0 is silent, 1 is normal volume, 0.5 is half volume, etc.)
+                gainNode.gain.value = 0.3;  // Lower the volume to 30%
+
+                // Connect the gain node to the audio context's destination
+                const source = audioContext.createMediaStreamDestination();
+                gainNode.connect(source);
+                // Play the utterance through the AudioContext
+                speechSynthesis.speak(utterance);
+            }
+        }
+
         // Clear localStorage and reset data
         function executeAscension() {
             localStorage.removeItem('skillsData');
@@ -191,23 +254,27 @@
         }
 
         /// SOUNDS
-        // Function to play a system notification sound (a victory bell or similar)
+        // Function to play a specific notification sound based on index
         function playNotificationSound(index = 0) {
-            // Define an array of sound file paths
             const sounds = [
-                'sounds/win.mp3',  // index 0
-                'sounds/level.mp3', // index 1
-                'sounds/select.mp3', // index 2
+                'sound-win',    // index 0
+                'sound-level',  // index 1
+                'sound-select', // index 2
             ];
 
-            // Make sure the index is within the bounds of the array
-            const sound = sounds[index] || sounds[0];  // Default to index 0 if out of bounds
+            const soundId = sounds[index] || sounds[0]; // Default to index 0
+            const audioElement = document.getElementById(soundId);
 
-            const audio = new Audio(sound);
-            audio.volume = 0.3;
-            audio.play();
+            if (audioElement) {
+                // Clone the audio element to allow concurrent playback
+                const clone = audioElement.cloneNode();
+                clone.volume = globalVolume; // Use the global volume variable
+                clone.play();
+            } else {
+                console.error('Sound not found:', soundId);
+            }
         }
-
+        
         // Images
         const iconsDir = 'icons/ability';
 
@@ -298,7 +365,7 @@
                 "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
                 "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
                 "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", "Corrupted",
-                "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Merciful", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Insane", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful", "Titan", "Mighty", "Bone", "Skull", "Killing", "Iron", "Judas", "Brazen", "Scavenger", "Heretic"
+                "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Machiavellian", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Insane", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful", "Titan", "Mighty", "Bone", "Skull", "Killing", "Iron", "Judas", "Brazen", "Scavenger", "Heretic"
             ];
             const secondPart = [
                 "Punch", "Bolt", "Blast", "Beam", "Laser", "Bullet", "Wave", "Pulse", "Cannon", 
@@ -309,7 +376,7 @@
                 "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
                 "Meltdown", "Sear", "Vapor", "Fracture", "Release", "Annihilation", "Scald",
                 "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
-                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination", "Transformation", "Rampage", "Bloodlust", "Frenzy", "Onslaught", "Carnage", "Grip", "Fury", "Breaker", "Intent", "Apocalypse", "Destruction", "Maiden", "Guillotine", "Pillory", "Cage", "Crusher", "Ripper", "Spider", "Snake"
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination", "Transformation", "Rampage", "Bloodlust", "Frenzy", "Onslaught", "Carnage", "Grip", "Fury", "Breaker", "Intent", "Apocalypse", "Destruction", "Maiden", "Guillotine", "Pillory", "Cage", "Crusher", "Ripper", "Spider", "Snake", "Magic", "Spell"
             ];
 
             return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
@@ -334,8 +401,9 @@
             if (skillID > 0) {
                 playNotificationSound();  // Play the sound when level-up is achieved
                 //alert(`Skill [${skillName}] Acquired!`);
-                //showNotification("Skill [${skillName}] Acquired!");
-                showNotification("Skill [" + skillName + "] Acquired!");
+                //showNotification("[${skillName}] Acquired!");
+                showNotification("[" + skillName + "] Acquired!");
+                speakNotification(skillName + " Acquired!");
             }
 
             skillNames[skillID] = skillName;
