@@ -65,6 +65,15 @@ function setMusicVolume(volume) {
     const musicAudio = document.getElementById('background-music'); // Or use AudioContext
     if (musicAudio) {
         musicAudio.volume = volume;
+        if (volume>0){
+            if (music.paused || music.ended) {
+                musicAudio.play();
+                musicAudio.loop = true;
+            }
+        } else {
+            music.pause();
+            music.currentTime = 0; // Reset the music to the start        
+        }
     }
     console.log("Music Volume set to", volume);
 }
