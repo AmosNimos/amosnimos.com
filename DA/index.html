@@ -43,8 +43,8 @@
         </div>
     </div>
 
-    
-    
+    <div class="">
+
     <audio id="background-music" src="music/track1.mp3"></audio>
 
 
@@ -91,7 +91,41 @@
     }
     </script>
 
-c    <h2>Abilities:</h2>
+    <div class="hidden">
+        <h2>Opponents:</h2>
+        <div id="enemy-container"></div> <!-- This will hold the enemies -->
+
+        <script>
+            // Define enemyID
+            const enemyID = 10; // Example enemy ID
+
+            // Create a new enemy element
+            const newEnemy = document.createElement("div");
+            newEnemy.classList.add("skill");
+            newEnemy.classList.add("animate");
+            newEnemy.innerHTML = `
+                <div class="SkillHeader">
+                    <div class="mid">
+                        <div class="iconBorder">
+                            <img class="SkillIcon" src="enemy/${enemyID}.png" alt="Enemy Image">
+                        </div>
+                        <h3 id="enemy-${enemyID}-name">Hero LV: 1</h3>
+                    </div>
+                    <div class="health-col">
+                        <div class="progress-container">
+                            <div id="enemy-${enemyID}-health" class="health-bar" style="width: 100%">100%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the new enemy to the enemy-container
+            document.getElementById("enemy-container").appendChild(newEnemy);
+        </script>
+    </div>
+    
+
+    <h2>Abilities:</h2>
 
     <div id="skills-container"></div>
     
@@ -197,6 +231,7 @@ c    <h2>Abilities:</h2>
                     <div class="SkillHeader">
                             <div class="col">
                                 <button class="nav-button" id="train-btn-${skillID}" onclick="startTraining(${skillID})">Refine</button>
+                                <button class="nav-button hidden" id="cast-btn-${skillID}" onclick="startCasting(${skillID})">Cast</button>
                             </div>
                         <div class="mid">
                             <div class="iconBorder">
@@ -263,7 +298,7 @@ c    <h2>Abilities:</h2>
                 "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
                 "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
                 "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", "Corrupted",
-                "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Merciful", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Insane", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful", "Titan", "Mighty", "Bone", "Skull", "Killing"
+                "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Merciful", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Insane", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful", "Titan", "Mighty", "Bone", "Skull", "Killing", "Iron", "Judas", "Brazen", "Scavenger", "Heretic"
             ];
             const secondPart = [
                 "Punch", "Bolt", "Blast", "Beam", "Laser", "Bullet", "Wave", "Pulse", "Cannon", 
@@ -274,7 +309,7 @@ c    <h2>Abilities:</h2>
                 "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
                 "Meltdown", "Sear", "Vapor", "Fracture", "Release", "Annihilation", "Scald",
                 "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
-                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination", "Transformation", "Rampage", "Bloodlust", "Frenzy", "Onslaught", "Carnage", "Grip", "Fury", "Breaker", "Intent", "Apocalypse", "Destruction"
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination", "Transformation", "Rampage", "Bloodlust", "Frenzy", "Onslaught", "Carnage", "Grip", "Fury", "Breaker", "Intent", "Apocalypse", "Destruction", "Maiden", "Guillotine", "Pillory", "Cage", "Crusher", "Ripper", "Spider", "Snake"
             ];
 
             return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
