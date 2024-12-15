@@ -70,6 +70,29 @@
 
 
     <script>
+        /// SOUNDS
+        // Function to play a specific notification sound based on index
+        function playNotificationSound(index = 0) {
+            const sounds = [
+                'sound-win',    // index 0
+                'sound-level',  // index 1
+                'sound-select', // index 2
+                'sound-click',  // index 3
+            ];
+
+            const soundId = sounds[index] || sounds[0]; // Default to index 0
+            const audioElement = document.getElementById(soundId);
+
+            if (audioElement) {
+                // Clone the audio element to allow concurrent playback
+                const clone = audioElement.cloneNode();
+                clone.volume = globalVolume; // Use the global volume variable
+                clone.play();
+            } else {
+                console.error('Sound not found:', soundId);
+            }
+        }
+
         // Global volume variable for all sounds
         let globalVolume = 0.3; // Default volume
         let toggleTTS = false;
@@ -83,7 +106,7 @@
     <audio id="sound-win" src="sounds/win.mp3" preload="auto"></audio>
     <audio id="sound-level" src="sounds/level.mp3" preload="auto"></audio>
     <audio id="sound-select" src="sounds/select.mp3" preload="auto"></audio>
-
+    <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto"></audio>
 
     <script>
         const music = document.getElementById('background-music');
@@ -250,28 +273,6 @@
             backgroundAudio.play();
 
             return backgroundAudio; // Return the audio instance for potential control (e.g., pause or stop)
-        }
-
-        /// SOUNDS
-        // Function to play a specific notification sound based on index
-        function playNotificationSound(index = 0) {
-            const sounds = [
-                'sound-win',    // index 0
-                'sound-level',  // index 1
-                'sound-select', // index 2
-            ];
-
-            const soundId = sounds[index] || sounds[0]; // Default to index 0
-            const audioElement = document.getElementById(soundId);
-
-            if (audioElement) {
-                // Clone the audio element to allow concurrent playback
-                const clone = audioElement.cloneNode();
-                clone.volume = globalVolume; // Use the global volume variable
-                clone.play();
-            } else {
-                console.error('Sound not found:', soundId);
-            }
         }
         
         // Images

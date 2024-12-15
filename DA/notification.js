@@ -22,6 +22,7 @@ function displayNextNotification() {
 }
 
 function closeNotification() {
+    playNotificationSound(3);
     notificationBox.classList.add("hidden");
     notificationBox.classList.remove("visible");
     if (notificationQueue.length > 0) {

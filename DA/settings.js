@@ -10,6 +10,7 @@ const soundVolumeLabel = document.getElementById('soundVolumeLabel');
 
 // Show settings modal when the settings button is clicked
 settingsButton.addEventListener('click', () => {
+    playNotificationSound(3);
     settingsModal.classList.remove('hidden');
 });
 
@@ -29,7 +30,7 @@ soundVolume.addEventListener('input', () => {
     soundVolumeLabel.textContent = `${Math.round(soundVolume.value * 100)}%`;
 });
 
-// Apply the settings when the "Save Settings" button is clicked
+// Apply the settings when the "Confirm Settings" button is clicked
 saveSettingsButton.addEventListener('click', () => {
     // TTS toggle
     if (ttsToggle.checked) {
@@ -44,6 +45,7 @@ saveSettingsButton.addEventListener('click', () => {
 
     // Close modal
     settingsModal.classList.add('hidden');
+    playNotificationSound(3);
 });
 
 // Functions to enable/disable TTS (modify as needed)
