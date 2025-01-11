@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonlord Ascension</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <script src="list_init.js"></script>
+    <script src="game.js"></script>
+
+    <!-- TITLE BANNER -->
+    <div style="position: relative;">
+      <img src="banners/banner_001.jpg" style="margin: 0; left: 0; width: 100%; height: auto;">
+      
+      <!-- Gradient Overlay -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, #333333, rgba(0, 0, 0, 0));"></div>
+
+      <!-- Title and Subtitle -->
+      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; color: white;">
+        <h1 style="font-family: 'New Rocker', cursive; font-size: 9em; text-shadow: 0.1em 0.1em 0.5em rgba(100, 0, 0, 1); margin: 0; color: #FFFFFF">Demonlord Ascension</h1>
+      </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification-box" class="hidden">
+        <div class="notification-content">
+            <p id="notification-message"></p>
+            <button id="notification-ok-btn">OK</button>
+            <button id="notification-cancel-btn" class="hidden">CANCEL</button>
+        </div>
+    </div>
+    <script src="notification.js"></script> 
+
+    <!-- Settings Modal (hidden by default) -->
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden">
+        <div class="settings-content">
+            <h2>Game Settings</h2>
+            <div class="setting">
+                <label for="ttsToggle">Enable voice alerts (Beta):</label>
+                <input type="checkbox" id="ttsToggle">
+            </div>
+            <div class="setting">
+                <label for="musicVolume">Music Volume:</label>
+                <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="musicVolumeLabel">50%</span>
+            </div>
+            <div class="setting">
+                <label for="soundVolume">Sound Effects Volume:</label>
+                <input type="range" id="soundVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="soundVolumeLabel">50%</span>
+            </div>
+            <button id="saveSettings">Confirm</button>
+        </div>
+    </div>
+
+    <div class="skill">    
+        <div class="SkillHeader">
+            <div class="mid">
+                <img class="SkillIcon" src="banners/Darklord2.png" alt="Player Image">
+                <h3 id="player_info">Name: ??? | Class: ??? | Level: ???</h3>
+            </div>
+        </div>
+    </div>
+    <div class="skill">
+        <div class="SkillHeader">
+            <div class="col">
+            </div>
+            <div class="col">
+                <button class="nav-button" onclick="confirmAscension()">Ascend</button>
+            </div>
+            <!-- Settings Button -->
+            <div class="col">
+                <button class="nav-button" id="settingsButton">⚙ Settings</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="sounds.js"></script>
+    <script src="settings.js"></script>     
+
+    <!-- Main Music -->
+    <audio id="background-music" src="music/track1.mp3" autoplay="false"></audio>
+    <!-- Sounds -->
+    <audio id="sound-win" src="sounds/win.mp3" preload="auto" muted></audio>
+    <audio id="sound-level" src="sounds/level.mp3" preload="auto" muted></audio>
+    <audio id="sound-select" src="sounds/select.mp3" preload="auto" muted></audio>
+    <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto" muted></audio>
+    <audio id="sound-hit" src="sounds/hit.wav" preload="auto" muted></audio>
+    <audio id="sound-error" src="sounds/error.mp3" preload="auto" muted></audio>
+
+    <!-- Greeting Box -->
+    <div id="overlay" class="hidden"></div>
+    <div id="greeting-box" class="hidden">
+        <p id="greeting-text">Welcome to the Game! Please enter your name:</p>
+        <input type="text" id="player-name" placeholder="Your Name">
+        <button id="start-game">Start Game</button>
+    </div>
+
+    <script src="greeting.js"></script> 
+
+    <script>
+        function confirmAscension() {
+
+            if (level < 5) {
+                showNotification("Warning: You puny creature, you are still too weak to ascend!", 5);
+            } else {
+                const confirmation = confirm(
+                    "Warning: Ascending to a new body will cause you to lose all your skills, but some of your knowledge will be passed on to your next self, making training faster in the next life.\n\nAre you sure you want to ascend?"
+                );
+
+                if (confirmation) {
+                    executeAscension();
+                }
+            }
+        }
+    </script>
+    
+    <div ></div>
+    <h2>Opponents:</h2>
+    <div id="attack-animation" class="sprite-container" style="display:none;"></div>
+    <div id="enemy-container"></div> <!-- This will hold the enemies -->
+
+    <script src="enemy.js"></script>
+    <script src="casting.js"></script>
+    <script src="training.js"></script>
+    <script src="animation.js"></script>
+
+    <h2>Abilities:</h2>
+
+    <div id="cast-container" class="skill"></div> <!-- This would be where your active skills are located to be used to cast -->
+
+    <div id="skills-container"></div> <!-- This is for all you unactive skills to level them up.  -->
+
+    <script src="skills.js"></script>
+    
+    <script>
+        // Clear localStorage and reset data
+        function executeAscension() {
+            localStorage.removeItem('skillsData');
+            localStorage.removeItem('playerData');
+            reset_skills();
+
+            document.getElementById("skills-container").innerHTML = '';
+            addNewSkill(); // Create the first skill if none exist
+            saveSkillsToStorage();
+            showNotification("By the unraveling of time's and corruption, witness the Inexorable source of chaos. Let the Unyielding Monolith crumble under me, as my Unquenchable darkness crushes all, replaced by my Singularity. As the Eternal Bastion falters, the Pinnacle melts into oblivion. I am... Entropy.")
+            showNotification("Reincarnation complete. You are reborn!");
+            document.getElementById('player_info').innerHTML = `Name: ${playerName} | Class: ${titles[ascension_level]} | Level: ${level} | Gold: ${gold}`;
+            //alert("Reincarnation complete. You are reborn!");
+            //location.reload();
+        }
+
+        /// BACKGROUND MUSIC
+        // Function to play background music in a loop
+        function playBackgroundMusic(index = 0) {
+            // Define an array of background music file paths
+            const tracks = [
+                'musics/track1.mp3', // index 0
+                'musics/track2.mp3', // index 1
+            ];
+
+            // Ensure the index is within the bounds of the array
+            const track = tracks[index] || tracks[0]; // Default to index 0 if out of bounds
+
+            // Create a single audio instance to play the background music
+            const backgroundAudio = new Audio(track);
+            backgroundAudio.loop = true; // Enable looping
+
+            backgroundAudio.play();
+
+            return backgroundAudio; // Return the audio instance for potential control (e.g., pause or stop)
+        }
+        
+        // Images
+        const iconsDir = 'icons/ability';
+
+        // Save skills and player data to localStorage
+        function saveSkillsToStorage() {
+            // save skills
+            const skillsData = { skillLevels, skillProgress, skillGoals, skillNames, skillIcons, skillHueShifts , skillAction};
+            localStorage.setItem('skillsData', JSON.stringify(skillsData));
+            // save player 
+            const playerData = { playerName, xp, xpGoal, level, ascension_level, gold};
+            localStorage.setItem('playerData', JSON.stringify(playerData));
+
+            // Save enemies
+            if (enemies[enemies.length - 1].current_hp > 0) {
+                const enemyData = { enemies };
+                localStorage.setItem('enemyData', JSON.stringify(enemyData));
+            }
+        }
+
+        // Load skills and player data from localStorage
+        function loadSkillsFromStorage() {
+            // Load Skills
+            const storedSkillsData = localStorage.getItem('skillsData');
+            if (storedSkillsData) {
+                const { skillLevels: storedLevels, skillProgress: storedProgress, skillGoals: storedGoals, skillNames: storedNames, skillIcons: storedIcons, skillHueShifts: storedHueShifts, skillAction: storedAction} = JSON.parse(storedSkillsData);
+                skillLevels = storedLevels || [];
+                skillProgress = storedProgress || [];
+                skillGoals = storedGoals || [];
+                skillNames = storedNames || [];
+                skillAction = storedAction || [];
+                skillIcons = storedIcons || ['icons/default-icon.png'];  // Default fallback
+                skillHueShifts = storedHueShifts || [];  // Fix this line
+            } else {
+                // If no skills data exists, create default skills
+                addNewSkill(); // Create the first skill if none exist
+            }
+
+            // LOAD ENEMY
+            const storedEnemyData = localStorage.getItem('enemyData');
+            if (storedEnemyData) {
+                console.log("Loading enemy from memory")
+                const { enemies: storedEnemies} = JSON.parse(storedEnemyData);
+                enemies = storedEnemies || [];
+                // Now call the render function to update the DOM
+                renderEnemies();
+            } else {
+                // Add default enemy:
+                // Example usage
+                addEnemy(1);
+            }
+
+            // Load Player
+            const storedPlayerData = localStorage.getItem('playerData');
+            if (storedPlayerData) {
+                const { playerName: storedName, xp: storedXp, xpGoal: storedXpGoal, level: storedLevel, ascension_level: storedAscension, gold: storedGold} = JSON.parse(storedPlayerData);
+                gold= storedGold || 0;
+                xp = storedXp || 0;
+                xpGoal = storedXpGoal || 5;
+                level = storedLevel || 1;
+                ascension_level  = storedAscension || 1;
+                playerName = storedName;
+
+                if (playerName) {
+                    // If player name is stored, change greeting box content
+                    document.getElementById('greeting-text').innerHTML = `Welcome back ${playerName}.`;
+
+                    // Hide the player name input field by adding the "hidden" class
+                    document.getElementById('player-name').classList.add('hidden');
+                    //document.getElementById('player_info').innerHTML = `Name: ${playerName} | Class: ${titles[ascension_level]} | Level: ${level} | Gold: ${gold}`;
+                    updatePlayerInfo()
+                }
+
+                // Remove the 'hidden' class to show the overlay and greeting box
+                document.getElementById('overlay').classList.remove('hidden');
+                document.getElementById('greeting-box').classList.remove('hidden');
+                
+            } else {
+                // Remove the 'hidden' class to show the overlay and greeting box
+                document.getElementById('overlay').classList.remove('hidden');
+                document.getElementById('greeting-box').classList.remove('hidden');                
+
+            }
+        }
+
+        // Update the progress bar
+        function updateProgressBar(skillID) {
+            if (skillProgress[skillID] > skillGoals[skillID]) {
+                skillProgress[skillID] = skillGoals[skillID];
+            }
+            const progress = Math.min((skillProgress[skillID] / skillGoals[skillID]) * 100, 100);
+            const bar = document.getElementById(`skill-${skillID}`);
+            const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+            bar.style.width = `${progress}%`;
+            bar.textContent = `${Math.round(progress)}%`;
+
+            // Disable the button when training is completed (100%)
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            //if (progress === 100) {
+                // LEVEL UP!
+                //playNotificationSound(1);  // Play the sound when level-up is achieved
+                //alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                //trainButton.disabled = true;  // Disable the button when progress reaches 100%
+            //}
+        }
+
+
+
+        // Load skills on page load
+        playNotificationSound();
+        loadSettings();
+        loadSkillsFromStorage();
+        renderSkills(); // Render the skills after loading from storage
+
+    </script>
+</body>
+</html>

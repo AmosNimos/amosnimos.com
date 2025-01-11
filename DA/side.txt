@@ -1,0 +1,39 @@
+        <script>
+            let enemyLevels = [];
+            let enemyProgress = [];
+            let enemyHp = [];
+            let enemyNames = [];
+            let enemyIcons = [];
+            // Define enemyID
+            const enemyID = 10; // Example enemy ID
+
+            function createNewEnemy(name, level, hp, id) {
+                // Define enemyID based on the level or another way to uniquely identify enemies
+                const enemyID = level; // Can adjust this logic based on your needs
+                
+                // Create a new enemy element
+                const newEnemy = document.createElement("div");
+                newEnemy.classList.add("skill");
+                newEnemy.classList.add("animate");
+                newEnemy.innerHTML = `
+                    <div class="SkillHeader">
+                        <div class="mid">
+                            <div class="iconBorder">
+                                <img class="SkillIcon" src="enemy/${id}.png" alt="${name}">
+                            </div>
+                            <h3 id="enemy-${enemyID}-name">${name} LV: ${level}</h3>
+                        </div>
+                        <div class="health-col">
+                            <div class="progress-container">
+                                <div id="enemy-${enemyID}-health" class="health-bar" style="width: 100%">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Append the new enemy to the enemy-container
+                document.getElementById("enemy-container").appendChild(newEnemy);
+            }
+            createNewEnemy("Hero", 1, 100, enemyID);
+            createNewEnemy("Hero", 1, 100, enemyID);
+        </script>

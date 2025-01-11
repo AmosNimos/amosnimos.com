@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonlord Ascension</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <script>
+        const opponents = [
+            "Regular Human",
+            "Villager",
+            "Angry Farmer",
+            "Militia Recruit",
+            "Town Guard",
+            "Peasant Warrior",
+            "Village Guard",
+            "Bandit",
+            "Thief",
+            "Mercenary",
+            "Foot Soldier",
+            "Soldier",
+            "Elite Soldier",
+            "Crossbowman",
+            "Spearman",
+            "Swordsman",
+            "Archer",
+            "Hunter",
+            "Beast Tamer",
+            "Poacher",
+            "Assassin",
+            "Knight",
+            "Elite Knight",
+            "Champion Knight",
+            "Paladin",
+            "Templar Knight",
+            "Veteran Commander",
+            "Battle Mage",
+            "Holy Necromancer",
+            "Warlock",
+            "Sorcerer",
+            "Elemental Mage",
+            "Witch",
+            "Druid",
+            "Ranger",
+            "Marksman",
+            "Bowmaster",
+            "Warrior Priest",
+            "Warrior Monk",
+            "Fighter",
+            "Gladiator",
+            "Barbarian",
+            "Hero's Squire",
+            "Hero's Apprentice",
+            "Champion",
+            "Dragon Slayer",
+            "Famed Gladiator",
+            "Legendary Hero",
+            "Summoned Hero",
+            "Celestial Warrior",
+            "Divine Champion",
+            "Celestial Paladin",
+            "Ancient Titan",
+            "Demon Hunter",
+            "Elder Mage",
+            "Dragon Lord",
+            "War God",
+            "Immortal Hero",
+            "Ascended Champion",
+            "Demigod",
+            "Behemoth",
+            "Godslayer",
+            "Archdemon",
+            "Fallen Angel",
+            "Seraphim",
+            "Demon Lord",
+            "Abyssal King",
+            "Eternal Tyrant",
+            "God King",
+            "Humanity's Savior",
+            "Mightiest Warrior",
+            "World's Last Hope",
+            "Champion of Light",
+            "The Immovable Knight",
+            "Defender of the Realm",
+            "The Eternal Guardian",
+            "The Shield of the People",
+            "The Brave One",
+            "The Undying Hero",
+            "Wielder of the Sacred Blade",
+            "The Unyielding Paladin",
+            "The Unbreakable",
+            "The Titan Slayer",
+            "The Grandmaster",
+            "Master of the Elements",
+            "The Chosen Knight",
+            "The Savior of Nations",
+            "The Hero of the Ages",
+            "The Celestial Champion",
+            "The Eternal King",
+            "The Legendary Titan",
+            "The Invincible",
+            "The Great Protector",
+            "The Divine Crusader",
+            "The Worldbreaker",
+            "The Everlasting Flame",
+            "The Unstoppable Force",
+            "The Arcane Warden",
+            "The Dawnbringer",
+            "The Last Avenger",
+            "The Heroic King",
+            "The Undefeated Gladiator",
+            "The Divine Knight",
+            "The Sword of Fate",
+            "The Warlord of Humanity",
+            "The Immortal Champion",
+            "The Godslayer",
+            "The Eternal Champion",
+            "The Reborn Hero",
+            "The Final Bastion",
+            "The Divine Wrath",
+            "The Grand Protector",
+            "The Sacred Champion",
+            "The Last Champion",
+            "The Unholy Knight",
+            "The Unstoppable Crusader"
+        ];
+
+
+        const titles = [
+          "Player",
+          "Aspiring Mage",
+          "Novice of the Occult",
+          "Chosen One",
+          "Shadow Initiate",
+          "Acolyte of Shadows",
+          "Dark Disciple",
+          "Cursed Novice",
+          "Dark Aspirant",
+          "Forsaken Conjurer",
+          "Cursed Sorcerer",
+          "Dark Mage",
+          "Nightcaller",
+          "Shadow Caster",
+          "Umbral Adept",
+          "Dread Evoker",
+          "Hexbound Magus",
+          "Undead Lich",
+          "Bloodbound Warlock",
+          "Fallen Champion",
+          "Shadow Knight",
+          "Dark Warlord",
+          "Accursed General",
+          "Infernal Conqueror",
+          "Hellbound Reaver",
+          "Dread Commander",
+          "Abyss Tactician",
+          "Demon’s Envoy",
+          "Infernal Herald",
+          "Infernal Executioner",
+          "Nightmare Assassin",
+          "Abyss Walker",
+          "Shadow Marauder",
+          "Demonic Vanguard",
+          "Fiendish Sentinel",
+          "Nightmare Overlord",
+          "Terror Sovereign",
+          "Archdemon",
+          "Undying Monarch",
+          "Immortal Lord of Malice",
+          "Hell’s General",
+          "Sinbound Monarch",
+          "Abyss Tyrant",
+          "Chaos Tyrant",
+          "Dread Lord of Chaos",
+          "Dark Realm Conqueror",
+          "Sovereign",
+          "Archfiend Sovereign",
+          "Undying Sovereign",
+          "Infernal Lord Regent",
+          "Abyssal Emperor",
+          "Hell’s Dominion",
+          "Demonic Overlord",
+          "Netherworld King",
+          "Hell’s Regent",
+          "Infernal Tyrant",
+          "Calamity of the Abyss",
+          "Abyssal Destroyer",
+          "Demonic God",
+          "Dark Deity",
+          "Infernal Deity",
+          "Voidborne Tyrant",
+          "Abyssal Primarch",
+          "Chaos Embodiment",
+          "Chaos Incarnate",
+          "Supreme God of Malice",
+          "Demonic Eternal",
+          "Lord of Infinite Shadows",
+          "Abyssal Paragon",
+          "Netherworld Ruler",
+          "Demon God of Annihilation",
+          "Voidlord Eternal",
+          "Abyssal Devourer",
+          "Primordial Nightmare",
+          "Oblivion Monarch",
+          "Infinite Shadow Sovereign",
+          "Cosmic Harbinger of Doom",
+          "Darkness Beyond Reality",
+          "Eternal Abyss Overlord",
+          "Chaosborn Titan",
+          "Netherworld Paragon",
+          "Oblivion Deity",
+          "Endless Calamity Incarnate",
+          "Voidborne God-King",
+          "Darkness Incarnate",
+          "Primordial Chaos Deity",
+          "The Nameless Shadow",
+          "The One Beyond Darkness",
+          "Primordial Demon King",
+          "Sovereign of the End",
+          "Eclipse Overlord",
+          "The Abyss Eternal",
+          "Dark Sovereign of Oblivion",
+          "Shadowborn Deity",
+          "The Infernal Creator",
+          "Cosmic Lord of Ruin",
+          "God of Infinite Dread",
+          "The Eternal",
+          "Void Tyrant",
+          "Dark One",
+          "Demonlord"
+        ];
+    </script>
+
+    <div style="position: relative;">
+      <img src="banners/banner_001.jpg" style="margin: 0; left: 0; width: 100%; height: auto;">
+      
+      <!-- Gradient Overlay -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, #333333, rgba(0, 0, 0, 0));"></div>
+
+      <!-- Title and Subtitle -->
+      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); text-align: center; color: white;">
+        <h1 style="font-family: 'New Rocker', cursive; font-size: 9em; text-shadow: 0.1em 0.1em 0.5em rgba(100, 0, 0, 1); margin: 0; color: #FFFFFF">Demonlord Ascension</h1>
+      </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification-box" class="hidden">
+        <div class="notification-content">
+            <p id="notification-message"></p>
+            <button id="notification-ok-btn">OK</button>
+            <button id="notification-cancel-btn" class="hidden">CANCEL</button>
+        </div>
+    </div>
+    <script src="notification.js"></script> 
+
+    <!-- Settings Modal (hidden by default) -->
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden">
+        <div class="settings-content">
+            <h2>Game Settings</h2>
+            <div class="setting">
+                <label for="ttsToggle">Enable Audio Alerts:</label>
+                <input type="checkbox" id="ttsToggle">
+            </div>
+            <div class="setting">
+                <label for="musicVolume">Music Volume:</label>
+                <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="musicVolumeLabel">50%</span>
+            </div>
+            <div class="setting">
+                <label for="soundVolume">Sound Effects Volume:</label>
+                <input type="range" id="soundVolume" min="0" max="1" step="0.01" value="0.5">
+                <span id="soundVolumeLabel">50%</span>
+            </div>
+            <button id="saveSettings">Confirm</button>
+        </div>
+    </div>
+
+    <div class="skill">    
+            <div class="col">
+                <h3 id="player_info">Regular Human</h3>
+            </div>
+    </div>
+    <div class="skill">    
+        <div class="SkillHeader">
+            <div class="col">
+            </div>
+            <div class="col">
+                <button class="nav-button" onclick="confirmAscension()">Ascend</button>
+            </div>
+            <!-- Settings Button -->
+            <div class="col">
+                <button class="nav-button" id="settingsButton">⚙ Settings</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        /// SOUNDS
+        // Function to play a specific notification sound based on index
+        function playNotificationSound(index = 0) {
+            const sounds = [
+                'sound-win',    // index 0
+                'sound-level',  // index 1
+                'sound-select', // index 2
+                'sound-click',  // index 3
+                'sound-hit',    // index 4
+            ];
+
+            const soundId = sounds[index] || sounds[0]; // Default to index 0
+            const audioElement = document.getElementById(soundId);
+
+            if (audioElement) {
+                // Clone the audio element to allow concurrent playback
+                const clone = audioElement.cloneNode();
+                clone.volume = globalVolume; // Use the global volume variable
+                clone.play();
+            } else {
+                console.error('Sound not found:', soundId);
+            }
+        }
+
+        // Global volume variable for all sounds
+        let globalVolume = 0.3; // Default volume
+        let toggleTTS = false;
+    </script>
+    <script src="settings.js"></script> 
+
+
+    <!-- Main Music -->
+    <audio id="background-music" src="music/track1.mp3"></audio>
+    <!-- Sounds -->
+    <audio id="sound-win" src="sounds/win.mp3" preload="auto"></audio>
+    <audio id="sound-level" src="sounds/level.mp3" preload="auto"></audio>
+    <audio id="sound-select" src="sounds/select.mp3" preload="auto"></audio>
+    <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto"></audio>
+    <audio id="sound-hit" src="sounds/hit.wav" preload="auto"></audio>
+
+    <!-- Greeting Box -->
+    <div id="overlay" class="hidden"></div>
+    <div id="greeting-box" class="hidden">
+        <p id="greeting-text">Welcome to the Game! Please enter your name:</p>
+        <input type="text" id="player-name" placeholder="Your Name">
+        <button id="start-game">Start Game</button>
+    </div>
+
+    <script src="greeting.js"></script> 
+
+    <script>
+    function confirmAscension() {
+        const confirmation = confirm(
+            "Warning: Ascending to a new body will cause you to lose all your skills, but some of your knowledge will be passed on to your next self, making training faster in the next life.\n\nAre you sure you want to ascend?"
+        );
+
+        if (confirmation) {
+            executeAscension();
+        }
+    }
+
+    </script>
+
+        <h2>Opponents:</h2>
+        <div id="enemy-container"></div> <!-- This will hold the enemies -->
+
+        <script>
+            // Define enemyID
+            const enemyID = 0; // Example enemy ID
+            let enemyHp = [];
+            // Create a new enemy element
+            const newEnemy = document.createElement("div");
+            newEnemy.classList.add("skill");
+            newEnemy.classList.add("animate");
+            newEnemy.innerHTML = `
+                <div class="SkillHeader">
+                    <div class="mid">
+                        <div class="iconBorder">
+                            <img class="SkillIcon" src="enemy/${enemyID}.png" alt="Enemy Image">
+                        </div>
+                        <h3 id="enemy-${enemyID}-name">${opponents[enemyID]} LV: 1</h3>
+                    </div>
+                    <div class="health-col">
+                        <div class="progress-container">
+                            <div id="enemy-${enemyID}-health" class="health-bar" style="width: 100%">100%</div>
+                            <div id="damages"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the new enemy to the enemy-container
+            document.getElementById("enemy-container").appendChild(newEnemy);
+        </script>
+
+    <h2>Abilities:</h2>
+
+    <div id="skills-container"></div>
+    
+    <script>
+        let level = 1;
+        let xp = 0;
+        let ascension_level = 1;
+        let xpGoal = 2;
+
+        let skillLevels = [];
+        let skillProgress = [];
+        let skillGoals = [];
+        let skillNames = [];
+        let skillTrainingActive = [];  // To track if training is active for a skill
+        let skillIcons = [];
+        let skillHueShifts = [];
+        let skillAction=[]; 
+        let progressDelay = 2;
+         
+        //TTS prototype
+        function speakNotification(message) {
+            if (toggleTTS){
+                const utterance = new SpeechSynthesisUtterance(message);
+                utterance.rate = 0.9;  // Adjust rate
+                utterance.pitch = 0.1;  // Adjust pitch
+
+                // Create an AudioContext and GainNode
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const gainNode = audioContext.createGain();
+
+                // Adjust the volume (0 is silent, 1 is normal volume, 0.5 is half volume, etc.)
+                gainNode.gain.value = 0.3;  // Lower the volume to 30%
+
+                // Connect the gain node to the audio context's destination
+                const source = audioContext.createMediaStreamDestination();
+                gainNode.connect(source);
+                // Play the utterance through the AudioContext
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Clear localStorage and reset data
+        function executeAscension() {
+            localStorage.removeItem('skillsData');
+            localStorage.removeItem('playerData');
+            skillAction = [];
+            skillLevels = [];
+            skillProgress = [];
+            skillGoals = [];
+            skillNames = [];
+            skillTrainingActive = [];  // To track if training is active for a skill
+            skillIcons = [];
+            skillHueShifts = [];
+            if( level > ascension_level){
+                // Increase player progress speed
+                ascension_level=level;
+            }
+            level = 1;
+            xp = 0;
+            xpGoal = 2;
+            addNewSkill(); // Create the first skill if none exist
+            saveSkillsToStorage();
+            showNotification("Reincarnation complete. You are reborn!");
+            //alert("Reincarnation complete. You are reborn!");
+            location.reload();
+        }
+
+        /// BACKGROUND MUSIC
+        // Function to play background music in a loop
+        function playBackgroundMusic(index = 0) {
+            // Define an array of background music file paths
+            const tracks = [
+                'musics/track1.mp3', // index 0
+                'musics/track2.mp3', // index 1
+            ];
+
+            // Ensure the index is within the bounds of the array
+            const track = tracks[index] || tracks[0]; // Default to index 0 if out of bounds
+
+            // Create a single audio instance to play the background music
+            const backgroundAudio = new Audio(track);
+            backgroundAudio.loop = true; // Enable looping
+
+            backgroundAudio.play();
+
+            return backgroundAudio; // Return the audio instance for potential control (e.g., pause or stop)
+        }
+        
+        // Images
+        const iconsDir = 'icons/ability';
+
+        // Render skills from the loaded data
+        function renderSkills() {
+            const skillsContainer = document.getElementById("skills-container");
+            skillsContainer.innerHTML = ''; // Clear existing skills
+
+            for (let skillID = 0; skillID < skillLevels.length; skillID++) {
+                const skillName = skillNames[skillID];
+                const skillLevel = skillLevels[skillID];
+                const skillGoal = skillGoals[skillID];
+                const skillProgressValue = skillProgress[skillID];
+                const skillIcon = skillIcons[skillID];  // Fix the typo from skillIconss to skillIcons
+                const hueShift = skillHueShifts[skillID] || 0;
+                
+                // Create the skill element
+                //const newSkill = document.createElement("div");
+                const newSkill = document.createElement("div");
+                newSkill.classList.add("skill");
+                newSkill.id = `cast-btn-${skillID}`;
+                newSkill.onclick = () => startCasting(skillID); // Set the onclick function
+                newSkill.innerHTML = `
+                    <div class="SkillHeader" id="head-${skillID}">
+                            <div class="col">
+                                <button class="nav-button" id="train-btn-${skillID}" onclick="startTraining(${skillID})">Refine</button>
+                            </div>
+                        <div class="mid">
+                            <div class="iconBorder">
+                                <img class="SkillIcon" src="${skillIcon}" alt="${skillName} icon" style="filter: hue-rotate(${hueShift}deg);">
+                            </div>
+                            <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevel}</h3>
+                        </div>
+                        <div class="col">
+                            <div class="progress-container">
+                                <div id="skill-${skillID}" class="progress-bar" style="width: ${Math.round((skillProgressValue / skillGoal) * 100)}%;">${Math.round((skillProgressValue / skillGoal) * 100)}%</div>
+                                <div id="damages"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                                
+                // Append the new skill to the container
+                skillsContainer.appendChild(newSkill);
+                if (skillProgress[skillID] > 0){
+                    skillTrainingActive[skillID] = true;
+                    if (skillAction[skillID] == "Training"){
+                        //const castButton = document.getElementById(`cast-btn-${skillID}`);
+                        //castButton.disabled = true;
+                        //castButton.disabled = true;
+                        skillTrainingActive[skillID] = true;
+                        startTraining(skillID);
+                    } else if (skillAction[skillID] == "Casting") {
+                        //const trainButton = document.getElementById(`train-btn-${skillID}`);
+                        //castButton.disabled = true;
+                        //trainButton.disabled = true;
+                        skillTrainingActive[skillID] = true;
+                        startCasting(skillID);
+                    }
+                }
+            }
+        }
+
+        // Save skills and player data to localStorage
+        function saveSkillsToStorage() {
+            const skillsData = { skillLevels, skillProgress, skillGoals, skillNames, skillIcons, skillHueShifts , skillAction};
+            localStorage.setItem('skillsData', JSON.stringify(skillsData));
+            const playerData = { xp, xpGoal, level, ascension_level };
+            localStorage.setItem('playerData', JSON.stringify(playerData));
+        }
+
+        // Load skills and player data from localStorage
+        function loadSkillsFromStorage() {
+            const storedSkillsData = localStorage.getItem('skillsData');
+            if (storedSkillsData) {
+                const { skillLevels: storedLevels, skillProgress: storedProgress, skillGoals: storedGoals, skillNames: storedNames, skillIcons: storedIcons, skillHueShifts: storedHueShifts, skillAction: storedAction} = JSON.parse(storedSkillsData);
+                skillLevels = storedLevels || [];
+                skillProgress = storedProgress || [];
+                skillGoals = storedGoals || [];
+                skillNames = storedNames || [];
+                skillAction = storedAction || [];
+                skillIcons = storedIcons || ['icons/default-icon.png'];  // Default fallback
+                skillHueShifts = storedHueShifts || [];  // Fix this line
+            } else {
+                // If no skills data exists, create default skills
+                addNewSkill(); // Create the first skill if none exist
+            }
+
+            const storedPlayerData = localStorage.getItem('playerData');
+            if (storedPlayerData) {
+                const { playerName: storedName, xp: storedXp, xpGoal: storedXpGoal, level: storedLevel, ascension_level: storedAscension} = JSON.parse(storedPlayerData);
+                xp = storedXp || 0;
+                xpGoal = storedXpGoal || 5;
+                level = storedLevel || 1;
+                ascension_level  = storedAscension || 1;
+                playerName = storedName;
+
+                // If player name is stored, change greeting box content
+                if (playerName){
+                    document.getElementById('greeting-text').innerHTML = `Welcome back ${playerName}.`;    
+                } else {
+                    // Remove the 'hidden' class to show the overlay and greeting box
+                    document.getElementById('overlay').classList.remove('hidden');
+                    document.getElementById('greeting-box').classList.remove('hidden');                                
+                }
+
+                // Hide the player name input field by adding the "hidden" class
+                document.getElementById('player-name').classList.add('hidden');                
+
+                // Remove the 'hidden' class to show the overlay and greeting box
+                document.getElementById('overlay').classList.remove('hidden');
+                document.getElementById('greeting-box').classList.remove('hidden');
+
+                // Assuming titles is an array and ascension_level and level are defined
+                document.getElementById('player_info').innerHTML = `${playerName} [${titles[ascension_level]}] | LV: ${level}`;
+            } else {
+                // Remove the 'hidden' class to show the overlay and greeting box
+                document.getElementById('overlay').classList.remove('hidden');
+                document.getElementById('greeting-box').classList.remove('hidden');                
+            }
+        }
+
+        // Generate a random skill name
+        function generateSkillName() {
+            const firstPart = [
+                "Maestro", "Magus", "Occultist", "Sorcerer", "Warlock","Necromancer", "wizard", "Spirit", "Hellhound", "Fiend", "Demon", "Impish", "Sinful", "Ruthless", "Evil", "Netherworld", "Merciless", "Colossal", "Monstrous", "Brutal","Cruel", "Inhumane","Berserk", "Immortal","Dark", "Shadow", "Poison", "Death", "Darkness", "Void", "Demonic", 
+                "Cursed", "Blood", "Damnation", "Inferno", "Undead", "Dead", "Abyss", "Abyssal", "Soul", "Blight", "Nightmare", "Night", "Moonlight",
+                "Infernal", "Hell", "Hellish", "Grim", "Eternal", "Vile", "Malice", 
+                "Wicked", "Necrotic", "Corrupt", "Searing", "Feral", "Unholy", "Phantom",
+                "Malevolent", "Sinister", "Diabolic", "Gore", "Ruinous", "Tormented", "Fiendish",
+                "Desolate", "Forsaken", "Accursed", "Devilish", "Blackened", "Ravaged",
+                "Lurking", "Tainted", "Oblivion", "Profane", "Venomous", "Chaotic", 
+                "Shattered", "Tragic", "Calamitous", "Cataclysmic", "Dire", "Twisted", "Unlit", "Ominous", "Morbid", "Spectral",
+                "Decayed", "Atomic", "Vicious","Dreadful", "Ghastly", "Hateful", "Spiteful", "Acheron", "Damned", "Corrupted",
+                "Malevolent", "Maledict", "Dread", "Gloom", "Despair", "Frenzied", "Harbinger", "Vampiric", "Vengeful", "Celestial", "Disturbing", "Haunted", "Lich", "Mind", "Aura of ", "Auspicious", "Elemental", "Ether", "Ghostly", "Guilt", "Soulless", "Cultist", "Divine", "Unyielding", "Relic", "Machiavellian", "Unfortunate", "Wretched", "Deep", "Eldritch", "Emptiness", "Baneful", "Ancient", "Acid", "Insane", "Unkind", "Mean", "Dominant", "Supreme", "Powerful", "Superior", "Outrageous", "Super", "Explosive", "Obscure", "Shrouded", "Psychic", "Astral", "Otherworldly", "Paranormal", "Prophet", "Telekinesis", "Blasphemy", "Ethereal", "Stellar", "Reality", "Galactic", "Astronomical", "Nightfall", "Menacing", "Terrifying", "Midnight", "Eclipse", "Nocturnal", "Ravenous", "Mythic", "Arcane", "Runic", "Echanted", "Fractured", "Anarchic", "Pandemonic", "Unfettered", "Wild", "Unleashed", "Nebulous", "Cosmic", "Singular", "Quantum", "Antimatter", "Seismic", "Dual", "Triple", "Centuple", "Manifold", "Relentless", "Thousands", "Million", "Billion", "Infinite", "Limitless", "fathomless", "Godly", "Boundless", "Virtual", "Painful", "Titan", "Mighty", "Bone", "Skull", "Killing", "Iron", "Judas", "Brazen", "Scavenger", "Heretic", "Beast", "Armageddon", "Mortal", "Apocalyptic", "Reaper"
+            ];
+            const secondPart = [
+                "Punch", "Bolt", "Blast", "Beam", "Laser", "Bullet", "Wave", "Pulse", "Cannon", 
+                "Orb", "Dart", "Surge", "Jet", "Arrow", "Spear", "Bomb", "Strike", 
+                "Bind","Grasp", "Superheat", "Rush", "Flash",
+                "Burst", "Cloak", "Fang", "Vortex", "Storm", "Howl", "Touch", "Flare", "Fist",
+                "Corrosion", "Decay", "Shred", "Pierce", "Eruption", "Pain", "Ruin", "Slash",
+                "Scourge", "Implosion", "Detonation", "Crush", "Venom", "Crack", "Splinter",
+                "Meltdown", "Sear", "Vapor", "Fracture", "Release", "Annihilation", "Scald",
+                "Smash", "Injection", "Tear", "Dissolution", "Quake", "Fragment", "Collapse",
+                "Disintegrate", "Atomizer", "Evaporate", "Breakdown", "Engulf", "Devastation", "Assault", "Maelstrom", "Bender", "Flux", "Power", "Leech", "Lock", "Spike", "Burden", "Disruption", "Fear", "Echo", "Agony", "Suffering", "Torment", "Affliction", "Blaze", "Incantation", "Renewal", "Haste", "Immolation", "Sacrifice", "Subversion", "Shame", "Form", "Thorns", "Equinox", "Mist", "Flesh", "Silence", "Vow", "Possession", "Atrocity", "Misery", "Sorrow", "Abomination", "Trap", "Explosion", "Boom", "Thunder", "Fire", "Fireball", "Hex", "Flame", "Rain", "Punishment", "Purgatory", "Tribulation", "Trauma", "Burial", "Entombment", "Breath", "Sinestra", "Voodoo", "Skinning", "Malediction", "Eye", "Swamp", "Descend", "Ruling", "Invocation", "Summoning", "Torrent", "Nova", "Whirlwind", "Chant", "Manifestation", "Barrage", "Charge", "Leach", "Tempest", "Cyclone", "Typhoon", "Hurricane", "Tornado", "Terrors", "Trial", "Being", "Mana", "Saw", "Blade", "Bleed", "Absorption", "Assimilation", "Intimidation", "Javelin", "Harpoon", "Spire", "Dagger", "Whip", "Cataclysm", "Combustion", "Ray", "Arc", "Current", "Discruption", "Seal", "Clash", "Ram", "Spite", "Wraith", "Claw", "Gaze", "Stare", "Pressure", "Influence", "Impact", "Authority", "World", "Corruption", "Manipulation", "Control", "Puppeteering", "Hypnosis", "Chains", "Dissection", "Ritual", "Plasma", "Rage", "Madness", "Energy", "Domination", "Transformation", "Rampage", "Bloodlust", "Frenzy", "Onslaught", "Carnage", "Grip", "Fury", "Breaker", "Intent", "Apocalypse", "Destruction", "Maiden", "Guillotine", "Pillory", "Cage", "Crusher", "Ripper", "Spider", "Snake", "Magic", "Spell", "Damage", "Stabbing", "Cut", "Wound", "Injury", "Bayonet", "Chop", "Chock", "knives", "Fate", "Wrath", "Requiem", "Fall", "Descent", "Plague", "Blight", "Havoc", "End", "Assassination", "Defeat", "Beating", "Bang", "Hammer", "Play", "stiletto", "Swords", "Light", "Pendulum", "Device", "Time", "Hour", "Existence", "Survival", "Scythe", "Suffocation"
+            ];
+
+            return firstPart[Math.floor(Math.random() * firstPart.length)] + " " + secondPart[Math.floor(Math.random() * secondPart.length)];
+        }
+
+        // Add new skill
+        function addNewSkill() {
+            const skillID = skillLevels.length;
+
+            let skillName = generateSkillName();
+            let attempt=0;
+
+            // Keep generating a new name if it exists in the list, up to 100 times
+            if (Array.isArray(skillNames) && skillNames.length > 0) {
+                while (skillNames.includes(skillName) && attempts < 100) {
+                    skillName = generateSkillName();
+                    attempts++;
+                }
+            }
+            const skillGoal = 1;
+
+            if (skillID > 0) {
+                playNotificationSound();  // Play the sound when level-up is achieved
+                //alert(`Skill [${skillName}] Acquired!`);
+                //showNotification("[${skillName}] Acquired!");
+                showNotification("[" + skillName + "] Acquired!");
+                speakNotification(skillName + " Acquired!");
+            }
+
+            skillNames[skillID] = skillName;
+            skillLevels[skillID] = 1;
+            skillGoals[skillID] = skillGoal + skillID;
+            skillProgress[skillID] = 0;
+            skillAction[skillID] = "None";
+            skillTrainingActive[skillID] = false;  // Start with training inactive
+            
+            // Generate a random integer between 1 and icon_count (formatted as 3-digit string)
+            const icon_count = 255;
+            const randomIconNumber = String(Math.floor(Math.random() * icon_count + 1)).padStart(3, '0');
+            skillIcons[skillID] = iconsDir + randomIconNumber + ".png";
+            
+            // Generate random hue shift (between 0 and 360 degrees)
+            const randomHueShift = Math.floor(Math.random() * 360);
+
+            // Store the hue shift in skill data
+            skillHueShifts[skillID] = randomHueShift;
+
+            const newSkill = document.createElement("div");
+            newSkill.classList.add("skill");
+            newSkill.classList.add("animate");
+            newSkill.innerHTML = `
+                <div class="SkillHeader" id="head-${skillID}">
+                    <div class="col">
+                        <button class="nav-button" id="train-btn-${skillID}" onclick="startTraining(${skillID})">Refine</button>
+                    </div>
+                    <div class="mid">
+                        <div class="iconBorder">
+                            <img class="SkillIcon" src="${skillIcons[skillID]}" alt="Skill Icon" style="filter: hue-rotate(${randomHueShift}deg);">
+                        </div>
+                        <h3 id="skill-${skillID}-name">${skillName} LV: ${skillLevels[skillID]}</h3>
+                    </div>
+                    <div class="col">
+                        <div class="progress-container">
+                            <div id="skill-${skillID}" class="progress-bar" style="width: 0%;">0%</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("skills-container").appendChild(newSkill);
+
+            // Start auto-training for the skill
+            //startTraining(skillID);
+
+            saveSkillsToStorage();
+        }
+
+        function displayDamage(damageAmount, enemyID) {
+            // Find the container where damage elements will be appended
+            const damageContainer = document.getElementById('damages'); // This should be a container that holds all damage elements
+
+            // Create a new damage element
+            const newDamageElement = document.createElement('div');
+            newDamageElement.classList.add('damage'); // Add a class for styling and animation
+            newDamageElement.textContent = `-${damageAmount*100}`;
+
+            // Append the new damage element to the container
+            damageContainer.appendChild(newDamageElement);
+
+            // Add animation class to trigger the animation
+            newDamageElement.classList.add('show-damage');
+
+            // Hide and remove the damage element after the animation duration
+            setTimeout(() => {
+                newDamageElement.classList.remove('show-damage');
+                damageContainer.removeChild(newDamageElement); // Remove the element after animation
+            }, 1000); // Duration of the animation (2 seconds)
+        }
+
+        // Function to attack the last enemy
+        function attackLastEnemy(skillID) {
+            // Get all the enemies in the container
+            const enemies = document.querySelectorAll("#enemy-container .skill");
+            
+            // Get the last enemy
+            const lastEnemy = enemies[enemies.length - 1];
+            lastEnemy.classList.remove('damage-overlay');
+            void lastEnemy.offsetWidth; // Force reflow
+            lastEnemy.classList.add('damage-overlay');
+            //lastEnemy.classList.add('shake');
+
+            // Remove the class after the animation duration (0.4s)
+            //setTimeout(() => {
+            //    lastEnemy.classList.remove('damage-overlay');
+            //}, 400);
+
+            // Get the enemy's health element
+            const healthElement = lastEnemy.querySelector(`#enemy-${enemyID}-health`);
+
+            // If the last enemy exists, apply damage
+            if (lastEnemy && healthElement) {
+                playNotificationSound(4);
+                // Apply the skill damage (subtract from health)
+                let currentHealth = parseInt(healthElement.style.width) || 100; // Assuming full health is 100
+                // Apply Damages to enemy
+                damage_value=skillLevels[skillID]*(skillID+1)
+                currentHealth -= damage_value;
+                displayDamage(damage_value,enemyID);
+                
+
+                // Update health bar (ensure it doesn't go below 0)
+                currentHealth = Math.max(0, currentHealth);
+                healthElement.style.width = `${currentHealth}%`;
+
+                // Update the text inside the progress bar with the remaining health percentage
+                healthElement.innerHTML = `${currentHealth}%`;
+
+                // Update the health text or other UI elements here
+                attack_result=`Attacked ${lastEnemy.querySelector(`#enemy-${enemyID}-name`).innerText}. Remaining HP: ${currentHealth}%`
+                //showNotification(attack_result);
+
+                // Optional: Check if enemy is dead
+                if (currentHealth === 0) {
+                    // Enemy Defeated
+                    // Handle enemy death, e.g., remove enemy or show a message
+                    playNotificationSound();
+                    lastEnemy.classList.add('fade-out');
+                    // After the fade-out animation completes, remove the enemy from the DOM
+                    setTimeout(() => {
+                        lastEnemy.remove();
+                    }, 2000);
+                    console.log(`${lastEnemy.querySelector(`#enemy-${enemyID}-name`).innerText} is defeated.`);
+                }
+            }
+        }
+
+
+        // Example of casting a skill
+        function startCasting(skillID) {
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            const castButton = document.getElementById(`cast-btn-${skillID}`);
+            // Check if the skill is not on cooldown or training
+            if (trainButton.disabled) return; // Prevent starting training if already completed
+            if (castButton.disabled) return; // Prevent starting casting if already completed
+
+            const enemies = document.querySelectorAll("#enemy-container .skill");
+            const lastEnemy = enemies[enemies.length - 1];
+            const healthElement = lastEnemy.querySelector(`#enemy-${enemyID}-health`);
+            let currentHealth = parseFloat(healthElement.innerHTML.replace('%', ''));
+            if (currentHealth <= 0) return; //>
+
+            if (! skillTrainingActive[skillID]){
+                attackLastEnemy(skillID);
+            }
+
+            // Select the element by ID
+            const skillHeader = document.getElementById(`head-${skillID}`);
+            // Find the closest parent with the class 'skill' and add the 'cooldown' class
+            if (skillHeader) {
+                //skillHeader.classList.add('coolDown');
+                const skillParent = skillHeader.closest('.skill');
+                if (skillParent) {
+                    skillParent.classList.add('coolDown');
+                }
+            }
+
+            // Attack the last enemy with the selected skill
+            skillAction[skillID] = "Casting";
+
+            // Cooldown (similar to training)
+            skillTrainingActive[skillID] = true;
+            castButton.disabled = true; // Disable the cast button during casting
+            trainButton.disabled = true; // Disable the cast button during casting
+
+            const interval = setInterval(() => {
+                if (skillProgress[skillID] >= skillGoals[skillID]) {
+                    clearInterval(interval); // Stop casting once it reaches 100%
+                    setTimeout(() => {
+                        skillTrainingActive[skillID] = false; // Cooldown ends, allow next skill usage
+                        // Handle the cooldown after casting (no level up, just reset progress bar)
+                        skillProgress[skillID] = 0; // Reset progress after casting
+                        updateProgressBar(skillID); // Call to update the skill progress bar
+                        castButton.disabled = false; // Re-enable cast button after cooldown
+                        trainButton.disabled = false; // Re-enable cast button after cooldown
+                        castButton.disabled = false; // Re-enable cast button after cooldown
+                        playNotificationSound(3);  // Play the sound when level-up is achieved
+                    }, 100); // Example cooldown of 100 ms
+                } else {
+                    skillProgress[skillID] += ascension_level / 10; // Increase progress over time
+                    updateProgressBar(skillID); // Update progress bar
+                }
+            }, 100); // Update progress every 100ms
+        }
+
+        // Start the training for a skill
+        function startTraining(skillID) {
+            playNotificationSound(2);  // Play the sound when level-up is achieved
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            const castButton = document.getElementById(`cast-btn-${skillID}`);
+            if (trainButton.disabled) return; // Prevent starting training if already completed
+            if (castButton.disabled) return; // Prevent starting training if already completed
+
+            skillTrainingActive[skillID] = true;
+            trainButton.disabled = true; // Disable the button during training
+            castButton.disabled = true; // Disable the button during training
+            skillAction[skillID] = "Training";
+
+            const interval = setInterval(() => {
+                if (!skillTrainingActive[skillID]) {
+                    clearInterval(interval);
+                    return;
+                }
+
+                skillProgress[skillID] += ascension_level / 10; // Increase progress over time
+                updateProgressBar(skillID); // Update the progress bar
+
+                if (skillProgress[skillID] >= skillGoals[skillID]) {
+                    clearInterval(interval); // Stop training once it reaches 100%
+                    skillLevels[skillID]++; // Level up the skill
+
+                    // Wait a bit to allow progress bar to reach 100% before resetting
+                    setTimeout(() => {
+                        skillProgress[skillID] = 0; // Reset progress for next level
+                        skillGoals[skillID] *= progressDelay;
+                        xp++; // Increase player's XP
+                        if (xp >= xpGoal) {
+                            xp = 0;
+                            xpGoal *= 1.6;
+                            level++;
+                            addNewSkill(); // Automatically add a new skill when level up
+                        }
+
+                        // Update the progress bar and re-enable the training button
+                        updateProgressBar(skillID); // Reset progress bar after level up
+                        document.getElementById(`train-btn-${skillID}`).disabled = false; // Re-enable the button
+                        document.getElementById(`cast-btn-${skillID}`).disabled = false; // Re-enable the button
+                        skillTrainingActive[skillID] = false;
+
+                        // Update skill level display
+                        const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+                        skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+
+                        saveSkillsToStorage(); // Save the updated data
+
+                        // LEVEL UP!
+                        playNotificationSound(1);  // Play the sound when level-up is achieved
+                        //alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                        skillNameElement.classList.remove('animate-level');
+                        void skillNameElement.offsetWidth; // Force reflow
+                        skillNameElement.classList.add('animate-level');
+                    }, 100); // Wait 100ms before resetting progress
+                }
+            }, 100); // Update progress every 100ms
+        }
+
+        // Update the progress bar
+        function updateProgressBar(skillID) {
+            if (skillProgress[skillID] > skillGoals[skillID]) {
+                skillProgress[skillID] = skillGoals[skillID];
+            }
+            const progress = Math.min((skillProgress[skillID] / skillGoals[skillID]) * 100, 100);
+            const bar = document.getElementById(`skill-${skillID}`);
+            const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+            bar.style.width = `${progress}%`;
+            bar.textContent = `${Math.round(progress)}%`;
+
+            // Disable the button when training is completed (100%)
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            //if (progress === 100) {
+                // LEVEL UP!
+                //playNotificationSound(1);  // Play the sound when level-up is achieved
+                //alert(`Skill [${skillNames[skillID]}] leveled up!`);
+                //trainButton.disabled = true;  // Disable the button when progress reaches 100%
+            //}
+        }
+
+
+
+        // Load skills on page load
+        loadSkillsFromStorage();
+        renderSkills(); // Render the skills after loading from storage
+
+    </script>
+</body>
+</html>

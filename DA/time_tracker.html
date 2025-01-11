@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Tracker</title>
+    <script>
+        // Store the current timestamp when the page is closed
+        window.addEventListener("beforeunload", () => {
+            const currentTime = Date.now(); // Get current time in milliseconds
+            localStorage.setItem("lastClosedTime", currentTime); // Store in localStorage
+        });
+
+        // Compare timestamps on page load and display elapsed time
+        window.addEventListener("load", () => {
+            const lastClosedTime = localStorage.getItem("lastClosedTime");
+            const displayElement = document.getElementById("elapsed-time");
+
+            if (lastClosedTime) {
+                const currentTime = Date.now();
+                const timeElapsed = (currentTime - parseInt(lastClosedTime, 10)) / 1000; // Convert to seconds
+                displayElement.textContent = `Time elapsed since last visit: ${timeElapsed.toFixed(2)} seconds`;
+            } else {
+                displayElement.textContent = "Welcome! This is your first visit or no data is saved yet.";
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Time Tracker Example</h1>
+    <p id="elapsed-time">Calculating time elapsed...</p>
+</body>
+</html>
