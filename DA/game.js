@@ -5,6 +5,8 @@ let xp = 0;
 let xpGoal = 2;
 let gold = 0;
 
+// Global variable to track if sounds are allowed
+let soundEnabled = true;
 let progressDelay = 2;
 let ascension_level = 1;
 let enemyID=1
@@ -37,4 +39,5 @@ function reset_skills() {
             xp = 0;
             xpGoal = 2;
             gloal=0;
+            soundEnabled = true;
 }

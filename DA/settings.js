@@ -55,7 +55,13 @@ musicVolumeSlider.addEventListener('input', () => {
 });
 
 soundVolumeSlider.addEventListener('input', () => {
-    soundVolumeLabel.textContent = `${Math.round(soundVolumeSlider.value * 100)}%`;
+    if (soundVolumeSlider.value < 0.1) {
+        soundVolumeLabel.textContent = `MUTED`;
+    } else if (soundVolumeSlider.value > 0.9) {
+        soundVolumeLabel.textContent = `MAX`;
+    } else {
+        soundVolumeLabel.textContent = `${Math.round(soundVolumeSlider.value * 100)}%`;
+    }
 });
 
 // Apply the settings when the "Confirm Settings" button is clicked
@@ -127,11 +133,12 @@ function setSoundVolume(volume) {
     ['sound-win', 'sound-level', 'sound-select'].forEach(id => {
         const sound = document.getElementById(id);
         if (sound) {
-            if (volume < 1){
+            if (globalVolume < 0.1) {
                 soundVolumeLabel.textContent = `MUTED`;
-            }
-            if (volume == 1){
+            } else if (globalVolume === 1) {
                 soundVolumeLabel.textContent = `MAX`;
+            } else {
+                soundVolumeLabel.textContent = `${Math.round(globalVolume * 100)}%`;
             }
             sound.volume = globalVolume;
         }
@@ -154,7 +161,15 @@ function loadSettings() {
 
         // Update labels
         musicVolumeLabel.textContent = `${Math.round(musicVolumeValue * 100)}%`;
-        soundVolumeLabel.textContent = `${Math.round(globalVolume * 100)}%`;
+        //soundVolumeLabel.textContent = `${Math.round(globalVolume * 100)}%`;
+        if (globalVolume < 0.1) {
+            soundVolumeLabel.textContent = `MUTED`;
+        } else if (globalVolume === 1) {
+            soundVolumeLabel.textContent = `MAX`;
+        } else {
+            soundVolumeLabel.textContent = `${Math.round(globalVolume * 100)}%`;
+        }
+        
         setMusicVolume(musicVolumeValue);
         setSoundVolume(globalVolume);
     }

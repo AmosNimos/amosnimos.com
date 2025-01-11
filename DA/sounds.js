@@ -1,6 +1,3 @@
-// Global variable to track if sounds are allowed
-let soundEnabled = false;
-
 // Listen for user interaction to enable sounds
 document.addEventListener("click", () => {
     soundEnabled = true;
