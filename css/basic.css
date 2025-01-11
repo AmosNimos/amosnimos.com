@@ -229,15 +229,19 @@ main {
 }
 
 .badges {
-    display:flex;
-    margin-top:0.5em;
-    height:4em;
-    width:100%;
+    display: flex;
+    margin-top: 0.5em;
+    height: 5em;
+    width: 100%;
+    overflow: hidden; /* Ensures no content overflows the container */
+    align-items: center; /* Vertically centers the badges inside the container */
 }
 
 .badge {
-    border:none important;
+    border: none !important;
     padding-right: 1em;
-    height:8em;
-    width:auto;
+    height: 100%; /* Ensures the badge height matches the container's height */
+    width: auto; /* Maintains aspect ratio */
+    object-fit: contain; /* Ensures the content inside badges fits properly */
+    display: block; /* Ensures the badge acts as a block-level element */
 }
