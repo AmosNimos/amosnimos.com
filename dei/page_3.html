@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Share Your Dead Name</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Dead Name</h1>
+            <p>We value your journey. Sharing your dead name is a way to help us better include… everyone else!</p>
+            
+            <!-- Emotional Message -->
+            <p class="emotional-message">
+                This is about protecting our users and making a safer space for all. By sharing your dead name, we will ensure it is completely censored from our servers. This helps us prevent any unfortunate incidents of people using your past name, which could harm your experience. We want you to feel safe here, and we take this seriously!
+            </p>
+
+            <form id="deadNameForm" onsubmit="return validateForm()">
+                <label for="deadName">What is your dead name?</label>
+                <input type="text" id="deadName" name="deadName" placeholder="Enter your dead name (if any)">
+                <small id="tooltip" style="display: none; color: gray;">
+                    This is so that other users can't call you by that name. We want to create a safe space and for that, we need to censor people who could use that name in the game. This is important so that everyone can feel welcomed.
+                </small>
+                <span id="error-message" style="color: red; display: none;">Please provide your dead name to continue.</span>
+            </form>
+            
+            <button id="next_page" onclick="validateAndGoToNextPage('page_4.html')">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the tooltip when the user focuses on the dead name input field
+        document.getElementById('deadName').addEventListener('focus', function() {
+            document.getElementById('tooltip').style.display = 'block';
+        });
+
+        // Hide the tooltip when the input field loses focus
+        document.getElementById('deadName').addEventListener('blur', function() {
+            document.getElementById('tooltip').style.display = 'none';
+        });
+
+        // Function to validate the form and prevent page change if input is empty
+        function validateAndGoToNextPage(nextPage) {
+            const deadName = document.getElementById('deadName').value.trim();
+            const errorMessage = document.getElementById('error-message');
+            
+            // If dead name is empty, show error message and don't allow transition to the next page
+            if (!deadName) {
+                errorMessage.style.display = 'block'; // Show the error message
+                return; // Prevent the page from moving forward
+            }
+
+            // If input is valid, hide error message and proceed to the next page
+            errorMessage.style.display = 'none'; // Hide the error message
+            window.location.href = nextPage; // Proceed to next page
+        }
+    </script>
+</body>
+</html>

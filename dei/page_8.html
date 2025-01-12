@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Check Your Privilege</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic Styling */
+        .checkbox-container {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-label {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .additional-privilege-container {
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+
+        #next_page {
+            margin-top: 20px;
+        }
+
+        .checked {
+            color: green;
+        }
+
+        .snarky-message {
+            font-size: 16px;
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Check Your Privilege</h1>
+            <p>Because we believe it’s important to check your privilege, please use the checkbox below. The world is watching...</p>
+
+            <!-- Main Privilege Checkbox -->
+            <div class="checkbox-container">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="privilege" id="privilege_check"> Check your privilege
+                </label>
+                <p id="snarkyMessage" class="snarky-message"></p>
+            </div>
+
+            <!-- Additional Privilege Checkboxes for white people -->
+            <div class="additional-privilege-container" style="display:none;">
+                <p>If you are white, please also check these additional privilege boxes:</p>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="white_privilege" id="white_privilege_check_1">
+                    Can't be poor (We all know white people only pretend to be poor to get more money)
+                </label><br>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="white_privilege" id="white_privilege_check_2">
+                    Has an effortless time getting a coffee order spelled correctly. (we see you... JEFF)
+                </label><br>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="white_privilege" id="white_privilege_check_4"> 
+                    Feeling safe around white people
+                </label><br>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="white_privilege" id="white_privilege_check_3"> 
+                    Can find bandages that match the skin tone?
+                </label><br>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" name="white_privilege" id="white_privilege_check_5"> 
+                    More Privileges!
+                </label><br>
+
+                <p>(Can't think of any on the spot... but you know!)</p>
+            </div>
+
+            <!-- Next Page Button -->
+            <button id="next_page">Next</button>
+        </div>
+    </div>
+
+    <script src="next_page.js"></script>
+    <script>
+        // Display snarky message when the privilege box is checked
+        const privilegeCheck = document.getElementById("privilege_check");
+        const snarkyMessage = document.getElementById("snarkyMessage");
+
+        privilegeCheck.addEventListener("change", function() {
+            if (privilegeCheck.checked) {
+                snarkyMessage.textContent = "Don't you go thinking this will give you any advantage or anything!";
+                document.querySelector('.additional-privilege-container').style.display = 'block';
+            } else {
+                snarkyMessage.textContent = "";
+            }
+        });
+    </script>
+
+    <script>SetNextPage("page_9.html")</script>
+
+</body>
+</html>

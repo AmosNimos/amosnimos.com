@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Choose Your Username</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Username/Nickname</h1>
+            <p>This is how you want people to refer to you in the game.</p>
+            <!-- Username/nickname form (value will not be saved) -->
+            <form id="nicknameForm">
+                <label for="username">Enter your nickname:</label>
+                <input type="text" id="username" name="username" placeholder="Choose your nickname">
+            </form>
+            <!-- Button with id 'next_page' -->
+            <button id="next_page">Continue</button>
+        </div>
+    </div>
+
+    <script src="next_page.js"></script> <!-- Reuse the logic from the previous script -->
+    <script>
+        // Call the function to handle the button click and redirect to the next page
+        SetNextPage('page_3.html'); // Specify the next page URL here
+    </script>
+</body>
+</html>

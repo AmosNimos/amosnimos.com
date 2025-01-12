@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Sexual Orientation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic Styling */
+        .radio-container {
+            margin-bottom: 20px;
+        }
+
+        .radio-label {
+            font-size: 18px;
+            color: #333;
+        }
+
+        #next_page {
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Sexual Orientation</h1>
+            <p>Let’s talk about love!</br> (Straight people need not apply.)</p>
+
+            <!-- Sexual Orientation Options -->
+            <div class="radio-container">
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="straight" value="straight"> Straight
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="gay" value="gay"> Gay
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="bisexual" value="bisexual"> Bisexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="pansexual" value="pansexual"> Pansexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="asexual" value="asexual"> Asexual
+                </label><br>
+                <!-- Additional Humorous Options -->
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="robosexual" value="robosexual"> Robosexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="furrysexual" value="furrysexual"> Furrysexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="foodsexual" value="foodsexual"> Foodsexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="pentasexual" value="pentasexual"> mathsexual
+                </label><br>
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="autosexual" value="autosexual"> Autosexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="questioning" value="questioning"> Questioning
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="skoliosexual" value="skoliosexual"> Skoliosexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="spectrasexual" value="spectrasexual"> Spectrasexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="astralsexual" value="astralsexual"> Astralsexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="extrasexual" value="extrasexual"> Extrasexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="graysexual" value="graysexual"> Graysexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="demisexual" value="demisexual"> Demisexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="closeted" value="closeted"> Closeted
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="allosexual" value="allosexual"> Allosexual
+                </label><br>
+
+                <label class="radio-label">
+                    <input type="radio" name="sexual_orientation" id="androsexual" value="androsexual"> Androsexual
+                </label><br>
+                
+            </div>
+
+            <!-- Error Message for Straight Selection -->
+            <div class="error-message" id="error-message" style="display:none;">
+                Inclusivity cannot tolerate your oppressive preferences. Game over.
+            </div>
+
+            <!-- Next Page Button -->
+            <button id="next_page" onclick="checkOrientation()">Next Page</button>
+        </div>
+    </div>
+    <script src="next_page.js"></script>
+    <script>
+        SetNextPage("page_10.html")
+        function checkOrientation() {
+            const straightOption = document.getElementById("straight").checked;
+            const errorMessage = document.getElementById("error-message");
+
+            if (straightOption) {
+                errorMessage.style.display = "block";
+                document.getElementById("next_page").disabled = true; // Disable Next Page if "Straight" is selected
+            } else {
+                window.location.href = "page_10.html"; // Navigate to the next page if orientation is valid
+            }
+        }
+    </script>
+
+</body>
+</html>

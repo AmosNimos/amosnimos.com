@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Biological Sex</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Biological Sex</h1>
+            <p>Biological realities are a tool of the patriarchy. Select anything BUT M or F to continue.</p>
+            
+            <form id="biologicalSexForm">
+                <label><input type="radio" name="biologicalSex" value="M"> M (Male)</label><br>
+                <label><input type="radio" name="biologicalSex" value="F"> F (Female)</label><br>
+                <label><input type="radio" name="biologicalSex" value="X"> X (Non-Binary)</label><br>
+                <label><input type="radio" name="biologicalSex" value="Y"> Y (Possibly Transcendent)</label><br>
+                <label><input type="radio" name="biologicalSex" value="Z"> Z (Meta-Gender)</label><br>
+                <label><input type="radio" name="biologicalSex" value="Other" id="otherSex"> Other</label><br>
+            </form>
+
+            <div id="otherPopUp" style="display: none;">
+                <p>Oh wait, there's more!</p>
+                <label><input type="checkbox" name="biologicalSexOption" value="Quantum Gender"> Quantum Gender</label><br>
+                <label><input type="checkbox" name="biologicalSexOption" value="Fluid Binary Star"> Fluid Binary Star</label><br>
+                <label><input type="checkbox" name="biologicalSexOption" value="Neutrois Prime"> Neutrois Prime</label><br>
+                <label><input type="checkbox" name="biologicalSexOption" value="Cosmic Egg Theory"> Cosmic Egg Theory</label><br>
+                <label><input type="checkbox" name="biologicalSexOption" value="Plasma Being"> Plasma Being</label><br>
+                <label><input type="checkbox" name="biologicalSexOption" value="Void"> Void</label><br>
+            </div>
+
+            <button id="next_page" disabled>Continue</button>
+            <p id="errorMessage" style="color: red; display: none; text-align: center;">That's it? Is that all the diversity you're bringing to the table? We already have plenty of that gender. Try being more creative!</p>
+        </div>
+    </div>
+
+    <script src="next_page.js"></script>
+    <script>
+        SetNextPage('page_6.html'); // Specify the next page URL here
+    </script>
+    <script>
+        // Handle the "Other" radio button click to display pop-up
+        const otherSexRadio = document.getElementById("otherSex");
+        const otherPopUp = document.getElementById("otherPopUp");
+        const nextPageButton = document.getElementById("next_page");
+        const errormsg = document.getElementById("errorMessage");
+        // Enable the button when a valid option is selected
+        function enableButton() {
+            nextPageButton.disabled = !document.querySelector('input[name="biologicalSex"]:checked');
+        }
+
+        // Show the additional options if "Other" is selected
+        otherSexRadio.addEventListener("change", function() {
+            if (this.checked) {
+                otherPopUp.style.display = "block";
+            } else {
+                otherPopUp.style.display = "none";
+                errormsg.style.display = "block";
+            }
+            enableButton();
+        });
+
+        // Check that at least one option is selected before enabling the continue button
+        document.querySelector('form').addEventListener('change', enableButton);
+    </script>
+
+</body>
+</html>
+

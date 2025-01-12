@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Visible Minority</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Visible Minority</h1>
+            <p>We value inclusivity and diverse perspectives. If you are not a visible minority, you are part of the problem.</p>
+            
+            <form id="visibleMinorityForm">
+                <label><input type="radio" name="visibleMinority" value="Yes"> Yes, I am a visible minority.</label><br>
+                <label><input type="radio" name="visibleMinority" value="No" id="noOption"> No, I am not a visible minority.</label><br>
+            </form>
+
+            <button id="next_page" disabled>Continue</button>
+            <p id="errorMessage" style="color: red; display: none; text-align: center;">We value inclusivity… so we cannot include YOU.</p>
+        </div>
+    </div>
+
+    <script src="next_page.js"></script>
+    <script>
+        const noOptionRadio = document.getElementById("noOption");
+        const nextPageButton = document.getElementById("next_page");
+        const errorMessage = document.getElementById("errorMessage");
+        SetNextPage("page_7.html")
+        // Enable the button when a valid option is selected
+        function enableButton() {
+            const isSelected = document.querySelector('input[name="visibleMinority"]:checked');
+            nextPageButton.disabled = !isSelected;
+            if (isSelected && isSelected.value === "No") {
+                errorMessage.style.display = "block"; // Show the error message if "No" is selected
+                SetNextPage("page_6.html")
+            } else {
+                errorMessage.style.display = "none"; // Hide error message if "Yes" is selected
+                SetNextPage("page_7.html")
+            }
+        }
+
+        // Check that at least one option is selected before enabling the continue button
+        document.querySelector('form').addEventListener('change', enableButton);
+
+        // Show the error message if "No" is selected
+        nextPageButton.addEventListener('click', function() {
+            if (nextPageButton.disabled || noOptionRadio.checked) {
+                errorMessage.style.display = "block"; // Show the error message if "No" is selected
+            }
+        });
+    </script>
+
+</body>
+</html>

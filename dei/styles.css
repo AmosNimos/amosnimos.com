@@ -1,0 +1,120 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.form-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    color: #333;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+input[type="text"]:focus {
+    border-color: #5f6368;
+    background-color: #fff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* CSS for error message animation */
+#errorMessage {
+    color: red;
+    display: none;  /* Initially hidden */
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;  /* Apply the fadeIn animation */
+}
+
+/* Define the fadeIn animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px); /* Optional: Adds a small bounce effect */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#pronouns {
+    width: 100%;              /* Make it take full width */
+    max-height: 300px;        /* Limit the height */
+    overflow-y: auto;         /* Enable vertical scrolling */
+    margin: 20px 0;           /* Optional: Adds spacing around the container */
+    padding: 10px;            /* Optional: Adds padding inside the container */
+}
+
+.container{
+    width: 100%;              /* Make it take full width */
+    max-height: 300px;        /* Limit the height */
+    overflow-y: auto;         /* Enable vertical scrolling */
+    margin: 20px 0;           /* Optional: Adds spacing around the container */
+    padding: 10px;            /* Optional: Adds padding inside the container */
+}
+
+.pronoun-list {
+    width: 100%;              /* Make sure the list inside takes full width */
+    padding-right: 15px;      /* Optional: Adds space for the scrollbar */
+}

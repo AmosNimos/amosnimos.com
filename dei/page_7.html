@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Gender Identity Spectrum</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic Styling for the Sliders */
+        #slider-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        #next_page {
+            margin-top: 20px;
+        }
+
+        /* Additional sliders for satire */
+        .satirical-slider-container {
+            margin-top: 30px;
+        }
+
+        .slider-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Gender Identity Spectrum</h1>
+            <p>Use the slider to express your gender identity. We all know that gender is a spectrum so you should have no issue telling us where you are on that spectrum using our super accurate gender sliders.</p>
+            <p><em>We intentionally left these sliders unlabeled, because putting labels on people is bad. Let your gender identity be whatever you feel it should be—no boxes, no categories, just pure, unbridled self-expression.</em></p>
+            
+            <!-- Gender Identity Slider -->
+            <div id="slider-container">
+                <input type="range" id="slider2" class="slider" min="0" max="100" step="1">
+                <p id="slider2Value"></p>
+            </div>
+            
+            <!-- Satirical Sliders -->
+            <div class="satirical-slider-container">
+                <!-- Robocop to Mermaid Slider (no JS) -->
+                <input type="range" id="slider3" class="slider" min="0" max="100" step="1">
+            </div>
+
+            <div class="satirical-slider-container">
+                <!-- Empty Slider (no JS) -->
+                <input type="range" id="slider4" class="slider" min="0" max="100" step="1">
+            </div>
+
+            <!-- Next Page Button -->
+            <button id="next_page">Next Page</button>
+        </div>
+    </div>
+
+    <script src="next_page.js"></script>
+    <script>SetNextPage("page_8.html")</script>
+</body>
+</html>

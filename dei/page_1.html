@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEI Online: Start Playing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Welcome to DEI Online!</h1>
+            <p>Before you can start playing, let us know more about you.</p>
+            
+            <!-- Random form (not necessary to store the name, just for show) -->
+            <form id="startForm">
+                <label for="playerName">What is your name?</label>
+                <input type="text" id="playerName" name="playerName">
+            </form>
+
+            <p id="errorMessage" style="color: red; display: none;">Invalid name, sorry this name cannot be used since it was reported by another user who felt triggered by it. To respect their feelings, please choose another name.</p>
+            
+            <!-- The button with id next_page -->
+            <button id="next_page" onclick="validateName()">Start</button>
+        </div>
+    </div>
+
+    <script>
+        let attemptCount = 0;  // Track the number of attempts
+
+        // This function will validate the name and display an error if necessary
+        function validateName() {
+            const playerName = document.getElementById('playerName').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const nextPageButton = document.getElementById('next_page');
+
+            // Check if the name is empty or if attempts exceed 3
+            if (attemptCount < 1) {
+                // Simulate a name being invalid (you can replace this logic with actual checks)
+                if (playerName === "") {
+                    errorMessage.style.display = "none";  // Hide error message if the name is blank
+                    return;  // Do nothing if the field is empty
+                }
+                
+                // Increment the attempt count
+                attemptCount++;
+
+                // Show the error message if the name is invalid (you can add more rules here)
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Once 1 failed attempt has been made, allow the user to proceed
+            // Proceed to the next page (for now, just display a message)
+            window.location.href = 'page_2.html';  // Redirect to the next page
+        }
+    </script>
+</body>
+</html>
