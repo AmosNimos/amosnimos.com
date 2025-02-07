@@ -14,7 +14,13 @@
 <h3>2025-02-07</h3>
 <h1>
 <strong>Canada’s Online-Only Madness: Why Are We Forced to Do Everything on the Internet?</strong>  
-</h1><p>
+</h1>
+
+<button id="ttsButton" onclick="toggleReading()">🔊 Read Article</button>
+<a href="article_fr.html" class="lang-switch">🇫🇷 Lire en Français</a>
+
+
+<p>
 What in the <strong>actual hell</strong> is going on in Canada? You need a job, so you put on decent clothes, walk into a business, and politely ask to submit your resume. What do they say? <strong>"Apply online."</strong> You want to sign up for a gym, <strong>in person</strong>, at the front desk, where the staff is literally paid to handle memberships. What do they say? <strong>"Go fill out the form online."</strong>  
 </p><p>
 Are we serious? Are we actually saying <strong>you must have</strong> a smartphone, a computer, and internet access to do the most basic things? This isn’t just inconvenient, it’s a <strong>trap</strong>. Not everyone has unlimited data, a working laptop, or time to fight with some broken, convoluted online form that probably doesn’t even load properly.  
@@ -28,5 +34,38 @@ This online-only nonsense is <strong>idiocracy in action</strong>. We need to pu
 <p>This is more than just inconvenience, it’s about the right to technological impairment. Not everyone is tech-savvy, and no one should be forced into a digital system just to function in society. This is a Virtual Insanity, where technology is supposed to help but instead becomes an obstacle. The real problem isn’t technology itself, I love tech when it’s a tool that improves life. But what we have now is tech being used against us, making things harder, isolating people, and punishing those without constant internet access. This isn’t progress, it’s dystopian nonsense, and it’s hitting customers and workers the hardest.
 </p><p class="footer">By Amos Nimos</p>
 </div>
+
+
+<script>
+    let isReading = false;
+    let speech = new SpeechSynthesisUtterance();
+
+    function toggleReading() {
+        if (isReading) {
+            // Stop reading
+            window.speechSynthesis.cancel();
+            document.getElementById('ttsButton').innerText = '🔊 Read Article';
+            isReading = false;
+        } else {
+            // Start reading
+            const articleText = document.querySelector('.article').innerText;
+            speech.text = articleText;
+            speech.lang = 'en-US';
+            speech.rate = 1;
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+            document.getElementById('ttsButton').innerText = '🔇 Stop Reading';
+            isReading = true;
+
+            // Detect when speech ends and reset the button
+            speech.onend = () => {
+                document.getElementById('ttsButton').innerText = '🔊 Read Article';
+                isReading = false;
+            };
+        }
+    }
+</script>
+
 </main>
 </body>

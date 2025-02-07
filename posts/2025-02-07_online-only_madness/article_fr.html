@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Amos Nimos: La folie du tout-en-ligne</title>
+<link rel="icon" type="img/x-icon" href="img/favicon.ico">
+<link rel="stylesheet" href="../../css/basic.css">
+</head>
+<body>
+<main>
+<a class="btn-h" href="../../index.html">Accueil</a> <a class="btn-h" href="../../blog.html">Blog</a>
+<h2 class="title">La folie du tout-en-ligne</h2>
+<div class="article">
+<img src="img.jpg" data-url="https://rockcellarmagazine.com/wp-content/uploads/2021/08/jamiroquai-virtual-insanity.jpg" alt="virtual-insanity">
+<h3>2025-02-07</h3>
+<h1>
+<strong>Canada: la folie du tout-en-ligne, pourquoi doit-on tout faire sur Internet?</strong>  
+</h1>
+
+<button id="ttsButton" onclick="toggleReading()">🔊 Lire l'article</button>
+<a href="article.html" class="lang-switch">🇬🇧 Read in English</a>
+
+
+<p>
+Qu’est-ce qui se <strong>passe sérieusement</strong> au Canada? Vous cherchez un emploi, vous vous habillez bien, entrez dans une entreprise et demandez poliment à remettre votre CV. Que vous répond-on? <strong>"Postulez en ligne."</strong> Vous voulez vous inscrire dans une salle de sport, <strong>en personne</strong>, à l’accueil, là où les employés sont payés pour gérer les adhésions. Que vous disent-ils? <strong>"Remplissez le formulaire en ligne."</strong>  
+</p><p>
+C’est une blague? On est en train de dire que <strong>vous devez absolument</strong> posséder un smartphone, un ordinateur et une connexion Internet pour faire les choses les plus basiques? Ce n’est pas juste un inconvénient, c’est un <strong>piège</strong>. Tout le monde n’a pas de données illimitées, un PC fonctionnel, ou du temps à perdre à se battre avec un formulaire en ligne foireux qui ne charge même pas correctement.  
+</p><p>
+Et parlons des emplois une seconde. Si vous engagez des gens qui <strong>ne prennent même pas la peine de venir postuler en personne</strong>, vous pensez vraiment qu’ils vont <strong>se pointer à l’heure tous les jours</strong>? Le strict <strong>minimum</strong> pour un job, c’est de se présenter, et on est en train d’éliminer ça du processus. <strong>Qui gagne là-dedans?</strong>  
+</p><p>
+Ce n’est pas une question de <strong>praticité</strong>, c’est une question de <strong>forcer les gens</strong> à utiliser un système numérique que tout le monde ne veut pas ou ne peut pas utiliser. C’est juste une excuse paresseuse pour <strong>remplacer l’interaction humaine par un processus cassé, frustrant et impersonnel</strong>. Si je suis devant vous, <strong>prêt à m’inscrire, payer ou vous remettre mon CV</strong>, il n’y a absolument <strong>aucune raison</strong> de me renvoyer chez moi pour me battre avec un site web mal conçu.  
+</p><p>
+Cette obsession du tout-en-ligne, c’est de la <strong>pure idiotie</strong>. Il faut réagir, parce que ce n’est pas juste une question de technologie, c’est une question d’<strong>accessibilité et de bon sens</strong>. Si un humain peut aider, <strong>qu’on le laisse aider</strong>. Arrêtez de traiter chaque interaction comme si elle devait obligatoirement passer par un écran.
+</p>
+<p>Ce problème va bien au-delà de la simple gêne, c’est une question de droit à l’imprégnation technologique. Tout le monde n’est pas à l’aise avec la technologie, et personne ne devrait être <strong>forcé</strong> à utiliser des outils numériques juste pour fonctionner dans la société. C’est une <strong>Virtual Insanity</strong>, où la technologie, censée nous aider, devient un obstacle. Le problème, ce n’est pas la technologie elle-même, j’adore la tech quand elle est un outil pour améliorer la vie. Mais aujourd’hui, elle est utilisée <strong>contre nous</strong>, elle complique les choses, isole les gens et pénalise ceux qui n’ont pas un accès constant à Internet. Ce n’est pas du progrès, c’est de la <strong>folie dystopique</strong>, et ce sont les clients et les travailleurs qui en pâtissent le plus.
+</p><p class="footer">Par Amos Nimos</p>
+</div>
+
+
+<script>
+    let isReading = false;
+    let speech = new SpeechSynthesisUtterance();
+
+    function toggleReading() {
+        if (isReading) {
+            // Arrêter la lecture
+            window.speechSynthesis.cancel();
+            document.getElementById('ttsButton').innerText = '🔊 Lire l\'article';
+            isReading = false;
+        } else {
+            // Démarrer la lecture
+            const articleText = document.querySelector('.article').innerText;
+            speech.text = articleText;
+            speech.lang = 'fr-FR';
+            speech.rate = 1;
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+            document.getElementById('ttsButton').innerText = '🔇 Arrêter la lecture';
+            isReading = true;
+
+            // Détecter la fin de la lecture et réinitialiser le bouton
+            speech.onend = () => {
+                document.getElementById('ttsButton').innerText = '🔊 Lire l\'article';
+                isReading = false;
+            };
+        }
+    }
+</script>
+
+</main>
+</body>
+</html>
