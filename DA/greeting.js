@@ -7,7 +7,7 @@ function updatePlayerInfo() {
 
     // Get player data from localStorage
     let playerData = JSON.parse(localStorage.getItem('playerData')) || {};
-    //playerName = playerData.playerName; // Set playerName from localStorage or fallback to "Unnamed"
+    playerName = playerData.playerName; // Set playerName from localStorage or fallback to "Unnamed"
 
     if (typeof titles === 'undefined' || typeof ascension_level === 'undefined' || typeof level === 'undefined' || typeof gold === 'undefined') {
         console.error("Error: One or more required variables are undefined.");
