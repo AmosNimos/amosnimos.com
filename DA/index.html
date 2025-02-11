@@ -69,6 +69,7 @@
     <div class="skill">
         <div class="SkillHeader">
             <div class="col">
+                <button class="nav-button" onclick="confirmBoost()">Overdrive</button>
             </div>
             <div class="col">
                 <button class="nav-button" onclick="confirmAscension()">Ascend</button>
@@ -93,6 +94,7 @@
     <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto" muted></audio>
     <audio id="sound-hit" src="sounds/hit.wav" preload="auto" muted></audio>
     <audio id="sound-error" src="sounds/error.mp3" preload="auto" muted></audio>
+    <audio id="sound-power" src="sounds/power_x.mp3" preload="auto" muted></audio>
 
     <!-- Greeting Box -->
     <div id="overlay" class="hidden"></div>
@@ -116,6 +118,20 @@
 
                 if (confirmation) {
                     executeAscension();
+                }
+            }
+        }
+        function confirmBoost() {
+
+            if (gold < 200) {
+                showNotification("Warning: You are too broke for this!", 5);
+            } else {
+                const confirmation = confirm(
+                    "Warning: This will cost 200 gold are you sure?"
+                );
+
+                if (confirmation) {
+                    executeBoost();
                 }
             }
         }
@@ -285,7 +301,7 @@
 
 
         // Load skills on page load
-        playNotificationSound();
+        //playNotificationSound();
         loadSettings();
         loadSkillsFromStorage();
         renderSkills(); // Render the skills after loading from storage

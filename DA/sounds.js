@@ -18,10 +18,16 @@ function playNotificationSound(index = 0) {
         'sound-click',  // index 3
         'sound-hit',    // index 4
         'sound-error',  // index 5
+        'sound-power',  // index 6
     ];
 
     const soundId = sounds[index] || sounds[0]; // Default to index 0
     const audioElement = document.getElementById(soundId);
+
+    // Prevent other sounds from playing over sound-power (index 6)
+    if (index === 6) {
+        document.querySelectorAll("audio").forEach(audio => audio.pause());
+    }
 
     if (audioElement) {
         // Clone the audio element to allow concurrent playback

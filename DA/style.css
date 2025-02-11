@@ -175,6 +175,15 @@ button:disabled {
     animation-fill-mode: forwards; /* Ensure the final state persists */
 }
 
+.overdrive {
+    opacity: 0;  /* Start with the skill hidden */
+    transform: translateY(-50px);  /* Start above its final position */
+    animation-name: dropAndFlash;   /* Apply the animation */
+    animation-duration: 0.6s;         /* Adjust duration as needed */
+    animation-fill-mode: forwards; /* Ensure the final state persists */
+}
+
+
 .animate-level {
     transform: translateY(-10px);  /* Start above its final position */
     animation-name: Flash;   /* Apply the animation */
@@ -612,4 +621,72 @@ button:disabled {
     left: 0;
     z-index: 10; /* Ensure it's higher than the other image */
     transform: translateY(-35%); /* Move up half the height */
+}
+
+
+/* overdrive */
+
+/* Overdrive Power-Up Animation */
+/* Screen Flash Animation */
+.screen_flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    z-index: 9998;
+    pointer-events: none;
+    animation: screenFlashEffect 1s ease-out forwards;
+}
+
+@keyframes screenFlashEffect {
+    0% {
+        background: rgba(255, 255, 255, 1);
+    }
+    50% {
+        background: rgba(255, 0, 0, 0.3);
+    }
+    99% {
+        background: rgba(255, 255, 255, 0);
+    }
+    100% {
+        background: rgba(255, 255, 255, 0);
+        display: none;
+    }
+}
+
+/* Overdrive Sheen Animation for Skills */
+.overdrive_animation {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 9999; /* Ensure it appears above the screen flash */
+}
+
+.overdrive_animation::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 150, 255, 0.2) 0%, rgba(0, 150, 255, 0.8) 50%, rgba(0, 150, 255, 0.2) 100%);
+    filter: blur(15px) brightness(1.5);
+    animation: overdriveSheen 2s ease-out forwards;
+}
+
+@keyframes overdriveSheen {
+    0% {
+        left: -120%;
+        opacity: 1;
+    }
+    50% {
+        left: 0%;
+        opacity: 0.9;
+    }
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
 }
