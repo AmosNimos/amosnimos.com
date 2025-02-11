@@ -6,9 +6,18 @@
     <title>Demonlord Ascension</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <!-- Sounds -->
+    <audio id="sound-win" src="sounds/win.mp3" preload="auto" muted></audio>
+    <audio id="sound-level" src="sounds/level.mp3" preload="auto" muted></audio>
+    <audio id="sound-select" src="sounds/select.mp3" preload="auto" muted></audio>
+    <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto" muted></audio>
+    <audio id="sound-hit" src="sounds/hit.wav" preload="auto" muted></audio>
+    <audio id="sound-error" src="sounds/error.mp3" preload="auto" muted></audio>
+    <audio id="sound-power" src="sounds/power_x.mp3" preload="auto" muted></audio>
 </head>
 <body>
     
+    <script src="sounds.js"></script>
     <script src="list_init.js"></script>
     <script src="game.js"></script>
 
@@ -62,14 +71,19 @@
         <div class="SkillHeader">
             <div class="mid">
                 <img class="SkillIcon" src="banners/Darklord2.png" alt="Player Image">
+                <a href="./solo_lev/index.html">
                 <h3 id="player_info">Name: ??? | Class: ??? | Level: ???</h3>
+                </a>
             </div>
         </div>
     </div>
     <div class="skill">
         <div class="SkillHeader">
             <div class="col">
-                <button class="nav-button" onclick="confirmBoost()">Overdrive</button>
+                <button class="nav-button" onclick="confirmCastBoost()">Casting Overdrive</button>
+            </div>
+            <div class="col">
+                <button class="nav-button" onclick="confirmTrainBoost()">Training Boost</button>
             </div>
             <div class="col">
                 <button class="nav-button" onclick="confirmAscension()">Ascend</button>
@@ -82,19 +96,25 @@
     </div>
 
 
-    <script src="sounds.js"></script>
     <script src="settings.js"></script>     
 
     <!-- Main Music -->
-    <audio id="background-music" src="music/track1.mp3" autoplay="false"></audio>
-    <!-- Sounds -->
-    <audio id="sound-win" src="sounds/win.mp3" preload="auto" muted></audio>
-    <audio id="sound-level" src="sounds/level.mp3" preload="auto" muted></audio>
-    <audio id="sound-select" src="sounds/select.mp3" preload="auto" muted></audio>
-    <audio id="sound-click" src="sounds/bip_sound_03.wav" preload="auto" muted></audio>
-    <audio id="sound-hit" src="sounds/hit.wav" preload="auto" muted></audio>
-    <audio id="sound-error" src="sounds/error.mp3" preload="auto" muted></audio>
-    <audio id="sound-power" src="sounds/power_x.mp3" preload="auto" muted></audio>
+    <audio id="background-music" src="music/track1.mp3" preload="auto"></audio>
+    <script>
+    document.querySelectorAll("audio").forEach(audio => {
+        audio.muted = false;
+    });
+    </script>
+    
+    <script>
+    document.addEventListener("click", () => {
+        soundEnabled = true;
+        document.querySelectorAll("audio").forEach(audio => {
+            audio.muted = false; 
+        });
+    });
+    </script>
+
 
     <!-- Greeting Box -->
     <div id="overlay" class="hidden"></div>
@@ -121,20 +141,41 @@
                 }
             }
         }
-        function confirmBoost() {
 
-            if (gold < 200) {
-                showNotification("Warning: You are too broke for this!", 5);
+        function confirmTrainBoost() {
+            // Update cost based on level
+            if (Number.isFinite(cost_of_boost) && Number.isFinite(min_cost_of_boost) && Number.isFinite(level) && level > 0) {
+                cost_of_boost = Math.floor(Math.max(10000 / level, min_cost_of_boost) / 10) * 10;
+            }
+
+            if (gold < cost_of_boost) {
+                showNotification(`⚠️ Training Boost costs ${cost_of_boost} gold. You’re short on cash! Go grind some more!`, 5);
             } else {
-                const confirmation = confirm(
-                    "Warning: This will cost 200 gold are you sure?"
-                );
-
+                let msg_text = `🔥 Are you sure you want to activate Overdrive Training? 🔥\n\n💰 Cost: ${cost_of_boost} gold\n🛠️ This will instantly level up your skill, skipping the grind.\n\n⚠️ No refunds! Proceed?`;
+                const confirmation = confirm(msg_text);
                 if (confirmation) {
-                    executeBoost();
+                    executeTrainingBoost();
                 }
             }
         }
+
+        function confirmCastBoost() {
+            // update cost based on level
+            if (Number.isFinite(cost_of_boost) && Number.isFinite(min_cost_of_boost) && Number.isFinite(level) && level > 0) {
+                cost_of_boost = Math.floor(Math.max(10000 / level, min_cost_of_boost) / 10) * 10;
+            }
+            if (gold < cost_of_boost) {
+                showNotification("Warning: You are too broke for this!", 5);
+            } else {
+                let msg_text = `Warning: This will cost ${cost_of_boost} gold. Proceed?`;
+                const confirmation = confirm(msg_text);
+
+                if (confirmation) {
+                    executeCastingBoost();
+                }
+            }
+        }
+
     </script>
     
     <div ></div>
@@ -241,7 +282,7 @@
             } else {
                 // Add default enemy:
                 // Example usage
-                addEnemy(1);
+                addEnemy(2);
             }
 
             // Load Player

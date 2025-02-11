@@ -9,7 +9,7 @@ function addEnemy(level=1, current_hp="None", name="None", max_hp="None") {
         name = opponents[index];    
     }
     if (current_hp=="None"){
-        current_hp=level*10;
+        current_hp=level*50;
     }
     if (max_hp=="None"){
         max_hp=current_hp

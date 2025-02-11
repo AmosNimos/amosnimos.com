@@ -4,12 +4,14 @@ let level = 1;
 let xp = 0;
 let xpGoal = 2;
 let gold = 0;
+const min_cost_of_boost = 100;  // Minimum cost, so it never goes too low
+let cost_of_boost = 10000;
 
 // Global variable to track if sounds are allowed
 let soundEnabled = true;
 let progressDelay = 2;
 let ascension_level = 1;
-let enemyID=1
+let enemyID=1;
 
 // Skills
 let skillLevels = [];

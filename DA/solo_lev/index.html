@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Daily Quest</title>
+</head>
+<body>
+    <div class="quest-box">
+        <img src="corner.png" class="corner top-left" alt="Top Left Corner">
+        <img src="corner.png" class="corner top-right" alt="Top Right Corner">
+        <img src="corner.png" class="corner bottom-left" alt="Bottom Left Corner">
+        <img src="corner.png" class="corner bottom-right" alt="Bottom Right Corner">    
+        <img src="decor.png" class="top-center" alt="center decor">
+        <div class="h1-container">
+            <h1>
+                <span class="rotated">ⓘ</span>QUEST INFO
+            </h1>
+        </div>
+        <div class="button-container">
+            <button id="minimize-button" class="corner-button" onclick="minimize()">-</button>
+            <button class="corner-button" onclick="closeWindow()">x</button>
+        </div>
+        <div class="box-content">
+            <p>DAILY QUEST - TRAIN TO BECOME THE NEXT DEMON LORD</p>
+            <h2 style="color:#00FF00;">STATS</h2>
+            <div class="goal">- Gain Levels <span id="push-ups">[0/10]</span></div>
+            <div class="goal">- Enemy Defeated <span id="push-ups">[0/100]</span></div>
+
+            <p class="warning">CAUTION!</p>
+            <p>IF THE DAILY QUEST REMAINS INCOMPLETE, PENALTIES WILL BE GIVEN ACCORDINGLY.</p>
+
+            <img class="clock-icon" src="clock.png" alt="Clock Icon">
+        </div>
+    </div>
+
+    <script>
+        const goals = {
+            'push-ups': 0,
+            'sit-ups': 0,
+            'squats': 0,
+            'run': 0
+        };
+
+        function updateGoal(goal, max) {
+            if (goals[goal] < max) {
+                goals[goal]++;
+                document.getElementById(goal).textContent = `[${goals[goal]}/${max}]`;
+            }
+        }
+    </script>
+    <script>
+        // Hide the quest box when pressed close button
+        function closeWindow() {
+            const questBox = document.querySelector('.quest-box');
+            if (questBox) {
+                questBox.classList.add('fade-out'); // Add fade-out class for animation
+
+                // Wait for the animation to complete (500ms here matches the CSS animation duration)
+                setTimeout(() => {
+                    questBox.style.display = 'none'; // Hide the element
+                }, 500);
+            }
+        }
+
+        function minimize() {
+            const questBox = document.querySelector('.box-content');
+            const button = document.getElementById('minimize-button'); // Select the minimize button by ID
+            if (button.innerHTML === '-') {
+                button.innerHTML = 'o'; // Change text to "o"
+                if (questBox) {
+                    questBox.style.display = 'none'; // Hide the element
+                }
+            } else {
+                button.innerHTML = '-'; // Change text back to "-"
+                if (questBox) {
+                    questBox.style.display = 'block'; // show the element
+                }
+            }        
+        }
+    </script>
+
+    <script>
+        const questBox = document.querySelector('.quest-box');
+        let rotateX = 0, rotateY = 0; // Current rotation values
+        let targetRotateX = 0, targetRotateY = 0; // Target rotation values
+
+        function lerp(start, end, t) {
+            return start + (end - start) * t;
+        }
+
+        function animate() {
+            // Smoothly interpolate the rotation values
+            rotateX = lerp(rotateX, targetRotateX, 0.1);
+            rotateY = lerp(rotateY, targetRotateY, 0.1);
+
+            // Apply the smoothed rotation
+            questBox.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+
+            // Continue animating
+            requestAnimationFrame(animate);
+        }
+
+        questBox.addEventListener('mousemove', (event) => {
+            const { offsetWidth: width, offsetHeight: height } = questBox;
+            const { offsetX: x, offsetY: y } = event;
+
+            // Calculate target rotation based on mouse position
+            targetRotateX = ((y / height) - 0.5) * 10; // Y-axis tilt
+            targetRotateY = ((x / width) - 0.5) * -10; // X-axis tilt
+        });
+
+        questBox.addEventListener('mouseleave', () => {
+            // Reset target rotation when mouse leaves
+            targetRotateX = 0;
+            targetRotateY = 0;
+        });
+
+        // Start the animation loop
+        animate();    
+
+        document.addEventListener("click", function() {
+            window.location.href = "../index.html";
+        });
+
+    </script>
+</body>
+</html>

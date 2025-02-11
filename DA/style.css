@@ -635,7 +635,7 @@ button:disabled {
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 1);
-    z-index: 9998;
+    z-index: 9995;
     pointer-events: none;
     animation: screenFlashEffect 1s ease-out forwards;
 }
@@ -674,6 +674,7 @@ button:disabled {
     background: linear-gradient(90deg, rgba(0, 150, 255, 0.2) 0%, rgba(0, 150, 255, 0.8) 50%, rgba(0, 150, 255, 0.2) 100%);
     filter: blur(15px) brightness(1.5);
     animation: overdriveSheen 2s ease-out forwards;
+    z-index: 100; /* Ensure it end bellow the screen flash */
 }
 
 @keyframes overdriveSheen {
@@ -688,5 +689,6 @@ button:disabled {
     100% {
         left: 120%;
         opacity: 0;
+        z-index: 1;
     }
 }

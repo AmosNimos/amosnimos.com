@@ -22,7 +22,7 @@ function startTraining(skillID) {
             return;
         }
 
-        skillProgress[skillID] += ascension_level / 10; // Increase progress over time
+        skillProgress[skillID] += ascension_level / 5; // Increase progress over time
         updateProgressBar(skillID); // Update the progress bar
 
         if (skillProgress[skillID] >= skillGoals[skillID]) {
@@ -43,6 +43,7 @@ function startTraining(skillID) {
                     xpGoal *= 1.6;
                     level++;
                     addNewSkill(); // Automatically add a new skill when level up
+                    updatePlayerInfo()
                 }
 
                 // Update the progress bar and re-enable the training button
@@ -57,6 +58,8 @@ function startTraining(skillID) {
 
                 saveSkillsToStorage(); // Save the updated data
 
+
+
                 // LEVEL UP!
                 playNotificationSound();  // Play the sound when level-up is achieved
                 //alert(`Skill [${skillNames[skillID]}] leveled up!`);
@@ -66,4 +69,73 @@ function startTraining(skillID) {
             }, 100); // Wait 100ms before resetting progress
         }
     }, 100); // Update progress every 100ms
+}
+
+
+// Only execute boost on skills currently in training
+function executeTrainingBoost() {
+    if (gold < cost_of_boost) return; // Not enough gold, do nothing
+
+    let boosted = false; // Track if any skills were boosted
+
+    for (let skillID = 0; skillID < skillLevels.length; skillID++) {
+        if (skillTrainingActive[skillID] && skillAction[skillID] === "Training") { // Only boost actively training skills
+            skillTrainingActive[skillID] = false;
+            skillProgress[skillID] = 0; // Reset progress to 0
+            skillLevels[skillID]++; // Level up the skill
+            skillGoals[skillID] *= progressDelay; // Update skill goal
+            boosted = true;
+
+            // Update the progress bar UI
+            const progressBar = document.getElementById(`skill-${skillID}`);
+            if (progressBar) {
+                progressBar.style.width = "0%";
+                progressBar.textContent = "0%";
+                xp++; // Increase player's XP
+                if (xp >= xpGoal) {
+                    xp = 0;
+                    xpGoal *= 1.6;
+                    level++;
+                    addNewSkill(); // Automatically add a new skill when level up
+                    updatePlayerInfo()
+                }
+
+                const parentElement = progressBar.closest(".skill"); // Get parent element
+                if (parentElement) {
+                    parentElement.classList.remove("overdrive_animation"); // Remove existing animation
+                    void parentElement.offsetWidth; // Force reflow
+                    parentElement.classList.add("overdrive_animation"); // Reapply animation
+                    parentElement.classList.remove("trainingDelay"); // Remove cooldown effect
+
+                    document.querySelectorAll(".overdrive_animation").forEach(element => {
+                        element.addEventListener("animationend", () => {
+                            element.classList.remove("overdrive_animation");
+                        });
+                    });
+                }
+            }
+
+            // Update skill level display
+            const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+            if (skillNameElement) {
+                skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+            }
+
+            // Re-enable training and casting buttons
+            document.getElementById(`train-btn-${skillID}`)?.removeAttribute("disabled");
+            document.getElementById(`cast-btn-${skillID}`)?.removeAttribute("disabled");
+        }
+    }
+
+    if (boosted) {
+        gold -= cost_of_boost; // Deduct gold only if at least one skill was boosted
+        updatePlayerInfo();
+        saveSkillsToStorage(); // Save without reloading
+
+        triggerScreenFlash(); // Flash screen to indicate boost
+        playNotificationSound(6); // Play success sound
+    } else {
+        showNotification("Warning: No skills in training to Overdrive", 5);
+        playNotificationSound(5); // Play error sound
+    }
 }

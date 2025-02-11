@@ -119,3 +119,65 @@ function addNewSkill() {
 
     saveSkillsToStorage();
 }
+
+let cost_of_boost = 1
+
+
+// Only execute boost on skills in training
+function executeBoost() {
+    if (gold < cost_of_boost) return; // Do nothing if gold is below cost
+    
+    let boosted = false; // Track if any skills were boosted
+    
+    for (let skillID = 0; skillID < skillLevels.length; skillID++) {
+        if (skillTrainingActive[skillID]) { // Only boost skills that are actively training
+            skillTrainingActive[skillID] = false;
+            skillProgress[skillID] = 0; // Reset progress to 0
+            skillLevels[skillID]++; // Level up the skill
+            skillGoals[skillID] *= progressDelay; // Update skill goal
+            boosted = true;
+            
+            // Update the UI
+            const progressBar = document.getElementById(`skill-${skillID}`);
+            if (progressBar) {
+                progressBar.style.width = "0%";
+                progressBar.textContent = "0%";
+                //progressBar.classList.remove("overdrive_animation");
+                //void progressBar.offsetWidth; // Force reflow
+                //progressBar.classList.add("overdrive_animation");
+                
+                const parentElement = progressBar.closest(".skill"); // Get parent element
+                if (parentElement) {
+                    parentElement.classList.remove("overdrive_animation"); // Apply animation to parent
+                    void parentElement.offsetWidth; // Force reflow
+                    parentElement.classList.add("overdrive_animation"); // Apply animation to parent
+                    parentElement.classList.remove("trainingDelay"); // Remove cooldown effect
+                    parentElement.classList.remove("trainingDelay"); // Remove cooldown effect
+                }
+            }
+            
+            // Update skill level display
+            const skillNameElement = document.getElementById(`skill-${skillID}-name`);
+            if (skillNameElement) {
+                skillNameElement.innerText = `${skillNames[skillID]} LV: ${skillLevels[skillID]}`;
+            }
+            
+            // Re-enable training and casting buttons
+            const trainButton = document.getElementById(`train-btn-${skillID}`);
+            const castButton = document.getElementById(`cast-btn-${skillID}`);
+            if (trainButton) trainButton.disabled = false;
+            if (castButton) castButton.disabled = false;
+        }
+    }
+    
+    if (boosted) {
+        triggerScreenFlash(); // Flash screen when a skill is boosted
+        playNotificationSound(6); // Play notification sound only if skills were boosted
+        gold -= cost_of_boost; // Reduce gold by cost amount
+        updatePlayerInfo();
+        saveSkillsToStorage(); // Save changes only, no reloading
+    } else {
+        showNotification("Warning: No skills to Overdrive", 5);
+        playNotificationSound(5); // Play error sound
+    }
+}

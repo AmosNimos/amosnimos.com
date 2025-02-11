@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Lines</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0f0f2d, #341f10);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .quest-box {
+            background: #12264f;
+            border: 2px solid #39a4ff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-line {
+            height: 5px;
+            position: absolute;
+            width: 100%;
+        }
+        .glow-line.top {
+            top: 0;
+            background: #39a4ff;
+            box-shadow: 0 5px 20px rgba(57, 164, 255, 0.8); /* Shadow under the glowing line */
+        }
+        .glow-line.bottom {
+            bottom: 0;
+            height: 50px;
+            background: linear-gradient(to top, cyan, transparent); /* Gradient glowing line */
+        }
+        .content {
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="quest-box">
+        <div class="glow-line top"></div>
+        <div class="content">
+            <h1>QUEST INFO</h1>
+            <p>DAILY QUEST - TRAIN TO BECOME A FORMIDABLE COMBATANT</p>
+        </div>
+        <div class="glow-line bottom"></div>
+    </div>
+</body>
+</html>

@@ -1,45 +1,44 @@
-// Listen for user interaction to enable sounds
+// Ensure soundEnabled is only declared once globally
+if (!("soundEnabled" in window)) {
+    window.soundEnabled = false;
+}
+
+// Ensure user interaction enables audio playback
 document.addEventListener("click", () => {
-    soundEnabled = true;
+    if (!window.soundEnabled) {
+        window.soundEnabled = true;
+        // Unmute all audio elements after first interaction
+        document.querySelectorAll("audio").forEach(audio => audio.muted = false);
+    }
 });
 
-/// SOUNDS
-// Function to play a specific notification sound based on index
-function playNotificationSound(index = 0) {
-    if (!soundEnabled) {
+// Global volume variables
+window.musicVolume = window.musicVolume || 0.5;
+window.globalVolume = window.globalVolume || 0.5;
+window.toggleTTS = window.toggleTTS || false;
+
+// Make function globally accessible
+window.playNotificationSound = function(index = 0) {
+    if (!window.soundEnabled) {
         console.warn("User interaction required to play sounds.");
         return;
     }
 
     const sounds = [
-        'sound-win',    // index 0
-        'sound-level',  // index 1
-        'sound-select', // index 2
-        'sound-click',  // index 3
-        'sound-hit',    // index 4
-        'sound-error',  // index 5
-        'sound-power',  // index 6
+        'sound-win', 'sound-level', 'sound-select', 'sound-click',
+        'sound-hit', 'sound-error', 'sound-power'
     ];
 
     const soundId = sounds[index] || sounds[0]; // Default to index 0
     const audioElement = document.getElementById(soundId);
 
-    // Prevent other sounds from playing over sound-power (index 6)
-    if (index === 6) {
-        document.querySelectorAll("audio").forEach(audio => audio.pause());
-    }
-
     if (audioElement) {
-        // Clone the audio element to allow concurrent playback
         const clone = audioElement.cloneNode();
-        clone.volume = globalVolume; // Use the global volume variable
+        clone.volume = window.globalVolume;
+        document.body.appendChild(clone);
         clone.play();
+        clone.addEventListener("ended", () => clone.remove());
     } else {
         console.error('Sound not found:', soundId);
     }
-}
-
-// Global volume variable for all sounds
-let musicVolume = 0.5;
-let globalVolume = 0.5; // Default volume
-let toggleTTS = false;
+};
