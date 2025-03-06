@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Battle</title>
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: black; color: white; }
+        canvas { border: 2px solid white; border-radius: 50%; }
+        button { margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .counter-container { display: flex; justify-content: space-between; width: 600px; margin-top: 10px; font-size: 18px; }
+        .red-counter { color: red; }
+        .blue-counter { color: blue; text-align: right; }
+    </style>
+</head>
+<body>
+    <canvas id="battleCanvas" width="600" height="600"></canvas>
+    <div class="counter-container">
+        <div class="red-counter" id="redCounter">Red: 0/200</div>
+        <div class="blue-counter" id="blueCounter">Blue: 0/500</div>
+    </div>
+    <button id="startBattle">Start Battle</button>
+    
+    <script>
+        const canvas = document.getElementById("battleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const CENTER_X = canvas.width / 2;
+        const CENTER_Y = canvas.height / 2;
+        const ARENA_RADIUS = 200;
+
+        // Balls count
+        const TOTAL_RED_BALLS = 420;
+        const TOTAL_BLUE_BALLS = 405;
+
+        const TOTAL_BALLS = TOTAL_RED_BALLS + TOTAL_BLUE_BALLS;
+        const BALL_RADIUS = Math.max(10000 / TOTAL_BALLS, 8);
+        const OUTER_RING_RADIUS = 220 + BALL_RADIUS;
+        const BALL_HP = 10;
+        const MAX_VELOCITY = 2;
+        const ATTRACTION_FORCE = 0.3;
+        const REPULSION_FORCE = 0.4;
+        const COLLISION_FORCE = 0.5;
+        const GRAVITY = 0.02;
+        const FLASH_DURATION = 30;
+        let balls = [];
+        let gameRunning = false;
+        let redSpawned = 0, blueSpawned = 0;
+        let redFinished = false, blueFinished = false;
+        let watchForLoser = false;
+        let spawnInterval;
+
+        let particles = []; // Explosion particles
+
+        class Ball {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * MAX_VELOCITY;
+                this.vy = (Math.random() - 0.5) * MAX_VELOCITY;
+                this.hp = BALL_HP;
+                this.color = color;
+                this.flashTimer = 0;
+                this.trail = [];
+            }
+
+            update() {
+                if (this.flashTimer > 0) this.flashTimer--;
+
+                // Store trail effect
+                this.trail.push({ x: this.x, y: this.y });
+                if (this.trail.length > 10) this.trail.shift(); // Limit trail size
+
+                // Apply center gravity to keep balls inside the arena
+                let distFromCenter = Math.hypot(this.x - CENTER_X, this.y - CENTER_Y);
+                if (distFromCenter > ARENA_RADIUS) {
+                    let angle = Math.atan2(this.y - CENTER_Y, this.x - CENTER_X);
+                    this.vx -= Math.cos(angle) * GRAVITY;
+                    this.vy -= Math.sin(angle) * GRAVITY;
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+
+            draw() {
+                // Draw trail
+                ctx.globalAlpha = 0.4;
+                this.trail.forEach((t, i) => {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(t.x, t.y, BALL_RADIUS * (i / 10), 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                ctx.globalAlpha = 1.0; // Reset alpha
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, BALL_RADIUS, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.alpha = 1.0;
+                this.color = color;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.02; // Fade out
+            }
+
+            draw() {
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        function spawnParticles(x, y, color) {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(x, y, color));
+            }
+        }
+
+        function draw() {
+            // Motion blur effect
+            ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw arena border
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(CENTER_X, CENTER_Y, OUTER_RING_RADIUS, 0, Math.PI * 2);
+            ctx.stroke();
+
+            balls.forEach(ball => ball.draw());
+            particles.forEach(p => p.draw());
+        }
+
+        function update() {
+            balls.forEach(ball => ball.update());
+            particles.forEach(p => p.update());
+            particles = particles.filter(p => p.alpha > 0); // Remove faded particles
+
+            handleCollisions();
+            draw();
+            checkWinCondition();
+            if (gameRunning) requestAnimationFrame(update);
+        }
+
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i], b = balls[j];
+                    let dx = b.x - a.x, dy = b.y - a.y;
+                    let dist = Math.hypot(dx, dy);
+
+                    if (dist < BALL_RADIUS * 2) {
+                        let angle = Math.atan2(dy, dx);
+                        let force = a.color === b.color ? REPULSION_FORCE : -ATTRACTION_FORCE;
+
+                        let fx = Math.cos(angle) * force;
+                        let fy = Math.sin(angle) * force;
+
+                        a.vx -= fx;
+                        a.vy -= fy;
+                        b.vx += fx;
+                        b.vy += fy;
+
+                        if (a.color !== b.color) {
+                            a.hp--;
+                            b.hp--;
+                            a.flashTimer = FLASH_DURATION;
+                            b.flashTimer = FLASH_DURATION;
+                            spawnParticles(a.x, a.y, a.color);
+                            spawnParticles(b.x, b.y, b.color);
+                        }
+                    }
+                }
+            }
+
+            balls = balls.filter(ball => ball.hp > 0);
+        }
+
+        function startBattle() {
+            balls = [];
+            gameRunning = true;
+            redSpawned = 0;
+            blueSpawned = 0;
+            spawnInterval = setInterval(() => {
+                if (redSpawned < TOTAL_RED_BALLS) balls.push(new Ball(Math.random() * 600, Math.random() * 600, "red"));
+                if (blueSpawned < TOTAL_BLUE_BALLS) balls.push(new Ball(Math.random() * 600, Math.random() * 600, "blue"));
+                if (redSpawned >= TOTAL_RED_BALLS && blueSpawned >= TOTAL_BLUE_BALLS) clearInterval(spawnInterval);
+            }, 50);
+            update();
+        }
+
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+    </script>
+</body>
+</html>

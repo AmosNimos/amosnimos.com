@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="simulation"></canvas>
+    <script>
+        document.body.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+                <canvas id="simulation" width="700" height="400" style="border: 2px solid white;"></canvas>
+                <button id="startBattle" style="margin-top: 10px; padding: 10px 20px; font-size: 16px;">Start Battle</button>
+            </div>
+        `;
+
+        const canvas = document.getElementById("simulation");
+        const ctx = canvas.getContext("2d");
+
+        const BATTLE_WIDTH = 1700;
+        const BATTLE_HEIGHT = 400;
+        const BATTLE_X = 0;
+        const BATTLE_Y = 0;
+
+        const NUM_BLUE_BALLS = 400;
+        const NUM_RED_BALLS = 600;
+        const MAX_VELOCITY = 2;
+        const ATTRACTION_FORCE = 0.3;
+        const DAMAGE_RANGE = [1, 10];
+        const GHOST_CHANCE = 0.1;
+        const FRICTION = 0.998;
+
+        class Ball {
+            constructor(x, y, color, isGhost = false) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5);
+                this.vy = (Math.random() - 0.5);
+                this.radius = 5;
+                this.hp = 50;
+                this.color = color;
+                this.flash = false;
+                this.isGhost = isGhost;
+            }
+
+            update() {
+                let nearest = this.findNearestEnemy();
+                if (nearest) {
+                    let dx = nearest.x - this.x;
+                    let dy = nearest.y - this.y;
+                    let mag = Math.hypot(dx, dy) || 1;
+                    this.vx += (dx / mag) * ATTRACTION_FORCE;
+                    this.vy += (dy / mag) * ATTRACTION_FORCE;
+                }
+                this.vx = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vx));
+                this.vy = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vy));
+                this.x += this.vx;
+                this.y += this.vy;
+                this.wrapBounds();
+            }
+
+            wrapBounds() {
+                if (this.x < BATTLE_X) this.x = BATTLE_X + BATTLE_WIDTH;
+                if (this.x > BATTLE_X + BATTLE_WIDTH) this.x = BATTLE_X;
+                if (this.y < BATTLE_Y) this.y = BATTLE_Y + BATTLE_HEIGHT;
+                if (this.y > BATTLE_Y + BATTLE_HEIGHT) this.y = BATTLE_Y;
+            }
+
+            draw() {
+                ctx.fillStyle = this.flash ? "white" : this.color;
+                ctx.globalAlpha = this.isGhost ? 0.5 : 1;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                this.flash = false;
+            }
+
+            findNearestEnemy() {
+                let nearest = null;
+                let minDist = Infinity;
+                for (let other of balls) {
+                    if (this.color !== other.color) {
+                        let d = distance(this, other);
+                        if (d < minDist) {
+                            minDist = d;
+                            nearest = other;
+                        }
+                    }
+                }
+                return nearest;
+            }
+        }
+
+        function distance(a, b) {
+            return Math.hypot(a.x - b.x, a.y - b.y);
+        }
+
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i];
+                    let b = balls[j];
+                    if (a.color !== b.color && distance(a, b) < a.radius * 2) {
+                        a.flash = b.flash = true;
+                        let damage = Math.floor(Math.random() * (DAMAGE_RANGE[1] - DAMAGE_RANGE[0] + 1) + DAMAGE_RANGE[0]);
+                        a.hp -= damage;
+                        b.hp -= damage;
+                        if (!a.isGhost && !b.isGhost) {
+                            a.vx = -a.vx * 0.5;
+                            a.vy = -a.vy * 0.5;
+                            b.vx = -b.vx * 0.5;
+                            b.vy = -b.vy * 0.5;
+                        }
+                    }
+                }
+            }
+        }
+
+        function checkWinner() {
+            let blueRemaining = balls.some(ball => ball.color === "blue");
+            let redRemaining = balls.some(ball => ball.color === "red");
+            if (!blueRemaining || !redRemaining) {
+                alert(`${blueRemaining ? "Blue" : "Red"} wins!`);
+                return true;
+            }
+            return false;
+        }
+
+        let balls = [];
+        function startBattle() {
+            balls = [];
+            for (let i = 0; i < NUM_BLUE_BALLS; i++) {
+                let x = Math.random() * (BATTLE_WIDTH / 2);
+                let y = Math.random() * BATTLE_HEIGHT;
+                balls.push(new Ball(x, y, "blue", Math.random() < GHOST_CHANCE));
+            }
+            for (let i = 0; i < NUM_RED_BALLS; i++) {
+                let x = (BATTLE_WIDTH / 2) + Math.random() * (BATTLE_WIDTH / 2);
+                let y = Math.random() * BATTLE_HEIGHT;
+                balls.push(new Ball(x, y, "red", Math.random() < GHOST_CHANCE));
+            }
+            loop();
+        }
+
+        function update() {
+            balls = balls.filter(ball => ball.hp > 0);
+            balls.forEach(ball => ball.update());
+            handleCollisions();
+            if (checkWinner()) return;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = "white";
+            ctx.strokeRect(BATTLE_X, BATTLE_Y, BATTLE_WIDTH, BATTLE_HEIGHT);
+            balls.forEach(ball => ball.draw());
+        }
+
+        function loop() {
+            update();
+            draw();
+            requestAnimationFrame(loop);
+        }
+
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { text-align: center; background-color: black; color: white; }
+        .battlefield { position: relative; width: 800px; height: 400px; border: 2px solid white; margin: auto; background-color: black; overflow: hidden; }
+        .soldier { position: absolute; border-radius: 50%; transform: translate(-50%, -50%); transition: background-color 0.1s; }
+        .player1 { background-color: red; }
+        .player2 { background-color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Soldier Swarm Battle</h1>
+    <div class="battlefield" id="battlefield"></div>
+    <button onclick="startGame()">Start Game</button>
+    <p id="winner"></p>
+    
+    <script>
+        let battlefield = document.getElementById("battlefield");
+        let soldiers = { player1: [], player2: [] };
+        const battlefieldWidth = 800, battlefieldHeight = 400;
+        const maxSpeed = 1.5, minSpeed = 0.5, defaultSpeed = 2;
+        
+        class Soldier {
+            constructor(player, x, y) {
+                this.player = player;
+                this.x = x;
+                this.y = y;
+                this.hp = 75;
+                this.vx = (Math.random() - 0.5) * maxSpeed;
+                this.vy = (Math.random() - 0.5) * maxSpeed;
+                this.friction = 0.98;
+                this.size = 12;
+                this.inCombat = false;
+                this.element = document.createElement("div");
+                this.element.className = `soldier ${player}`;
+                this.element.style.width = `${this.size}px`;
+                this.element.style.height = `${this.size}px`;
+                battlefield.appendChild(this.element);
+                this.updatePosition();
+            }
+
+            updatePosition() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                
+                if (Math.abs(this.vx) < minSpeed && Math.abs(this.vy) < minSpeed) {
+                    let angle = Math.random() * Math.PI * 2;
+                    this.vx = Math.cos(angle) * defaultSpeed;
+                    this.vy = Math.sin(angle) * defaultSpeed;
+                }
+                
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x <= 0 || this.x >= battlefieldWidth) this.vx *= -1;
+                if (this.y <= 0 || this.y >= battlefieldHeight) this.vy *= -1;
+                
+                this.element.style.left = `${this.x}px`;
+                this.element.style.top = `${this.y}px`;
+            }
+
+            flash() {
+                this.element.style.backgroundColor = "white";
+                setTimeout(() => {
+                    this.element.style.backgroundColor = this.player === "player1" ? "red" : "blue";
+                }, 100);
+            }
+        }
+
+        function checkCollisions() {
+            let allSoldiers = [...soldiers.player1, ...soldiers.player2];
+            for (let i = 0; i < allSoldiers.length; i++) {
+                for (let j = i + 1; j < allSoldiers.length; j++) {
+                    let soldier = allSoldiers[i];
+                    let other = allSoldiers[j];
+                    if (soldier.player !== other.player) {
+                        let dx = other.x - soldier.x;
+                        let dy = other.y - soldier.y;
+                        let dist = Math.hypot(dx, dy);
+                        if (dist < 15) {
+                            if (!soldier.inCombat && !other.inCombat) {
+                                let damage = Math.floor(Math.random() * 5) + 5;
+                                soldier.hp -= damage;
+                                other.hp -= damage;
+                                soldier.flash();
+                                other.flash();
+                                soldier.inCombat = true;
+                                other.inCombat = true;
+                            }
+                        } else {
+                            soldier.inCombat = false;
+                            other.inCombat = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        function updateGame() {
+            battlefield.innerHTML = "";
+            
+            if (soldiers.player1.length === 0) {
+                document.getElementById("winner").innerText = "Player 2 Wins!";
+                return;
+            }
+            if (soldiers.player2.length === 0) {
+                document.getElementById("winner").innerText = "Player 1 Wins!";
+                return;
+            }
+            
+            checkCollisions();
+            
+            for (let soldier of [...soldiers.player1, ...soldiers.player2]) {
+                soldier.updatePosition();
+                if (soldier.hp > 0) battlefield.appendChild(soldier.element);
+            }
+            requestAnimationFrame(updateGame);
+        }
+
+        function spawnSoldiers(count, player, baseX, baseY) {
+            for (let i = 0; i < count; i++) {
+                let x = baseX + Math.random() * 100 - 50;
+                let y = baseY + Math.random() * 200 - 100;
+                soldiers[player].push(new Soldier(player, x, y));
+            }
+        }
+
+        function startGame() {
+            document.getElementById("winner").innerText = "";
+            soldiers.player1 = [];
+            soldiers.player2 = [];
+            battlefield.innerHTML = "";
+            spawnSoldiers(10, "player1", 200, 200);
+            spawnSoldiers(200, "player2", 600, 200);
+            updateGame();
+        }
+    </script>
+</body>
+</html>

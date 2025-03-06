@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { text-align: center; background-color: black; color: white; }
+        .battlefield { position: relative; width: 800px; height: 400px; border: 2px solid white; margin: auto; background-color: black; overflow: hidden; }
+        .soldier { position: absolute; border-radius: 50%; transform: translate(-50%, -50%); }
+        .player1 { background-color: red; }
+        .player2 { background-color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Soldier Swarm Battle</h1>
+    <div class="battlefield" id="battlefield"></div>
+    <button onclick="startGame()">Start Game</button>
+    <p id="winner"></p>
+    
+    <script>
+        let battlefield = document.getElementById("battlefield");
+        let soldiers = { player1: [], player2: [] };
+        let targetMap = { player1: {}, player2: {} };
+        let soldierId = 0;
+        let gameStarted = false;
+
+        function getScaleFactor() {
+            let totalSoldiers = soldiers.player1.length + soldiers.player2.length;
+            return Math.max(0.5, Math.min(1.5, 2000 / totalSoldiers));
+        }
+
+        class Soldier {
+            constructor(player, x, y) {
+                this.id = soldierId++;
+                this.player = player;
+                this.x = x;
+                this.y = y;
+                this.hp = 75;
+                this.damage = 10;
+                this.vx = 0;
+                this.vy = 0;
+                this.friction = 0.95;
+                this.maxSpeed = 1;
+                this.target = null;
+                this.element = document.createElement("div");
+                this.element.className = `soldier ${player}`;
+                battlefield.appendChild(this.element);
+                this.updateSize();
+                this.updatePosition();
+            }
+
+            updateSize() {
+                let scale = getScaleFactor();
+                this.size = Math.max(2, 10 * scale);
+                this.element.style.width = `${this.size}px`;
+                this.element.style.height = `${this.size}px`;
+            }
+
+            updatePosition() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.x += Math.max(-this.maxSpeed, Math.min(this.vx, this.maxSpeed));
+                this.y += Math.max(-this.maxSpeed, Math.min(this.vy, this.maxSpeed));
+                this.element.style.left = `${this.x}px`;
+                this.element.style.top = `${this.y}px`;
+            }
+
+            assignBattleTarget() {
+                let enemyTeam = this.player === "player1" ? soldiers.player2 : soldiers.player1;
+                if (enemyTeam.length > 0) {
+                    this.target = enemyTeam[Math.floor(Math.random() * enemyTeam.length)];
+                    targetMap[this.player][this.id] = this.target.id;
+                }
+            }
+        }
+
+        function spawnSoldiers(count, player) {
+            for (let i = 0; i < count; i++) {
+                let x, y, safe = false;
+                while (!safe) {
+                    x = Math.random() * 800;
+                    y = Math.random() * 400;
+                    safe = soldiers[player].every(s => Math.hypot(s.x - x, s.y - y) > 15) && 
+                           soldiers[player === "player1" ? "player2" : "player1"].every(s => Math.hypot(s.x - x, s.y - y) > 50);
+                }
+                let soldier = new Soldier(player, x, y);
+                soldiers[player].push(soldier);
+            }
+        }
+
+        function updateGame() {
+            let scale = getScaleFactor();
+            battlefield.innerHTML = "";
+            for (let team in soldiers) {
+                soldiers[team] = soldiers[team].filter(s => s.hp > 0);
+                soldiers[team].forEach(s => s.updateSize());
+                soldiers[team].forEach(soldier => battlefield.appendChild(soldier.element));
+            }
+
+            if (soldiers.player1.length === 0) {
+                document.getElementById("winner").innerText = "Player 2 Wins!";
+                return;
+            }
+            if (soldiers.player2.length === 0) {
+                document.getElementById("winner").innerText = "Player 1 Wins!";
+                return;
+            }
+
+            for (let team in soldiers) {
+                soldiers[team].forEach(soldier => {
+                    let enemyTeam = team === "player1" ? "player2" : "player1";
+                    let targetId = targetMap[team][soldier.id];
+                    let target = soldiers[enemyTeam].find(s => s.id === targetId);
+                    if (!target) {
+                        let newTarget = soldiers[enemyTeam].reduce((nearest, s) => {
+                            let dist = Math.hypot(s.x - soldier.x, s.y - soldier.y);
+                            return dist < Math.hypot(nearest.x - soldier.x, nearest.y - soldier.y) ? s : nearest;
+                        }, soldiers[enemyTeam][0]);
+                        if (newTarget) {
+                            targetMap[team][soldier.id] = newTarget.id;
+                            target = newTarget;
+                        }
+                    }
+                    if (target) {
+                        let dx = target.x - soldier.x;
+                        let dy = target.y - soldier.y;
+                        let dist = Math.hypot(dx, dy);
+                        if (dist > 10 * scale) {
+                            soldier.vx = (dx / dist) * 0.5;
+                            soldier.vy = (dy / dist) * 0.5;
+                        }
+                        if (dist < 20 * scale) {
+                            target.hp -= soldier.damage;
+                            soldier.vx = -(dx / dist) * 1.5;
+                            soldier.vy = -(dy / dist) * 1.5;
+                        }
+                    }
+                    soldier.updatePosition();
+                });
+            }
+            requestAnimationFrame(updateGame);
+        }
+
+        function startGame() {
+            document.getElementById("winner").innerText = "";
+            soldiers.player1 = [];
+            soldiers.player2 = [];
+            battlefield.innerHTML = "";
+            soldierId = 0;
+            spawnSoldiers(100, "player1");
+            spawnSoldiers(100, "player2");
+            soldiers.player1.forEach(s => s.assignBattleTarget());
+            soldiers.player2.forEach(s => s.assignBattleTarget());
+            gameStarted = true;
+            updateGame();
+        }
+    </script>
+</body>
+</html>

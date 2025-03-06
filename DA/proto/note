@@ -1,0 +1,13 @@
+when balls reach 0 or less hp you remove them. when all the balls of one color have been remove that color lose.
+
+red balls don't do damage to other red balls, also remove the wrap just hard boundery for the canvas outter walls have the balls bounce of them. the balls only attack balls of the other color and only do damage balls of the other color, they are repulsed by balls of the same color, and use variable for balls_tottal for both team to know how many to spawn for each. No wrap, balls only attracted to oposite color, only do damage to oposite color, are repulsed by balls of the same color when in gravity range.
+
+The start position seem good but they don't move toward each other? the red should move toward the blue, and the blue should move toward the red. and they should colide, maybe the attraction field ain't large enaugh? also you really need to cap the max velocity as the balls move cause right now they reach a way too fast speed max velocity ain't for show if a ball goes faster in one direction or another just reduce it or cap it to that limit. also balls hp should be increased so that they don't instently get deleted, and they should bounce on other ball harder
+
+don't allow the balls to be not visible or outside of the cavas do warp them around please. also the goas is not to have the same amounth of balls on both side but they should still be spread in the y axis when spawned, regardless of their number. it's basically a simulation of the largest number win. and they should still be distributed evently on their respective side despite their number like a grid you know?:
+
+so improve spawn dispersion on both side. and prevent balls from overflowing, still wrap them around when they get out of bounds, also the gravity should push them appart from each other and toward enemy and only be affected by enemy that are in an area radius of about their own size *2
+Evenly distributes balls in a grid-like pattern instead of random scatter.
+Prevents balls from overflowing while still wrapping them around.
+Adds repulsion between same-team balls so they don’t clump together.
+Limits enemy attraction to a small area (within radius * 2).

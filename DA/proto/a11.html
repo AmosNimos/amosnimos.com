@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Battle</title>
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: black; color: white; }
+        canvas { border: 2px solid white; border-radius: 50%; }
+        button { margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .counter-container { display: flex; justify-content: space-between; width: 600px; margin-top: 10px; font-size: 18px; }
+        .red-counter { color: red; }
+        .blue-counter { color: blue; text-align: right; }
+    </style>
+</head>
+<body>
+    <canvas id="battleCanvas" width="600" height="600"></canvas>
+    <div class="counter-container">
+        <div class="red-counter" id="redCounter">Red: 0/114</div>
+        <div class="blue-counter" id="blueCounter">Blue: 0/120</div>
+    </div>
+    <button id="startBattle">Start Battle</button>
+    <script>
+        const canvas = document.getElementById("battleCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        const CENTER_X = canvas.width / 2;
+        const CENTER_Y = canvas.height / 2;
+        const OUTER_RING_RADIUS = 250;
+        const BALL_RADIUS = 10;
+        const TOTAL_RED_BALLS = 114;
+        const TOTAL_BLUE_BALLS = 120;
+        const WAVE_SIZE = 10;
+        const WAVE_DELAY = 1000;
+        const MAX_VELOCITY = 1.5;
+        
+        let redSpawned = 0, blueSpawned = 0;
+        let balls = [];
+        let gameRunning = false;
+        
+        class Ball {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.vx = (CENTER_X - x) * 0.01;
+                this.vy = (CENTER_Y - y) * 0.01;
+                this.hp = 10;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, BALL_RADIUS, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+        
+        function updateCounters() {
+            document.getElementById("redCounter").textContent = `Red: ${TOTAL_RED_BALLS - redSpawned}/${TOTAL_RED_BALLS}`;
+            document.getElementById("blueCounter").textContent = `Blue: ${TOTAL_BLUE_BALLS - blueSpawned}/${TOTAL_BLUE_BALLS}`;
+        }
+        
+        function spawnWave() {
+            let redToSpawn = Math.min(WAVE_SIZE, TOTAL_RED_BALLS - redSpawned);
+            let blueToSpawn = Math.min(WAVE_SIZE, TOTAL_BLUE_BALLS - blueSpawned);
+            
+            for (let i = 0; i < redToSpawn; i++) {
+                balls.push(new Ball(CENTER_X - OUTER_RING_RADIUS, CENTER_Y + (Math.random() - 0.5) * 200, "red"));
+                redSpawned++;
+            }
+            for (let i = 0; i < blueToSpawn; i++) {
+                balls.push(new Ball(CENTER_X + OUTER_RING_RADIUS, CENTER_Y + (Math.random() - 0.5) * 200, "blue"));
+                blueSpawned++;
+            }
+            updateCounters();
+            if (redSpawned < TOTAL_RED_BALLS || blueSpawned < TOTAL_BLUE_BALLS) {
+                setTimeout(spawnWave, WAVE_DELAY);
+            }
+        }
+        
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i], b = balls[j];
+                    let dx = b.x - a.x, dy = b.y - a.y;
+                    let dist = Math.hypot(dx, dy);
+                    if (dist < BALL_RADIUS * 2 && a.color !== b.color) {
+                        a.hp--;
+                        b.hp--;
+                    }
+                }
+            }
+            balls = balls.filter(ball => ball.hp > 0);
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => ball.draw());
+        }
+        
+        function update() {
+            balls.forEach(ball => ball.update());
+            handleCollisions();
+            draw();
+            checkWinCondition();
+            if (gameRunning) requestAnimationFrame(update);
+        }
+        
+        function checkWinCondition() {
+            let redBalls = balls.filter(b => b.color === "red").length;
+            let blueBalls = balls.filter(b => b.color === "blue").length;
+            if (redBalls === 0 || blueBalls === 0) {
+                gameRunning = false;
+                alert(redBalls === 0 ? "Blue Team Wins!" : "Red Team Wins!");
+            }
+        }
+        
+        function startBattle() {
+            balls = [];
+            redSpawned = 0;
+            blueSpawned = 0;
+            gameRunning = true;
+            updateCounters();
+            spawnWave();
+            update();
+        }
+        
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+    </script>
+</body>
+</html>

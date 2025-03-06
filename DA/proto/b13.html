@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Battle</title>
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: black; }
+        canvas { border: 2px solid white; }
+        button { margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <canvas id="battleCanvas" width="700" height="400"></canvas>
+    <button id="startBattle">Start Battle</button>
+    <script>
+        const canvas = document.getElementById("battleCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        const BALL_RADIUS = 5;
+        const BALL_HP = 10;
+        const BASE_ATTRACTION_FORCE = 0.01;
+        const MAX_ATTRACTION_FORCE = 0.5;
+        const ATTRACTION_RADIUS = BALL_RADIUS * 30;
+        const REPULSION_FORCE = 0.3;
+        const MAX_VELOCITY = 3;
+        const MIN_VELOCITY = 1;
+        const FRICTION = 0.98;
+        const BALL_COUNT = 100;
+        const FLASH_DURATION = 10;
+        let balls = [];
+        let gameRunning = false;
+        
+        class Ball {
+            constructor(x, y, color, vx) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = (Math.random() - 0.5) * MAX_VELOCITY;
+                this.hp = BALL_HP;
+                this.color = color;
+                this.flash = false;
+                this.flashTimer = 0;
+            }
+            
+            update() {
+                if (this.flashTimer > 0) this.flashTimer--;
+                for (let other of balls) {
+                    if (this === other) continue;
+                    let dx = other.x - this.x;
+                    let dy = other.y - this.y;
+                    let dist = Math.hypot(dx, dy) || 1;
+                    
+                    if (this.color === other.color && dist < BALL_RADIUS * 5) {
+                        this.vx -= (dx / dist) * REPULSION_FORCE;
+                        this.vy -= (dy / dist) * REPULSION_FORCE;
+                    } else if (this.color !== other.color && dist < ATTRACTION_RADIUS) {
+                        let attractionForce = BASE_ATTRACTION_FORCE + (MAX_ATTRACTION_FORCE - BASE_ATTRACTION_FORCE) * (1 - dist / ATTRACTION_RADIUS);
+                        this.vx += (dx / dist) * attractionForce;
+                        this.vy += (dy / dist) * attractionForce;
+                    }
+                }
+                
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= FRICTION;
+                this.vy *= FRICTION;
+                
+                this.vx = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vx));
+                this.vy = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vy));
+                
+                this.bounceBounds();
+            }
+            
+            bounceBounds() {
+                if (this.x - BALL_RADIUS < 0 || this.x + BALL_RADIUS > canvas.width) this.vx *= -0.9;
+                if (this.y - BALL_RADIUS < 0 || this.y + BALL_RADIUS > canvas.height) this.vy *= -0.9;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.flashTimer > 0 ? "white" : this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, BALL_RADIUS, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i], b = balls[j];
+                    let dx = b.x - a.x, dy = b.y - a.y;
+                    let dist = Math.hypot(dx, dy);
+                    
+                    if (dist < BALL_RADIUS * 2 && a.color !== b.color) {
+                        let angle = Math.atan2(dy, dx);
+                        let force = 3;
+                        a.vx -= Math.cos(angle) * force;
+                        a.vy -= Math.sin(angle) * force;
+                        b.vx += Math.cos(angle) * force;
+                        b.vy += Math.sin(angle) * force;
+                        a.hp--;
+                        b.hp--;
+                        a.flashTimer = FLASH_DURATION;
+                        b.flashTimer = FLASH_DURATION;
+                    }
+                }
+            }
+            balls = balls.filter(ball => ball.hp > 0);
+            checkWin();
+        }
+        
+        function checkWin() {
+            let redBalls = balls.filter(ball => ball.color === "red");
+            let blueBalls = balls.filter(ball => ball.color === "blue");
+            if (redBalls.length === 0 || blueBalls.length === 0) {
+                gameRunning = false;
+                alert(`${redBalls.length === 0 ? "Blue" : "Red"} Wins!`);
+            }
+        }
+        
+        function update() {
+            if (!gameRunning) return;
+            balls.forEach(ball => ball.update());
+            handleCollisions();
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => ball.draw());
+        }
+        
+        function loop() {
+            update();
+            draw();
+            if (gameRunning) requestAnimationFrame(loop);
+        }
+        
+        function startBattle() {
+            balls = [];
+            gameRunning = true;
+            for (let i = 0; i < BALL_COUNT / 2; i++) {
+                balls.push(new Ball(100 + Math.random() * 100, Math.random() * canvas.height, "red", 1));
+                balls.push(new Ball(500 + Math.random() * 100, Math.random() * canvas.height, "blue", -1));
+            }
+            loop();
+        }
+        
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+    </script>
+</body>
+</html>

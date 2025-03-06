@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Battle</title>
+    <style>
+        body { margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: black; }
+        canvas { border: 2px solid white; border-radius: 50%; }
+        button { margin-top: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <canvas id="battleCanvas" width="600" height="600"></canvas>
+    <button id="startBattle">Start Battle</button>
+    <script>
+        const canvas = document.getElementById("battleCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        const CENTER_X = canvas.width / 2;
+        const CENTER_Y = canvas.height / 2;
+        const ARENA_RADIUS = 200;
+        const OUTER_RING_RADIUS = 220;
+        const BALL_RADIUS = 5;
+        const BALL_HP = 10;
+        const MAX_VELOCITY = 2;
+        const ATTRACTION_FORCE = 0.02;
+        const REPULSION_FORCE = 0.1;
+        const COLLISION_FORCE = 0.5;
+        const GRAVITY = 0.02;
+        const FLASH_DURATION = 30;
+        const TOTAL_RED_BALLS = 200;
+        const TOTAL_BLUE_BALLS = 500;
+        let balls = [];
+        let gameRunning = false;
+        let redSpawned = 0, blueSpawned = 0;
+        let spawnInterval;
+
+        const images = {
+            red: new Image(),
+            blue: new Image()
+        };
+        images.red.src = "red_ball.png";
+        images.blue.src = "blue_ball.png";
+
+        class Ball {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * MAX_VELOCITY;
+                this.vy = (Math.random() - 0.5) * MAX_VELOCITY;
+                this.hp = BALL_HP;
+                this.color = color;
+                this.flashTimer = 0;
+            }
+
+            update() {
+                if (this.flashTimer > 0) this.flashTimer--;
+
+                let distFromCenter = Math.hypot(this.x - CENTER_X, this.y - CENTER_Y);
+                if (distFromCenter > ARENA_RADIUS) {
+                    let angle = Math.atan2(this.y - CENTER_Y, this.x - CENTER_X);
+                    this.vx -= Math.cos(angle) * GRAVITY;
+                    this.vy -= Math.sin(angle) * GRAVITY;
+                }
+
+                for (let other of balls) {
+                    if (this === other) continue;
+                    let dx = other.x - this.x;
+                    let dy = other.y - this.y;
+                    let dist = Math.hypot(dx, dy) || 1;
+
+                    if (this.color === other.color && dist < BALL_RADIUS * 5) {
+                        this.vx -= (dx / dist) * REPULSION_FORCE;
+                        this.vy -= (dy / dist) * REPULSION_FORCE;
+                    } else if (this.color !== other.color && this.flashTimer === 0) {
+                        this.vx += (dx / dist) * ATTRACTION_FORCE;
+                        this.vy += (dy / dist) * ATTRACTION_FORCE;
+                    }
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vx));
+                this.vy = Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, this.vy));
+            }
+
+            draw() {
+                ctx.globalCompositeOperation = "source-over";
+                if (this.flashTimer > 0) {
+                    ctx.filter = "brightness(2) saturate(2)";
+                } else {
+                    ctx.filter = "none";
+                }
+                ctx.drawImage(images[this.color], this.x - BALL_RADIUS, this.y - BALL_RADIUS, BALL_RADIUS * 2, BALL_RADIUS * 2);
+            }
+        } // <-- Fixed misplaced }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => ball.draw());
+        }
+
+        function update() {
+            balls.forEach(ball => ball.update());
+            handleCollisions();
+            draw();
+            if (gameRunning) requestAnimationFrame(update);
+        }
+
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i], b = balls[j];
+                    let dx = b.x - a.x, dy = b.y - a.y;
+                    let dist = Math.hypot(dx, dy);
+
+                    if (dist < BALL_RADIUS * 2 && a.color !== b.color) {
+                        let angle = Math.atan2(dy, dx);
+                        a.vx -= Math.cos(angle) * COLLISION_FORCE;
+                        a.vy -= Math.sin(angle) * COLLISION_FORCE;
+                        b.vx += Math.cos(angle) * COLLISION_FORCE;
+                        b.vy += Math.sin(angle) * COLLISION_FORCE;
+                        a.hp--;
+                        b.hp--;
+                        a.flashTimer = FLASH_DURATION;
+                        b.flashTimer = FLASH_DURATION;
+                    }
+                }
+            }
+            balls = balls.filter(ball => ball.hp > 0);
+        }
+
+        function spawnBall(color) {
+            let angle = Math.random() * Math.PI * 2;
+            let x = CENTER_X + Math.cos(angle) * OUTER_RING_RADIUS;
+            let y = CENTER_Y + Math.sin(angle) * OUTER_RING_RADIUS;
+            balls.push(new Ball(x, y, color));
+        }
+
+        function startBattle() {
+            balls = [];
+            gameRunning = true;
+            redSpawned = 0;
+            blueSpawned = 0;
+            spawnInterval = setInterval(() => {
+                if (redSpawned < TOTAL_RED_BALLS) {
+                    spawnBall("red");
+                    redSpawned++;
+                }
+                if (blueSpawned < TOTAL_BLUE_BALLS) {
+                    spawnBall("blue");
+                    blueSpawned++;
+                }
+                if (redSpawned >= TOTAL_RED_BALLS && blueSpawned >= TOTAL_BLUE_BALLS) {
+                    clearInterval(spawnInterval);
+                }
+            }, 10);
+            update();
+        }
+
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+    </script>
+</body>
+</html>

@@ -26,5 +26,13 @@ How about limiting how many active spell slots their are, having to swap them bu
 I like the strategy that might add, but it might break what makes the game fun (having access to all your spell and being able to spam them.)
 
 
+--- War system (Multiplayer?)
+
+You have a kindom name.
+You expend your kindom by 
+aquiring adjacent territory on a map by winning war against other kindoms.
+By default all kindom are controlled by NPC you need to defeat a kindom hero to take control of it.
+You defend you kindom by recruiting your own army of demons which cost money to upkeep.
+Other player can attack your kindom, but they will have to send their soldier to do so.
 
 

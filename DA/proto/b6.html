@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="simulation"></canvas>
+    <script>
+        document.body.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+                <canvas id="simulation" width="700" height="400" style="border: 2px solid white;"></canvas>
+                <button id="startBattle" style="margin-top: 10px; padding: 10px 20px; font-size: 16px;">Start Battle</button>
+            </div>
+        `;
+
+        const canvas = document.getElementById("simulation");
+        const ctx = canvas.getContext("2d");
+
+        const BATTLE_WIDTH = 700;
+        const BATTLE_HEIGHT = 400;
+        const GRID_SPACING = 10;
+        const BALL_RADIUS = 5;
+        const ATTRACTION_RADIUS = BALL_RADIUS * 10;
+        const REPULSION_FORCE = 0.1;
+        const ATTRACTION_FORCE = 0.3;
+        const MAX_VELOCITY = 2;
+        const DAMAGE_RANGE = [1, 10];
+        const FRICTION = 0.998;
+
+        class Ball {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.vx = 0;
+                this.vy = 0;
+                this.radius = BALL_RADIUS;
+                this.hp = 50;
+                this.color = color;
+                this.flash = false;
+            }
+
+            update() {
+                this.applyForces();
+                this.vx *= FRICTION;
+                this.vy *= FRICTION;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.wrapBounds();
+            }
+
+            applyForces() {
+                let attractionTarget = null;
+                let minDist = Infinity;
+
+                for (let other of balls) {
+                    if (this === other) continue;
+                    let dx = other.x - this.x;
+                    let dy = other.y - this.y;
+                    let dist = Math.hypot(dx, dy) || 1;
+
+                    if (this.color === other.color && dist < this.radius * 3) {
+                        this.vx -= (dx / dist) * REPULSION_FORCE;
+                        this.vy -= (dy / dist) * REPULSION_FORCE;
+                    }
+
+                    if (this.color !== other.color && dist < ATTRACTION_RADIUS && dist < minDist) {
+                        attractionTarget = other;
+                        minDist = dist;
+                    }
+                }
+
+                if (attractionTarget) {
+                    let dx = attractionTarget.x - this.x;
+                    let dy = attractionTarget.y - this.y;
+                    let mag = Math.hypot(dx, dy) || 1;
+                    this.vx += (dx / mag) * ATTRACTION_FORCE;
+                    this.vy += (dy / mag) * ATTRACTION_FORCE;
+                }
+            }
+
+            wrapBounds() {
+                if (this.x < 0) this.x += BATTLE_WIDTH;
+                if (this.x > BATTLE_WIDTH) this.x -= BATTLE_WIDTH;
+                if (this.y < 0) this.y += BATTLE_HEIGHT;
+                if (this.y > BATTLE_HEIGHT) this.y -= BATTLE_HEIGHT;
+            }
+
+            draw() {
+                ctx.fillStyle = this.flash ? "white" : this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                this.flash = false;
+            }
+        }
+
+        function generateBalls(num, color, xOffset) {
+            let ballsArray = [];
+            let cols = Math.floor((BATTLE_HEIGHT - GRID_SPACING) / (BALL_RADIUS * 2));
+            let rows = Math.ceil(num / cols);
+            let spacingX = (BATTLE_WIDTH / 2 - GRID_SPACING) / rows;
+            let spacingY = (BATTLE_HEIGHT - GRID_SPACING) / cols;
+            
+            for (let i = 0; i < num; i++) {
+                let x = xOffset + (i % rows) * spacingX + GRID_SPACING;
+                let y = (Math.floor(i / rows) * spacingY) + GRID_SPACING;
+                ballsArray.push(new Ball(x, y, color));
+            }
+            return ballsArray;
+        }
+
+        function handleCollisions() {
+            for (let i = 0; i < balls.length; i++) {
+                for (let j = i + 1; j < balls.length; j++) {
+                    let a = balls[i];
+                    let b = balls[j];
+                    if (a.color !== b.color && Math.hypot(a.x - b.x, a.y - b.y) < a.radius * 2) {
+                        a.flash = b.flash = true;
+                        let damage = Math.floor(Math.random() * (DAMAGE_RANGE[1] - DAMAGE_RANGE[0] + 1) + DAMAGE_RANGE[0]);
+                        a.hp -= damage;
+                        b.hp -= damage;
+                    }
+                }
+            }
+        }
+
+        function checkWinner() {
+            let blueRemaining = balls.some(ball => ball.color === "blue");
+            let redRemaining = balls.some(ball => ball.color === "red");
+            if (!blueRemaining || !redRemaining) {
+                alert(`${blueRemaining ? "Blue" : "Red"} wins!`);
+                return true;
+            }
+            return false;
+        }
+
+        let balls = [];
+        function startBattle() {
+            balls = [];
+            balls.push(...generateBalls(400, "blue", 0));
+            balls.push(...generateBalls(600, "red", BATTLE_WIDTH / 2));
+            loop();
+        }
+
+        function update() {
+            balls = balls.filter(ball => ball.hp > 0);
+            balls.forEach(ball => ball.update());
+            handleCollisions();
+            if (checkWinner()) return;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => ball.draw());
+        }
+
+        function loop() {
+            update();
+            draw();
+            requestAnimationFrame(loop);
+        }
+
+        document.getElementById("startBattle").addEventListener("click", startBattle);
+    </script>
+</body>
+</html>

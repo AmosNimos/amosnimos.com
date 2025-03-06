@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { text-align: center; background-color: black; color: white; }
+        .battlefield { position: relative; width: 800px; height: 400px; border: 2px solid white; margin: auto; background-color: black; }
+        .soldier { position: absolute; width: 10px; height: 10px; border-radius: 50%; }
+        .player1 { background-color: red; }
+        .player2 { background-color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Soldier Swarm Battle</h1>
+    <div class="battlefield" id="battlefield"></div>
+    <button onclick="startGame()">Start Game</button>
+    <p id="winner"></p>
+    
+    <script>
+        class Soldier {
+            constructor(player, x, y) {
+                this.player = player;
+                this.x = x;
+                this.y = y;
+                this.hp = 75;
+                this.vx = 0;
+                this.vy = 0;
+                this.friction = 0.9;
+                this.maxSpeed = 3;
+                this.element = document.createElement("div");
+                this.element.className = `soldier ${player}`;
+                document.getElementById("battlefield").appendChild(this.element);
+                this.updatePosition();
+            }
+
+            updatePosition() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.x += Math.max(-this.maxSpeed, Math.min(this.vx, this.maxSpeed));
+                this.y += Math.max(-this.maxSpeed, Math.min(this.vy, this.maxSpeed));
+                this.element.style.left = `${this.x}px`;
+                this.element.style.top = `${this.y}px`;
+            }
+        }
+
+        let soldiers = { player1: [], player2: [] };
+        let battlefield = document.getElementById("battlefield");
+
+        function spawnSoldiers(count, player, baseX, baseY) {
+            for (let i = 0; i < count; i++) {
+                let x, y, overlapping;
+                do {
+                    x = baseX + Math.random() * 150 - 75;
+                    y = baseY + Math.random() * 150 - 75;
+                    overlapping = soldiers[player].some(s => Math.hypot(s.x - x, s.y - y) < 25);
+                } while (overlapping);
+                soldiers[player].push(new Soldier(player, x, y));
+            }
+        }
+
+        function getNearestEnemy(soldier) {
+            let enemies = soldier.player === "player1" ? soldiers.player2 : soldiers.player1;
+            let nearest = null;
+            let minDist = Infinity;
+            for (let enemy of enemies) {
+                let dist = Math.hypot(enemy.x - soldier.x, enemy.y - soldier.y);
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearest = enemy;
+                }
+            }
+            return nearest;
+        }
+
+        function updateGame() {
+            battlefield.innerHTML = "";
+            for (let team in soldiers) {
+                soldiers[team] = soldiers[team].filter(s => s.hp > 0);
+            }
+
+            if (soldiers.player1.length === 0) {
+                document.getElementById("winner").innerText = "Player 2 Wins!";
+                return;
+            }
+            if (soldiers.player2.length === 0) {
+                document.getElementById("winner").innerText = "Player 1 Wins!";
+                return;
+            }
+
+            for (let team in soldiers) {
+                soldiers[team].forEach(soldier => {
+                    let target = getNearestEnemy(soldier);
+                    if (target) {
+                        let dx = target.x - soldier.x;
+                        let dy = target.y - soldier.y;
+                        let dist = Math.hypot(dx, dy);
+                        if (dist > 10) {
+                            soldier.vx += (dx / dist) * 0.8;
+                            soldier.vy += (dy / dist) * 0.8;
+                        }
+                        if (dist < 20) {
+                            target.hp -= Math.floor(Math.random() * 10);
+                            soldier.vx = -(dx / dist) * 5;
+                            soldier.vy = -(dy / dist) * 5;
+                        }
+                    }
+                    soldier.updatePosition();
+                    battlefield.appendChild(soldier.element);
+                });
+            }
+            requestAnimationFrame(updateGame);
+        }
+
+        function startGame() {
+            document.getElementById("winner").innerText = "";
+            soldiers.player1 = [];
+            soldiers.player2 = [];
+            battlefield.innerHTML = "";
+            spawnSoldiers(25, "player1", 200, 200);
+            spawnSoldiers(8, "player2", 600, 200);
+            updateGame();
+        }
+    </script>
+</body>
+</html>
