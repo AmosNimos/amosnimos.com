@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    .grid img {
+        width: 100%;
+        max_width: 64px;
+        height: auto;
+        display: block;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .grid img:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+
+  <a href="./carts/activity.png" download>
+    <img src="./carts/activity.png" alt="activity.sh">
+  </a>
+
+    <!-- Add more as needed -->
+  </div>
+</body>
+</html>
